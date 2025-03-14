@@ -110,4 +110,17 @@ public class Civilization {
         return person;
     }
 
+    public Double calculateVowelsInAWord(String word){
+        char[] wordInChar = word.toLowerCase().toCharArray();
+        double amountOfVowels=0;
+
+        for (char character : wordInChar){
+            if(character == 'a' || character == 'e' || character == 'i' || character == 'o' || character == 'u'){
+                amountOfVowels++;
+            }
+        }
+
+        return amountOfVowels;
+    }
+
 }
