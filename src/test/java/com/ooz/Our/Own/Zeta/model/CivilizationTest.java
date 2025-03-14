@@ -27,7 +27,7 @@ class CivilizationTest {
     }
 
     @Test
-    public void creatingImportantPerson(){
+    public void creatingAScientist(){
         Civilization civilization = new Civilization();
         Person importantPerson = civilization.createImportantPerson(20,"Aki","Scientist",null,true,0);
         assertEquals(20,importantPerson.getAge());
