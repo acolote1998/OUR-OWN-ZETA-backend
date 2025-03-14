@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class CivilizationTest {
 
     @Test
-    public void CivilizationStartsAtZero(){
+    public void civilizationStartsAtZero(){
 
         Civilization civilization = new Civilization();
 
@@ -27,9 +27,9 @@ class CivilizationTest {
     }
 
     @Test
-    public void CivilizationAging5years(){
+    public void civilizationAging5years(){
         Civilization civilization = new Civilization();
-        civilization.passTime(5); //pasing 5 years
+        civilization.passTime(5); //passing 5 years
         assertEquals(5,civilization.getAge());
     }
 
