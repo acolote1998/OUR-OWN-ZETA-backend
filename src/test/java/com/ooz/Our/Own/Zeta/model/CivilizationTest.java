@@ -83,7 +83,7 @@ class CivilizationTest {
     @Test
     public void checkingVowelsInWordHola(){
         Civilization civilization = new Civilization();
-        assertEquals(2,civilization.calculateVowels("hola"));
+        assertEquals(2.0,civilization.calculateVowels("hola"));
     }
 
 
