@@ -110,7 +110,7 @@ public class Civilization {
         return person;
     }
 
-    public Double calculateVowelsAvgInAWord(String word){
+    public Double calculateVowelsAvgInAWord(String word, String... others){
         char[] wordInChar = word.toLowerCase().toCharArray();
         double amountOfVowels=0;
 
