@@ -92,5 +92,11 @@ class CivilizationTest {
         assertEquals(2.5,civilization.calculateVowelsAvgInWords("hola","adios"),0.01);
     }
 
+    @Test
+    public void checkingVowelsAvgInFiveWords(){
+        Civilization civilization = new Civilization();
+        assertEquals(1.8,civilization.calculateVowelsAvgInWords("one","two","three","four","five"));
+    }
+
 
 }
