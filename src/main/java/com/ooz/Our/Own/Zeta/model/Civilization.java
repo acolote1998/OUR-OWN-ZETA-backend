@@ -160,9 +160,10 @@ public class Civilization {
 
     public boolean checkIfWordContainsVowelCluster(String word){
         for (int i = 0;i<word.length();i++){
+            if (i<(word.length()-1)){
             if ((word.toLowerCase().toCharArray()[i]=='a' || word.toLowerCase().toCharArray()[i]=='e' || word.toLowerCase().toCharArray()[i]=='i' || word.toLowerCase().toCharArray()[i]=='o' || word.toLowerCase().toCharArray()[i]=='u')&&(word.toLowerCase().toCharArray()[i+1]=='a' || word.toLowerCase().toCharArray()[i+1]=='e' || word.toLowerCase().toCharArray()[i+1]=='i' || word.toLowerCase().toCharArray()[i+1]=='o' || word.toLowerCase().toCharArray()[i+1]=='u')){
             return true;
-            }
+            }}
         }
         return false;
     }
