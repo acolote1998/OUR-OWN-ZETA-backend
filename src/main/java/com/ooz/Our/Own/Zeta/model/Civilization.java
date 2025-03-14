@@ -75,4 +75,14 @@ public class Civilization {
         age+=years;
     }
 
+    public Person createImportantPerson(int age, String name, String field, Map<String,Integer> discoveries, boolean alive, int knowledge){
+        Person person = null;
+        switch (field){
+            case "Scientist":
+                person = new Scientist(age,name,field,discoveries,alive,knowledge);
+                break;
+        }
+        return person;
+    }
+
 }
