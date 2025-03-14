@@ -17,6 +17,7 @@ class CivilizationTest {
         assertEquals(0,civilization.getPopulation());
         assertTrue(civilization.getImportantIndividuals().isEmpty(),"Individuals is not empty");
         assertTrue(civilization.getEventsLog().isEmpty(),"EventLogs is not empty");
+        assertEquals(5,civilization.getLanguagePatterns().size());//Vowels per word,Consonants per word,Chances of 2 vowels together,Chances of XYZ, Chances of H
     }
 
     @Test
