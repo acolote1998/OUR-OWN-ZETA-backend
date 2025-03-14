@@ -18,4 +18,11 @@ class CivilizationTest {
         assertTrue(civilization.getImportantIndividuals().isEmpty(),"Individuals is not empty");
         assertTrue(civilization.getEventsLog().isEmpty(),"EventLogs is not empty");
     }
+
+    @Test
+    public void CivilizationAging5years(){
+        Civilization civilization = new Civilization();
+        civilization.passTime(5); //pasing 5 years
+        assertEquals(5,civilization.getAge());
+    }
 }

@@ -70,4 +70,6 @@ public class Civilization {
         this.population = 0;
         this.importantIndividuals= new HashMap<>();
     }
+
+
 }
