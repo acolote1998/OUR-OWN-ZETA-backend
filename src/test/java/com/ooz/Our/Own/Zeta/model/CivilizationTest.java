@@ -2,6 +2,8 @@ package com.ooz.Our.Own.Zeta.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Test;
+
 class CivilizationTest {
 
     @Test
@@ -10,10 +12,10 @@ class CivilizationTest {
         Civilization civilization = new Civilization();
 
         assertEquals(0,civilization.getAge());
-        assertEquals(0,civilization.getResources());
-        assertEquals(0,civilization.getDiscoveries());
+        assertTrue(civilization.getResources().isEmpty(),"Resources is not empty");
+        assertTrue(civilization.getDiscoveries().isEmpty(),"Discoveries is not empty");
         assertEquals(0,civilization.getPopulation());
-        assertEquals(0,civilization.getImportantIndividuals());
-        assertEquals(0,civilization.getEventsLog());
+        assertTrue(civilization.getImportantIndividuals().isEmpty(),"Individuals is not empty");
+        assertTrue(civilization.getEventsLog().isEmpty(),"EventLogs is not empty");
     }
 }
