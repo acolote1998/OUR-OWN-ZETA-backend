@@ -117,10 +117,12 @@ class CivilizationTest {
     }
 
     @Test
-    public void checkingVowelClusterRatioForOneWord(){
+    public void checkIfWordContainsVowelCluster(){
         Civilization civilization = new Civilization();
-        assertEquals(100,civilization.calculateClusterRateInWords("Aeris"));
+        assertTrue(civilization.checkIfWordContainsVowelCluster("Aeris"),"Not containing vowel cluster");
     }
+
+
 
 
 }
