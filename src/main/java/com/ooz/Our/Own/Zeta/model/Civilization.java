@@ -13,6 +13,15 @@ public class Civilization {
     private int population;
     private Map<Person, String> importantIndividuals = new HashMap<>(); //<Person object, Name of the person>
     private List<String> eventsLog = new ArrayList<>();
+    private Map<String,Double> languagePatterns = new HashMap<>();
+
+    public Map<String, Double> getLanguagePatterns() {
+        return languagePatterns;
+    }
+
+    public void setLanguagePatterns(Map<String, Double> languagePatterns) {
+        this.languagePatterns = languagePatterns;
+    }
 
     public int getAge() {
         return age;
@@ -69,6 +78,13 @@ public class Civilization {
         this.resources = new HashMap<>();
         this.population = 0;
         this.importantIndividuals= new HashMap<>();
+        this.languagePatterns=new HashMap<>();
+        languagePatterns.put("VowelsPerWord",0.0);
+        languagePatterns.put("ConsonantsPerWord",0.0);
+        languagePatterns.put("VowelClusterRate",0.0);
+        languagePatterns.put("XYZRate",0.0);
+        languagePatterns.put("HRate",0.0);
+
     }
 
     public void passTime(int years){
