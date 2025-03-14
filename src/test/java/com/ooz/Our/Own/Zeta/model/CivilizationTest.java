@@ -125,7 +125,7 @@ class CivilizationTest {
     @Test
     public void checkingVowelClusterRateForOneWord(){
         Civilization civilization = new Civilization();
-        assertEquals(100,civilization.calculateClusterRateInWords("Aeris"));
+        assertEquals(100.00,civilization.calculateVowelClusterRateInWords("Aeris"),0.01);
     }
 
 }

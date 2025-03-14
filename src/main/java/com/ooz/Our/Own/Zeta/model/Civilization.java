@@ -167,6 +167,20 @@ public class Civilization {
         return false;
     }
 
+    public Double calculateVowelClusterRateInWords(String word, String... others){
+        int words=1+others.length;
+        int wordsWCluster=0;
+        Double wordsWithVowelClusterRate=0.0;
+        if (checkIfWordContainsVowelCluster(word)){wordsWCluster++;}
 
+        for (int i = 0; i<others.length;i++){
+            if (checkIfWordContainsVowelCluster(others[i])){wordsWCluster++;}
+        }
+
+        wordsWithVowelClusterRate=(wordsWCluster*100.0/words);
+
+        return wordsWithVowelClusterRate;
+
+    }
 
 }
