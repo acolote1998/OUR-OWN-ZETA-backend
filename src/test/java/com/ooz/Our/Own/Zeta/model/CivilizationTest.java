@@ -25,4 +25,17 @@ class CivilizationTest {
         civilization.passTime(5); //pasing 5 years
         assertEquals(5,civilization.getAge());
     }
+
+    @Test
+    public void creatingImportantPerson(){
+        Civilization civilization = new Civilization();
+        Scientist importantPerson = civilization.createImportantPerson(20,"Aki","Scientist",null,true,0);
+        assertEquals(20,importantPerson.getAge();
+        assertEquals("Aki",importantPerson.getName());
+        assertEquals("Scientist",importantPerson.getField());
+        assertTrue(importantPerson.getDiscoveries().isEmpty(),"Discoveries are not empty");
+        assertTrue(importantPerson.isAlive(),"Person is not alive");
+        assertEquals(0,importantPerson.getKnowledge());
+    }
+
 }
