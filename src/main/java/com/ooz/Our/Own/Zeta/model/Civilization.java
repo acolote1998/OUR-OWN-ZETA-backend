@@ -71,5 +71,9 @@ public class Civilization {
         this.importantIndividuals= new HashMap<>();
     }
 
+    public void passTime(int years){
+        age+=years;
+    }
+
 
 }
