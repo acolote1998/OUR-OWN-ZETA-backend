@@ -87,6 +87,9 @@ public class Civilization {
             case "Athlete":
                 person = new Athlete(age,name,field,discoveries,alive,knowledge);
                 break;
+            case "Doctor":
+                person = new Doctor(age,name,field,discoveries,alive,knowledge);
+                break;
         }
         return person;
     }
