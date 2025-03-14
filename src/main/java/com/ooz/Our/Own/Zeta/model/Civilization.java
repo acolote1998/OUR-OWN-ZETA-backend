@@ -61,4 +61,13 @@ public class Civilization {
     public void setEventsLog(List<String> eventsLog) {
         this.eventsLog = eventsLog;
     }
+
+    public Civilization(){
+        this.age = 0;
+        this.discoveries = new HashMap<>();
+        this.eventsLog = new ArrayList<>();
+        this.resources = new HashMap<>();
+        this.population = 0;
+        this.importantIndividuals= new HashMap<>();
+    }
 }
