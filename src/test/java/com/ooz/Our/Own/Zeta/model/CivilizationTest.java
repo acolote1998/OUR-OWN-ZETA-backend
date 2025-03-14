@@ -29,13 +29,15 @@ class CivilizationTest {
     @Test
     public void creatingAScientist(){
         Civilization civilization = new Civilization();
-        Person importantPerson = civilization.createImportantPerson(20,"Aki","Scientist",null,true,0);
-        assertEquals(20,importantPerson.getAge());
-        assertEquals("Aki",importantPerson.getName());
-        assertEquals("Scientist",importantPerson.getField());
-        assertTrue(importantPerson.getDiscoveries().isEmpty(),"Discoveries are not empty");
-        assertTrue(importantPerson.isAlive(),"Person is not alive");
-        assertEquals(0,importantPerson.getKnowledge());
+        Person scientist = civilization.createImportantPerson(20,"Aki","Scientist",null,true,0);
+        assertEquals(20,scientist.getAge());
+        assertEquals("Aki",scientist.getName());
+        assertEquals("Scientist",scientist.getField());
+        assertTrue(scientist.getDiscoveries().isEmpty(),"Discoveries are not empty");
+        assertTrue(scientist.isAlive(),"Person is not alive");
+        assertEquals(0,scientist.getKnowledge());
     }
+
+
 
 }
