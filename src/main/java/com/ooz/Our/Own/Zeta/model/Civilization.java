@@ -84,6 +84,9 @@ public class Civilization {
             case "Artist":
                 person = new Artist(age,name,field,discoveries,alive,knowledge);
                 break;
+            case "Athlete":
+                person = new Athlete(age,name,field,discoveries,alive,knowledge);
+                break;
         }
         return person;
     }
