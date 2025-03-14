@@ -134,4 +134,28 @@ public class Civilization {
         return count;
     }
 
+    public Double calculateConsonantsAvgInWords(String word, String... others){
+        char[] wordInChar = word.toLowerCase().toCharArray();
+        double amountOfConsonants=0;
+        int totalWords = 1+others.length;
+
+        amountOfConsonants+=countConsonants(word);
+
+        for (String other : others){
+            amountOfConsonants+=countConsonants(other);
+        }
+
+        return amountOfConsonants/totalWords;
+    }
+
+    private int countConsonants(String word) {
+        int count = 0;
+        for (char character : word.toLowerCase().toCharArray()) {
+            if (character != 'a' && character != 'e' && character != 'i' && character != 'o' && character != 'u') {
+                count++;
+            }
+        }
+        return count;
+    }
+
 }
