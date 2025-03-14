@@ -116,5 +116,11 @@ class CivilizationTest {
         assertEquals(4.4,civilization.calculateConsonantsAvgInWords("hola","butterfly","argentum","online","twitch"));
     }
 
+    @Test
+    public void checkingVowelClusterRatioForOneWord(){
+        Civilization civilization = new Civilization();
+        assertEquals(100,civilization.calculateClusterRateInWords("Aeris"));
+    }
+
 
 }
