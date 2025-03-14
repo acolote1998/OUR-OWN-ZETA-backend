@@ -14,4 +14,51 @@ public class Civilization {
     private Map<Person, String> importantIndividuals = new HashMap<>(); //<Person object, Name of the person>
     private List<String> eventsLog = new ArrayList<>();
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Map<String, Integer> getResources() {
+        return resources;
+    }
+
+    public void setResources(Map<String, Integer> resources) {
+        this.resources = resources;
+    }
+
+    public Map<String, Integer> getDiscoverments() {
+        return discoverments;
+    }
+
+    public void setDiscoverments(Map<String, Integer> discoverments) {
+        this.discoverments = discoverments;
+    }
+
+    public int getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(int population) {
+        this.population = population;
+    }
+
+    public Map<Person, String> getImportantIndividuals() {
+        return importantIndividuals;
+    }
+
+    public void setImportantIndividuals(Map<Person, String> importantIndividuals) {
+        this.importantIndividuals = importantIndividuals;
+    }
+
+    public List<String> getEventsLog() {
+        return eventsLog;
+    }
+
+    public void setEventsLog(List<String> eventsLog) {
+        this.eventsLog = eventsLog;
+    }
 }
