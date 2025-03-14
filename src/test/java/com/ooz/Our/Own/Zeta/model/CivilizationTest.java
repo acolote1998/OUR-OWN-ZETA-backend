@@ -50,4 +50,16 @@ class CivilizationTest {
         assertEquals(0,artist.getKnowledge());
     }
 
+    @Test
+    public void creatingAnAthlete(){
+        Civilization civilization = new Civilization();
+        Person athlete = civilization.createImportantPerson(20,"Aki","Scientist",null,true,0);
+        assertEquals(20,athlete.getAge());
+        assertEquals("Aki",athlete.getName());
+        assertEquals("Athlete",athlete.getField());
+        assertTrue(athlete.getDiscoveries().isEmpty(),"Discoveries are not empty");
+        assertTrue(athlete.isAlive(),"Person is not alive");
+        assertEquals(0,athlete.getKnowledge());
+    }
+
 }
