@@ -14,7 +14,7 @@ class PersonTest {
         assertEquals("",person.getName());
         assertEquals("",person.getField());
         assertTrue(person.getDiscoveries().isEmpty(),"Discoveries is not empty");
-        assertTrue(person.getAlive(),"Person is not alive");
+        assertTrue(person.isAlive(),"Person is not alive");
         assertEquals(0,person.getKnowledge());
     }
 
