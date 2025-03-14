@@ -110,17 +110,28 @@ public class Civilization {
         return person;
     }
 
-    public Double calculateVowelsAvgInAWord(String word, String... others){
+    public Double calculateVowelsAvgInWords(String word, String... others){
         char[] wordInChar = word.toLowerCase().toCharArray();
         double amountOfVowels=0;
+        int totalWords = 1+others.length;
 
-        for (char character : wordInChar){
-            if(character == 'a' || character == 'e' || character == 'i' || character == 'o' || character == 'u'){
-                amountOfVowels++;
-            }
+        amountOfVowels+=countVowels(word);
+
+        for (String other : others){
+        amountOfVowels+=countVowels(other);
         }
 
-        return amountOfVowels;
+        return amountOfVowels/totalWords;
+    }
+
+    private int countVowels(String word) {
+        int count = 0;
+        for (char character : word.toLowerCase().toCharArray()) {
+            if (character == 'a' || character == 'e' || character == 'i' || character == 'o' || character == 'u') {
+                count++;
+            }
+        }
+        return count;
     }
 
 }
