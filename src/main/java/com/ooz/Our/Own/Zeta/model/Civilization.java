@@ -9,7 +9,7 @@ public class Civilization {
 
     private int age;
     private Map<String,Integer> resources = new HashMap<>(); // <Resources Name, Level>
-    private Map<String,Integer> discoverments = new HashMap<>(); // <Discoverment Name, Level>
+    private Map<String,Integer> discoveries = new HashMap<>(); // <Discoveries Name, Level>
     private int population;
     private Map<Person, String> importantIndividuals = new HashMap<>(); //<Person object, Name of the person>
     private List<String> eventsLog = new ArrayList<>();
@@ -30,12 +30,12 @@ public class Civilization {
         this.resources = resources;
     }
 
-    public Map<String, Integer> getDiscoverments() {
-        return discoverments;
+    public Map<String, Integer> getDiscoveries() {
+        return discoveries;
     }
 
-    public void setDiscoverments(Map<String, Integer> discoverments) {
-        this.discoverments = discoverments;
+    public void setDiscoveries(Map<String, Integer> discoveries) {
+        this.discoveries = discoveries;
     }
 
     public int getPopulation() {

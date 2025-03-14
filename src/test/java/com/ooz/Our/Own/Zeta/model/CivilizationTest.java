@@ -11,7 +11,7 @@ class CivilizationTest {
 
         assertEquals(0,civilization.getAge());
         assertEquals(0,civilization.getResources());
-        assertEquals(0,civilization.getDiscoverments());
+        assertEquals(0,civilization.getDiscoveries());
         assertEquals(0,civilization.getPopulation());
         assertEquals(0,civilization.getImportantIndividuals());
         assertEquals(0,civilization.getEventsLog());
