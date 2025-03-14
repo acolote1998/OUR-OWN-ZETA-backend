@@ -81,9 +81,15 @@ class CivilizationTest {
     }
 
     @Test
-    public void checkingVowelsInWordHola(){
+    public void checkingVowelsAvgInWordHola(){
         Civilization civilization = new Civilization();
-        assertEquals(2.0,civilization.calculateVowelsInAWord("hola"),0.01);
+        assertEquals(2.0,civilization.calculateVowelsAvgInAWord("hola"),0.01);
+    }
+
+    @Test
+    public void checkingVowelsAvgInTwoWords(){
+        Civilization civilization = new Civilization();
+        assertEquals(2.5,civilization.calculateVowelsAvgInAWord("hola","adios"),0.01);
     }
 
 
