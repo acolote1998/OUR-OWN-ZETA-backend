@@ -158,4 +158,10 @@ class CivilizationTest {
         assertEquals(50.0,civilization.calculateXYZRateInWords("Yemen","Aki"),0.01);
     }
 
+    @Test
+    public void checkXYZRateInFiveWords(){
+        Civilization civilization = new Civilization();
+        assertEquals(40.0,civilization.calculateXYZRateInWords("Xatu","Maunuel","Rodrigo","Pablo","Alexandria"),0.01);
+    }
+
 }
