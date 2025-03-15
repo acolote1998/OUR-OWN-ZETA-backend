@@ -216,5 +216,16 @@ public class Civilization {
         return amountOfXYZWords * 100.0 / amountOfWords;
     }
 
+    public boolean checkIfWordContainsH(String word) {
+        char[] wordChar = word.toLowerCase().toCharArray();
+        for (char character : wordChar) {
+            if (character == 'h') {
+                return true;
+            }
+        }
+        return false;
+
+    }
+
 
 }
