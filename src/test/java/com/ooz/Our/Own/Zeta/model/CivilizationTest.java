@@ -140,4 +140,10 @@ class CivilizationTest {
         assertEquals(60.00,civilization.calculateVowelClusterRateInWords("Aeris","Aki","Paella","Man","Theodor"),0.01);
     }
 
+    @Test
+    publico void checkXYZContainedInOneWord(){
+        Civilization civilization = new Civilization();
+        assertTrue(civilization.checkIfWordContainsXYZ("Zaphire"));
+    }
+
 }
