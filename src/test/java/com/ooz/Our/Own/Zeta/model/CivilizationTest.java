@@ -180,7 +180,7 @@ class CivilizationTest {
     @Test
     public void checkHRateInTwoWords() {
         Civilization civilization = new Civilization();
-        assertEquals(50.0, civilization.calculateHRateInWords("Home", "Aki"), 0.01);
+        assertEquals(50.0, civilization.calculateHRateInWords("Aki", "Home"), 0.01);
     }
 
 }

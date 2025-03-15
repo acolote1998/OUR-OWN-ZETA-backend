@@ -235,6 +235,12 @@ public class Civilization {
             wordsWithH++;
         }
 
+        for (String wordToCheck : others) {
+            if (checkIfWordContainsH(wordToCheck)) {
+                wordsWithH++;
+            }
+        }
+
         return wordsWithH * 100.0 / amountOfWords;
 
     }
