@@ -164,4 +164,10 @@ class CivilizationTest {
         assertEquals(40.0,civilization.calculateXYZRateInWords("Xatu","Maunuel","Rodrigo","Pablo","Alexandria"),0.01);
     }
 
+    @Test
+    public void checkHContainedInOneWord(){
+        Civilization civilization = new Civilization();
+        assertTrue(civilization.checkIfWordContainsH("Harry"),"Word does not contain H");
+    }
+
 }
