@@ -195,6 +195,18 @@ public class Civilization {
         return false;
     }
 
+    public Double calculateXYZRateInWords(String word,String... others){
+    int amountOfWords=1+others.length;
+    int amountOfXYZWords=0;
+    if (checkIfWordContainsXYZ(word)){amountOfXYZWords++;}
+
+    for (String wordOther : others){
+        if(checkIfWordContainsXYZ(wordOther)){amountOfXYZWords++;}
+    }
+
+    return amountOfXYZWords*100.0/amountOfWords;
+    }
+
 
 
 }
