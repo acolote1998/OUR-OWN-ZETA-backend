@@ -171,4 +171,10 @@ class CivilizationTest {
         assertTrue(civilization.checkIfWordContainsH("Harry"), "Word does not contain H");
     }
 
+    @Test
+    public void checkHRateInOneWord() {
+        Civilization civilization = new Civilization();
+        assertEquals(100.0, civilization.caculateHRateInWords("Honey"), 0.01);
+    }
+
 }
