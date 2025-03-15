@@ -8,12 +8,12 @@ import java.util.Map;
 public class Civilization {
 
     private int age;
-    private Map<String,Integer> resources = new HashMap<>(); // <Resources Name, Level>
-    private Map<String,Integer> discoveries = new HashMap<>(); // <Discoveries Name, Level>
+    private Map<String, Integer> resources = new HashMap<>(); // <Resources Name, Level>
+    private Map<String, Integer> discoveries = new HashMap<>(); // <Discoveries Name, Level>
     private int population;
     private Map<Person, String> importantIndividuals = new HashMap<>(); //<Person object, Name of the person>
     private List<String> eventsLog = new ArrayList<>();
-    private Map<String,Double> languagePatterns = new HashMap<>();
+    private Map<String, Double> languagePatterns = new HashMap<>();
 
     public Map<String, Double> getLanguagePatterns() {
         return languagePatterns;
@@ -71,57 +71,57 @@ public class Civilization {
         this.eventsLog = eventsLog;
     }
 
-    public Civilization(){
+    public Civilization() {
         this.age = 0;
         this.discoveries = new HashMap<>();
         this.eventsLog = new ArrayList<>();
         this.resources = new HashMap<>();
         this.population = 0;
-        this.importantIndividuals= new HashMap<>();
-        this.languagePatterns=new HashMap<>();
-        languagePatterns.put("VowelsPerWord",0.0);
-        languagePatterns.put("ConsonantsPerWord",0.0);
-        languagePatterns.put("VowelClusterRate",0.0);
-        languagePatterns.put("XYZRate",0.0);
-        languagePatterns.put("HRate",0.0);
+        this.importantIndividuals = new HashMap<>();
+        this.languagePatterns = new HashMap<>();
+        languagePatterns.put("VowelsPerWord", 0.0);
+        languagePatterns.put("ConsonantsPerWord", 0.0);
+        languagePatterns.put("VowelClusterRate", 0.0);
+        languagePatterns.put("XYZRate", 0.0);
+        languagePatterns.put("HRate", 0.0);
 
     }
 
-    public void passTime(int years){
-        age+=years;
+    public void passTime(int years) {
+        age += years;
     }
 
-    public Person createImportantPerson(int age, String name, String field, Map<String,Integer> discoveries, boolean alive, int knowledge){
+    public Person createImportantPerson(int age, String name, String field, Map<String, Integer> discoveries, boolean alive, int knowledge) {
         Person person = null;
-        switch (field){
+        switch (field) {
             case "Scientist":
-                person = new Scientist(age,name,field,discoveries,alive,knowledge);
+                person = new Scientist(age, name, field, discoveries, alive, knowledge);
                 break;
             case "Artist":
-                person = new Artist(age,name,field,discoveries,alive,knowledge);
+                person = new Artist(age, name, field, discoveries, alive, knowledge);
                 break;
             case "Athlete":
-                person = new Athlete(age,name,field,discoveries,alive,knowledge);
+                person = new Athlete(age, name, field, discoveries, alive, knowledge);
                 break;
             case "Doctor":
-                person = new Doctor(age,name,field,discoveries,alive,knowledge);
+                person = new Doctor(age, name, field, discoveries, alive, knowledge);
                 break;
         }
         return person;
     }
 
-    public Double calculateVowelsAvgInWords(String word, String... others){
+    public Double calculateVowelsAvgInWords(String word, String... others) {
         char[] wordInChar = word.toLowerCase().toCharArray();
-        double amountOfVowels=0;
-        int totalWords = 1+others.length;
+        double amountOfVowels = 0;
+        int totalWords = 1 + others.length;
 
-        amountOfVowels+=countVowels(word);
+        amountOfVowels += countVowels(word);
 
-        for (String other : others){
-        amountOfVowels+=countVowels(other);
+        for (String other : others) {
+            amountOfVowels += countVowels(other);
         }
 
-        return amountOfVowels/totalWords;
+        return amountOfVowels / totalWords;
     }
 
     private int countVowels(String word) {
@@ -134,18 +134,18 @@ public class Civilization {
         return count;
     }
 
-    public Double calculateConsonantsAvgInWords(String word, String... others){
+    public Double calculateConsonantsAvgInWords(String word, String... others) {
         char[] wordInChar = word.toLowerCase().toCharArray();
-        double amountOfConsonants=0;
-        int totalWords = 1+others.length;
+        double amountOfConsonants = 0;
+        int totalWords = 1 + others.length;
 
-        amountOfConsonants+=countConsonants(word);
+        amountOfConsonants += countConsonants(word);
 
-        for (String other : others){
-            amountOfConsonants+=countConsonants(other);
+        for (String other : others) {
+            amountOfConsonants += countConsonants(other);
         }
 
-        return amountOfConsonants/totalWords;
+        return amountOfConsonants / totalWords;
     }
 
     private int countConsonants(String word) {
@@ -158,57 +158,63 @@ public class Civilization {
         return count;
     }
 
-    public boolean checkIfWordContainsVowelCluster(String word){
-        for (int i = 0;i<word.length();i++){
-            if (i<(word.length()-1)){
-            if ((word.toLowerCase().toCharArray()[i]=='a' || word.toLowerCase().toCharArray()[i]=='e' || word.toLowerCase().toCharArray()[i]=='i' || word.toLowerCase().toCharArray()[i]=='o' || word.toLowerCase().toCharArray()[i]=='u')&&(word.toLowerCase().toCharArray()[i+1]=='a' || word.toLowerCase().toCharArray()[i+1]=='e' || word.toLowerCase().toCharArray()[i+1]=='i' || word.toLowerCase().toCharArray()[i+1]=='o' || word.toLowerCase().toCharArray()[i+1]=='u')){
-            return true;
-            }}
+    public boolean checkIfWordContainsVowelCluster(String word) {
+        for (int i = 0; i < word.length(); i++) {
+            if (i < (word.length() - 1)) {
+                if ((word.toLowerCase().toCharArray()[i] == 'a' || word.toLowerCase().toCharArray()[i] == 'e' || word.toLowerCase().toCharArray()[i] == 'i' || word.toLowerCase().toCharArray()[i] == 'o' || word.toLowerCase().toCharArray()[i] == 'u') && (word.toLowerCase().toCharArray()[i + 1] == 'a' || word.toLowerCase().toCharArray()[i + 1] == 'e' || word.toLowerCase().toCharArray()[i + 1] == 'i' || word.toLowerCase().toCharArray()[i + 1] == 'o' || word.toLowerCase().toCharArray()[i + 1] == 'u')) {
+                    return true;
+                }
+            }
         }
         return false;
     }
 
-    public Double calculateVowelClusterRateInWords(String word, String... others){
-        int words=1+others.length;
-        int wordsWCluster=0;
-        Double wordsWithVowelClusterRate=0.0;
-        if (checkIfWordContainsVowelCluster(word)){wordsWCluster++;}
-
-        for (int i = 0; i<others.length;i++){
-            if (checkIfWordContainsVowelCluster(others[i])){wordsWCluster++;}
+    public Double calculateVowelClusterRateInWords(String word, String... others) {
+        int words = 1 + others.length;
+        int wordsWCluster = 0;
+        Double wordsWithVowelClusterRate = 0.0;
+        if (checkIfWordContainsVowelCluster(word)) {
+            wordsWCluster++;
         }
 
-        wordsWithVowelClusterRate=(wordsWCluster*100.0/words);
+        for (int i = 0; i < others.length; i++) {
+            if (checkIfWordContainsVowelCluster(others[i])) {
+                wordsWCluster++;
+            }
+        }
+
+        wordsWithVowelClusterRate = (wordsWCluster * 100.0 / words);
 
         return wordsWithVowelClusterRate;
 
     }
 
-    public boolean checkIfWordContainsXYZ(String word){
+    public boolean checkIfWordContainsXYZ(String word) {
         char[] wordToChar = word.toLowerCase().toCharArray();
 
-        for (char character:wordToChar){
-            if (character=='x' || character== 'y' || character=='z'){
+        for (char character : wordToChar) {
+            if (character == 'x' || character == 'y' || character == 'z') {
                 return true;
             }
         }
         return false;
     }
 
-    public Double calculateXYZRateInWords(String word,String... others){
-    int amountOfWords=1+others.length;
-    int amountOfXYZWords=0;
-    if (checkIfWordContainsXYZ(word)){amountOfXYZWords++;}
+    public Double calculateXYZRateInWords(String word, String... others) {
+        int amountOfWords = 1 + others.length;
+        int amountOfXYZWords = 0;
+        if (checkIfWordContainsXYZ(word)) {
+            amountOfXYZWords++;
+        }
 
-    for (String wordOther : others){
-        if(checkIfWordContainsXYZ(wordOther)){amountOfXYZWords++;}
+        for (String wordOther : others) {
+            if (checkIfWordContainsXYZ(wordOther)) {
+                amountOfXYZWords++;
+            }
+        }
+
+        return amountOfXYZWords * 100.0 / amountOfWords;
     }
-
-    return amountOfXYZWords*100.0/amountOfWords;
-    }
-
-
-
 
 
 }
