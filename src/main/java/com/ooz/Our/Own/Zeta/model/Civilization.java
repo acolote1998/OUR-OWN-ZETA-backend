@@ -184,4 +184,15 @@ public class Civilization {
 
     }
 
+    public boolean checkIfWordContainsXYZ(String word){
+        char[] wordToChar = word.toLowerCase().toCharArray();
+
+        for (char character:wordToChar){
+            if (character=='x' || character== 'y' || character=='z'){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

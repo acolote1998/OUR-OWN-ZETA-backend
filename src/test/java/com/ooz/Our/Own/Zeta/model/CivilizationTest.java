@@ -141,7 +141,7 @@ class CivilizationTest {
     }
 
     @Test
-    publico void checkXYZContainedInOneWord(){
+    public void checkXYZContainedInOneWord(){
         Civilization civilization = new Civilization();
         assertTrue(civilization.checkIfWordContainsXYZ("Zaphire"));
     }
