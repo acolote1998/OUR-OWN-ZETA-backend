@@ -146,4 +146,10 @@ class CivilizationTest {
         assertTrue(civilization.checkIfWordContainsXYZ("Zaphire"));
     }
 
+    @Test
+    public void checkXYZRateInOneWord(){
+        Civilization civilization = new Civilization();
+        assertEquals(100.0,civilization.calculateXYZRateInWords("Yemen"),0.01);
+    }
+
 }
