@@ -227,4 +227,16 @@ public class Civilization {
 
     }
 
+    public Double calculateHRateInWords(String word, String... others) {
+        int amountOfWords = 1 + others.length;
+        int wordsWithH = 0;
+
+        if (checkIfWordContainsH(word)) {
+            wordsWithH++;
+        }
+
+        return wordsWithH * 100.0 / amountOfWords;
+
+    }
+
 }

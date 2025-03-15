@@ -174,7 +174,7 @@ class CivilizationTest {
     @Test
     public void checkHRateInOneWord() {
         Civilization civilization = new Civilization();
-        assertEquals(100.0, civilization.caculateHRateInWords("Honey"), 0.01);
+        assertEquals(100.0, civilization.calculateHRateInWords("Honey"), 0.01);
     }
 
 }
