@@ -327,7 +327,7 @@ class CivilizationTest {
     @Test
     public void checkWordFinishingWithVowelRateForTwoWords() {
         Civilization civilization = new Civilization();
-        assertEquals(50.0, civilization.calculateFinishingWithVowelRate("Aki", "Michaela"), 0.01);
+        assertEquals(50.0, civilization.calculateFinishingWithVowelRate("Aki", "Valt"), 0.01);
     }
 
     @Test

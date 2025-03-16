@@ -376,4 +376,18 @@ public class Civilization {
         }
         return false;
     }
+
+    public Double calculateFinishingWithVowelRate(String word, String... others) {
+        int totalWords = 1 + others.length;
+        int wordsFinishingWVowel = 0;
+        if (checkIfWordFinishesWithVowel(word)) {
+            wordsFinishingWVowel++;
+        }
+        for (String wordToCheck : others) {
+            if (checkIfWordFinishesWithVowel(wordToCheck)) {
+                wordsFinishingWVowel++;
+            }
+        }
+        return wordsFinishingWVowel * 100.0 / totalWords;
+    }
 }
