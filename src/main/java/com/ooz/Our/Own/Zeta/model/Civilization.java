@@ -302,4 +302,15 @@ public class Civilization {
         return wordsWithRR * 100.0 / totalWords;
     }
 
+    public Boolean checkIfWordContainsConsonantCluster(String word) {
+        char[] wordCharArr = word.toLowerCase().toCharArray();
+        for (int i = 0; i < wordCharArr.length; i++) {
+            if (i < (wordCharArr.length - 1)) {
+                if (wordCharArr[i] != 'a' && wordCharArr[i] != 'e' && wordCharArr[i] != 'i' && wordCharArr[i] != 'o' && wordCharArr[i] != 'u' && wordCharArr[i + 1] != 'a' && wordCharArr[i + 1] != 'e' && wordCharArr[i + 1] != 'i' && wordCharArr[i + 1] != 'o' && wordCharArr[i + 1] != 'u') {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
