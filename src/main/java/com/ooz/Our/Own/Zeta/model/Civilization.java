@@ -330,4 +330,12 @@ public class Civilization {
         return totalConsonantClusterWords * 100.0 / totalWords;
 
     }
+
+    public Boolean checkIfWordStartsWithVowel(String word) {
+        char[] wordArray = word.toLowerCase().toCharArray();
+        if (wordArray[0] == 'a' || wordArray[0] == 'e' || wordArray[0] == 'i' || wordArray[0] == 'o' || wordArray[0] == 'u') {
+            return true;
+        }
+        return false;
+    }
 }
