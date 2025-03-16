@@ -21,8 +21,12 @@ class CivilizationTest {
         assertEquals(0.0, civilization.getLanguagePatterns().get("VowelsPerWord"));
         assertEquals(0.0, civilization.getLanguagePatterns().get("ConsonantsPerWord"));
         assertEquals(0.0, civilization.getLanguagePatterns().get("VowelClusterRate"));
+        assertEquals(0.0, civilization.getLanguagePatterns().get("ConsonantClusterRate"));
         assertEquals(0.0, civilization.getLanguagePatterns().get("XYZRate"));
         assertEquals(0.0, civilization.getLanguagePatterns().get("HRate"));
+        assertEquals(0.0, civilization.getLanguagePatterns().get("KRate"));
+        assertEquals(0.0, civilization.getLanguagePatterns().get("RRRate"));
+
 
     }
 
