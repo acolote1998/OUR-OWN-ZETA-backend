@@ -258,4 +258,11 @@ class CivilizationTest {
 
     }
 
+    @Test
+    public void checkIfWordStatsWithVowel() {
+        Civilization civilization = new Civilization();
+        assertTrue(civilization.checkIfWordStartsWithVowel("Aragorn"), "It does not start with a vowel");
+    }
+
+
 }
