@@ -288,4 +288,18 @@ public class Civilization {
         return false;
     }
 
+    public Double calculateRRRateInWords(String word, String... others) {
+        int totalWords = 1 + others.length;
+        int wordsWithRR = 0;
+        if (checkIfWordContainsRR(word)) {
+            wordsWithRR++;
+        }
+        for (String wordToCheck : others) {
+            if (checkIfWordContainsRR(wordToCheck)) {
+                wordsWithRR++;
+            }
+        }
+        return wordsWithRR * 100.0 / totalWords;
+    }
+
 }
