@@ -276,5 +276,10 @@ class CivilizationTest {
         assertEquals(50.0, civilization.calculateVowelStartingRate("Gimli", "Aragorn"), 0.01);
     }
 
+    @Test
+    public void checkVowelStartRateForFiveWords() {
+        Civilization civilization = new Civilization();
+        assertEquals(50.0, civilization.calculateVowelStartingRate("Gimli", "Aragorn", "Legolas", "Aramir"), 0.01);
+    }
 
 }
