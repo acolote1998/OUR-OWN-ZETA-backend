@@ -305,4 +305,10 @@ class CivilizationTest {
         Civilization civilization = new Civilization();
         assertEquals(80.0, civilization.calculateConsonantStartingRate("Legolas", "Aragorn", "Froddo", "Sam", "Gandalf"), 0.01);
     }
+
+    @Test
+    public void checkIfWordFinishesWithVowel() {
+        Civilization civilization = new Civilization();
+        assertTrue(civilization.checkIfWordFinishesWithVowel("Aki"), "It does not  finish with a vowel");
+    }
 }
