@@ -282,4 +282,9 @@ class CivilizationTest {
         assertEquals(50.0, civilization.calculateVowelStartingRate("Gimli", "Aragorn", "Legolas", "Aramir"), 0.01);
     }
 
+    @Test
+    public void checkIfWordStatsWithConsonant() {
+        Civilization civilization = new Civilization();
+        assertFalse(civilization.checkIfWordStartsWithVowel("Legolas"), "It does not start with a consonant");
+    }
 }
