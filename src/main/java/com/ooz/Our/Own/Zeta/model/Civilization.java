@@ -368,4 +368,12 @@ public class Civilization {
         }
         return totalWordsStartingConsonant * 100.0 / totalWords;
     }
+
+    public Boolean checkIfWordFinishesWithVowel(String word) {
+        char[] wordArr = word.toLowerCase().toCharArray();
+        if (wordArr[(wordArr.length - 1)] == 'a' || wordArr[(wordArr.length - 1)] == 'e' || wordArr[(wordArr.length - 1)] == 'i' || wordArr[(wordArr.length - 1)] == 'o' || wordArr[(wordArr.length - 1)] == 'u') {
+            return true;
+        }
+        return false;
+    }
 }
