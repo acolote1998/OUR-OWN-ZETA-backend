@@ -206,7 +206,13 @@ class CivilizationTest {
 
     }
 
-//    TODO CHECK K RATE
+    @Test
+    public void checkKRateInFiveWords() {
+        Civilization civilization = new Civilization();
+        assertEquals(60.0, civilization.calculateKRateInWords("Khalid", "Sandra", "Kun", "Kamilla", "Arroz"), 0.01);
+
+    }
+
 //    TODO CHECK RR RATE
 //    TODO CHECK CONSONANT CLUSTER RATE
 
