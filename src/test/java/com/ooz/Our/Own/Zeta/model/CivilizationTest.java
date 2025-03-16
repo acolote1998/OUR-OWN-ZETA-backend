@@ -299,4 +299,10 @@ class CivilizationTest {
         Civilization civilization = new Civilization();
         assertEquals(50.0, civilization.calculateConsonantStartingRate("Legolas", "Aragorn"), 0.01);
     }
+
+    @Test
+    public void checkConsonantStartRateForFiveWords() {
+        Civilization civilization = new Civilization();
+        assertEquals(80.0, civilization.calculateConsonantStartingRate("Legolas", "Aragorn", "Froddo", "Sam", "Gandalf"), 0.01);
+    }
 }
