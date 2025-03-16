@@ -238,6 +238,10 @@ class CivilizationTest {
 
     }
 
-//    TODO CHECK CONSONANT CLUSTER RATE
+    @Test
+    public void checkConsonantClusterRateInOneWord() {
+        Civilization civilization = new Civilization();
+        assertTrue(100.0, civilization.calculateConsonantClusterRateInWords("Manco"), 0.01);
+    }
 
 }
