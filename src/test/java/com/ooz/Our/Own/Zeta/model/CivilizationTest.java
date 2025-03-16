@@ -317,4 +317,22 @@ class CivilizationTest {
         Civilization civilization = new Civilization();
         assertFalse(civilization.checkIfWordFinishesWithVowel("Kulturak"), "It does not  finish with a vowel");
     }
+
+    @Test
+    public void checkWordFinishingWithVowelRateForOneWord() {
+        Civilization civilization = new Civilization();
+        assertEquals(100.0, civilization.calculateFinishingWithVowelRate("Aki"), 0.01);
+    }
+
+    @Test
+    public void checkWordFinishingWithVowelRateForTwoWords() {
+        Civilization civilization = new Civilization();
+        assertEquals(50.0, civilization.calculateFinishingWithVowelRate("Aki", "Michaela"), 0.01);
+    }
+
+    @Test
+    public void checkWordFinishingWithVowelRateForFiveWords() {
+        Civilization civilization = new Civilization();
+        assertEquals(60.0, civilization.calculateFinishingWithVowelRate("Aki", "Michaela", "Kandrik", "Chick", "Pablo"), 0.01);
+    }
 }
