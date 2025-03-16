@@ -353,4 +353,19 @@ public class Civilization {
         }
         return totalWordsStartingWVowel * 100.0 / totalWords;
     }
+
+    public Double calculateConsonantStartingRate(String word, String... others) {
+        int totalWords = 1 + others.length;
+        int totalWordsStartingConsonant = 0;
+        if (!checkIfWordStartsWithVowel(word)) {
+            totalWordsStartingConsonant++;
+        }
+
+        for (String wordToCheck : others) {
+            if (!checkIfWordStartsWithVowel(wordToCheck)) {
+                totalWordsStartingConsonant++;
+            }
+        }
+        return totalWordsStartingConsonant * 100.0 / totalWords;
+    }
 }
