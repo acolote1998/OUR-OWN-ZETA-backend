@@ -244,4 +244,11 @@ class CivilizationTest {
         assertEquals(100.0, civilization.calculateConsonantClusterRateInWords("Manco"), 0.01);
     }
 
+    @Test
+    public void checkConsonantClusterRateInTwoWords() {
+        Civilization civilization = new Civilization();
+        assertEquals(50.0, civilization.calculateConsonantClusterRateInWords("Manco", "Aki"), 0.01);
+
+    }
+
 }
