@@ -249,4 +249,29 @@ public class Civilization {
 
     }
 
+    public boolean checkIfWordContainsK(String word) {
+        char[] wordChar = word.toLowerCase().toCharArray();
+        for (int i = 0; i < wordChar.length; i++) {
+            if (wordChar[i] == 'k') {
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+    public Double calculateKRateInWords(String word, String... others) {
+        int words = 1 + others.length;
+        int wordsWithK = 0;
+        if (checkIfWordContainsK(word)) {
+            wordsWithK++;
+        }
+        for (String wordToCheck : others) {
+            if (checkIfWordContainsK(wordToCheck)) {
+                wordsWithK++;
+            }
+        }
+        return (wordsWithK * 100.0) / words;
+    }
+
 }
