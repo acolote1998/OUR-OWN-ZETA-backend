@@ -219,6 +219,12 @@ class CivilizationTest {
         assertEquals(100.0, civilization.calculateRRRateInWords("Arroz"), 0.01);
     }
 
+    @Test
+    public void checkRRRateInTwoWords() {
+        Civilization civilization = new Civilization();
+        assertEquals(50.0, civilization.calculateRRRateInWords("Amarrar", "Pero"), 0.01);
+    }
+
 //    TODO CHECK RR RATE
 //    TODO CHECK CONSONANT CLUSTER RATE
 
