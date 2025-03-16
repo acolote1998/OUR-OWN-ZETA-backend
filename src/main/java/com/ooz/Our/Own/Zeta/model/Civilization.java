@@ -82,8 +82,12 @@ public class Civilization {
         languagePatterns.put("VowelsPerWord", 0.0);
         languagePatterns.put("ConsonantsPerWord", 0.0);
         languagePatterns.put("VowelClusterRate", 0.0);
+        languagePatterns.put("ConsonantClusterRate", 0.0);
         languagePatterns.put("XYZRate", 0.0);
         languagePatterns.put("HRate", 0.0);
+        languagePatterns.put("KRate", 0.0);
+        languagePatterns.put("RRRate", 0.0);
+
 
     }
 
