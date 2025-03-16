@@ -274,4 +274,18 @@ public class Civilization {
         return (wordsWithK * 100.0) / words;
     }
 
+    public Boolean checkIfWordContainsRR(String word) {
+        char[] wordChar = word.toLowerCase().toCharArray();
+        for (int i = 0; i < wordChar.length; i++) {
+
+            if (i < (wordChar.length - 1)) {
+                if (wordChar[i] == 'r' && wordChar[(i + 1)] == 'r') {
+                    return true;
+                }
+            }
+
+        }
+        return false;
+    }
+
 }
