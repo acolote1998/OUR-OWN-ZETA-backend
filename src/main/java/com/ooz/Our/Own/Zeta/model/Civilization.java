@@ -338,4 +338,19 @@ public class Civilization {
         }
         return false;
     }
+
+    public Double calculateVowelStartingRate(String word, String... others) {
+        int totalWords = 1 + others.length;
+        int totalWordsStartingWVowel = 0;
+        if (checkIfWordStartsWithVowel(word)) {
+            totalWordsStartingWVowel++;
+        }
+
+        for (String wordToCheck : others) {
+            if (checkIfWordStartsWithVowel(wordToCheck)) {
+                totalWordsStartingWVowel++;
+            }
+        }
+        return totalWordsStartingWVowel * 100.0 / totalWords;
+    }
 }

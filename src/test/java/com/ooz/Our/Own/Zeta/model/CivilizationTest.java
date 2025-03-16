@@ -267,7 +267,7 @@ class CivilizationTest {
     @Test
     public void checkVowelStartRateForOneWord() {
         Civilization civilization = new Civilization();
-        assertEquals(100.0, civilization.calculateVowelStartRate("Aragorn"), 0.01);
+        assertEquals(100.0, civilization.calculateVowelStartingRate("Aragorn"), 0.01);
     }
 
 
