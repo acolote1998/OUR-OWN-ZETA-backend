@@ -311,4 +311,10 @@ class CivilizationTest {
         Civilization civilization = new Civilization();
         assertTrue(civilization.checkIfWordFinishesWithVowel("Aki"), "It does not  finish with a vowel");
     }
+
+    @Test
+    public void checkIfWordFinishesWithConsonant() {
+        Civilization civilization = new Civilization();
+        assertFalse(civilization.checkIfWordFinishesWithVowel("Kulturak"), "It does not  finish with a vowel");
+    }
 }
