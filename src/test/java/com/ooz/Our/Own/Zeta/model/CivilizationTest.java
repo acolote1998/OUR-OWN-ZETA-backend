@@ -230,7 +230,14 @@ class CivilizationTest {
         Civilization civilization = new Civilization();
         assertEquals(25.0, civilization.calculateRRRateInWords("Pez", "Perro", "Cama", "Arbol"), 0.01);
     }
-    
+
+    @Test
+    public void checkIfWordContainsConsonantCluster() {
+        Civilization civilization = new Civilization();
+        assertTrue(civilization.checkIfWordContainsConsonantCluster("Pentar"), "Does not contain consonant cluster");
+
+    }
+
 //    TODO CHECK CONSONANT CLUSTER RATE
 
 }
