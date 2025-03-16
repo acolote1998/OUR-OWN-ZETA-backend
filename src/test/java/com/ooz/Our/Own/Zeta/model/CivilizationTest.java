@@ -199,6 +199,13 @@ class CivilizationTest {
         assertEquals(100.0, civilization.calculateKRateInWords("Khalid"), 0.01);
     }
 
+    @Test
+    public void checkKRateInTwoWords() {
+        Civilization civilization = new Civilization();
+        assertEquals(50.0, civilization.calculateKRateInWords("Khalid", "Sandra"), 0.01);
+
+    }
+
 //    TODO CHECK K RATE
 //    TODO CHECK RR RATE
 //    TODO CHECK CONSONANT CLUSTER RATE
