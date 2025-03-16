@@ -287,4 +287,10 @@ class CivilizationTest {
         Civilization civilization = new Civilization();
         assertFalse(civilization.checkIfWordStartsWithVowel("Legolas"), "It does not start with a consonant");
     }
+
+    @Test
+    public void checkConsonantStartRateForOneWord() {
+        Civilization civilization = new Civilization();
+        assertEquals(100.0, civilization.calculateConsonantStartingRate("Legolas"), 0.01);
+    }
 }
