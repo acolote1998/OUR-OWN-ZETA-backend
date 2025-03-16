@@ -335,4 +335,22 @@ class CivilizationTest {
         Civilization civilization = new Civilization();
         assertEquals(60.0, civilization.calculateFinishingWithVowelRate("Aki", "Michaela", "Kandrik", "Chick", "Pablo"), 0.01);
     }
+
+    @Test
+    public void checkWordFinishingWithConsonantRateForOneWord() {
+        Civilization civilization = new Civilization();
+        assertEquals(100.0, civilization.calculateFinishingWithConsonantRate("Akix"), 0.01);
+    }
+
+    @Test
+    public void checkWordFinishingWithConsonantRateForTwoWords() {
+        Civilization civilization = new Civilization();
+        assertEquals(50.0, civilization.calculateFinishingWithConsonantRate("Aki", "Valt"), 0.01);
+    }
+
+    @Test
+    public void checkWordFinishingWithConsonantRateForFiveWord() {
+        Civilization civilization = new Civilization();
+        assertEquals(60.0, civilization.calculateFinishingWithConsonantRate("Akix", "Michaela", "Kandrik", "Chick", "Pablo"), 0.01);
+    }
 }
