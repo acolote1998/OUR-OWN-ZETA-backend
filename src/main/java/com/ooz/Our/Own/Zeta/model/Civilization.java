@@ -390,4 +390,19 @@ public class Civilization {
         }
         return wordsFinishingWVowel * 100.0 / totalWords;
     }
+
+    public Double calculateFinishingWithConsonantRate(String word, String... others) {
+        int totalWords = 1 + others.length;
+        int wordsFinishingWConsonant = 0;
+        if (!checkIfWordFinishesWithVowel(word)) {
+            wordsFinishingWConsonant++;
+        }
+        for (String wordToCheck : others) {
+            if (!checkIfWordFinishesWithVowel(wordToCheck)) {
+                wordsFinishingWConsonant++;
+            }
+        }
+        return wordsFinishingWConsonant * 100.0 / totalWords;
+    }
+
 }
