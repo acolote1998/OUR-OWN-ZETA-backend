@@ -193,6 +193,12 @@ class CivilizationTest {
         assertEquals(20.0, civilization.calculateHRateInWords("Ceverus", "Harry", "Snape", "Dumbledore", "Sorry"), 0.01);
     }
 
+    @Test
+    public void checkKRateInOneWord() {
+        Civilization civilization = new Civilization();
+        assertEquals(100.0, civilization.calculateKRateInWords("Khalid"), 0.01);
+    }
+
 //    TODO CHECK K RATE
 //    TODO CHECK RR RATE
 //    TODO CHECK CONSONANT CLUSTER RATE
