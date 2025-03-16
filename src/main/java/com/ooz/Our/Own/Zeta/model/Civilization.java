@@ -313,4 +313,21 @@ public class Civilization {
         }
         return false;
     }
+
+    public Double calculateConsonantClusterRateInWords(String word, String... others) {
+        int totalWords = 1 + others.length;
+        int totalConsonantClusterWords = 0;
+
+        if (checkIfWordContainsConsonantCluster(word)) {
+            totalConsonantClusterWords++;
+        }
+        for (String wordToCheck : others) {
+            if (checkIfWordContainsConsonantCluster(wordToCheck)) {
+                totalConsonantClusterWords++;
+            }
+        }
+
+        return totalConsonantClusterWords * 100.0 / totalWords;
+
+    }
 }
