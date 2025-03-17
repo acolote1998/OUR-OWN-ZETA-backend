@@ -87,6 +87,8 @@ public class Civilization {
         languagePatterns.put("HRate", 0.0);
         languagePatterns.put("KRate", 0.0);
         languagePatterns.put("RRRate", 0.0);
+        languagePatterns.put("StartsWithVowelRate", 0.0);
+        languagePatterns.put("StartsWithConsonantRate", 0.0);
 
 
     }
@@ -404,5 +406,6 @@ public class Civilization {
         }
         return wordsFinishingWConsonant * 100.0 / totalWords;
     }
+
 
 }

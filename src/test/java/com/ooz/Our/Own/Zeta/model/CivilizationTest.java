@@ -17,7 +17,7 @@ class CivilizationTest {
         assertEquals(0, civilization.getPopulation());
         assertTrue(civilization.getImportantIndividuals().isEmpty(), "Individuals is not empty");
         assertTrue(civilization.getEventsLog().isEmpty(), "EventLogs is not empty");
-        assertEquals(8, civilization.getLanguagePatterns().size());//VowelsPerWord,ConsonantsPerWord,VowelClusterRate,XYZRate, HRate
+        assertEquals(10, civilization.getLanguagePatterns().size());//VowelsPerWord,ConsonantsPerWord,VowelClusterRate,XYZRate, HRate
         assertEquals(0.0, civilization.getLanguagePatterns().get("VowelsPerWord"));
         assertEquals(0.0, civilization.getLanguagePatterns().get("ConsonantsPerWord"));
         assertEquals(0.0, civilization.getLanguagePatterns().get("VowelClusterRate"));
@@ -26,6 +26,8 @@ class CivilizationTest {
         assertEquals(0.0, civilization.getLanguagePatterns().get("HRate"));
         assertEquals(0.0, civilization.getLanguagePatterns().get("KRate"));
         assertEquals(0.0, civilization.getLanguagePatterns().get("RRRate"));
+        assertEquals(0.0, civilization.getLanguagePatterns().get("StartsWithVowelRate"));
+        assertEquals(0.0, civilization.getLanguagePatterns().get("StartsWithConsonantRate"));
 
 
     }
@@ -353,4 +355,23 @@ class CivilizationTest {
         Civilization civilization = new Civilization();
         assertEquals(60.0, civilization.calculateFinishingWithConsonantRate("Akix", "Michaela", "Kandrik", "Chick", "Pablo"), 0.01);
     }
+
+    @Test
+    public void checkLanguagePatternsInOneWord() {
+        Civilization civilization = new Civilization();
+        civilization.feedLanguagePattern("Aerithxkrr");
+        String generatedWord = civilization.generateWord();
+        assertEquals(3, civilization.calculateVowelsAvgInWords(generatedWord));
+        assertEquals(7, civilization.calculateVowelsAvgInWords(generatedWord));
+        assertEquals(100.0, civilization.calculateVowelClusterRateInWords(generatedWord), 0.01);
+        assertEquals(100.0, civilization.calculateConsonantClusterRateInWords(generatedWord), 0.01);
+        assertEquals(100.0, civilization.calculateXYZRateInWords(generatedWord), 0.01);
+        assertEquals(100.0, civilization.calculateHRateInWords(generatedWord), 0.01);
+        assertEquals(100.0, civilization.calculateKRateInWords(generatedWord), 0.01);
+        assertEquals(100.0, civilization.calculateRRRateInWords(generatedWord), 0.01);
+        assertEquals(100.0, civilization.calculateVowelStartingRate(generatedWord), 0.01);
+        assertEquals(0.0, civilization.calculateConsonantStartingRate(generatedWord), 0.01);
+    }
+
 }
+
