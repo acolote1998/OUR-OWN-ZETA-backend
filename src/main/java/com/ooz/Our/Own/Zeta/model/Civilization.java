@@ -1,11 +1,18 @@
 package com.ooz.Our.Own.Zeta.model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Civilization {
+
+    int attempts = 0;
+
+    public int getAttempts() {
+        return attempts;
+    }
+
+    public void setAttempts(int attempts) {
+        this.attempts = attempts;
+    }
 
     private int age;
     private Map<String, Integer> resources = new HashMap<>(); // <Resources Name, Level>
@@ -72,6 +79,8 @@ public class Civilization {
     }
 
     public Civilization() {
+
+
         this.age = 0;
         this.discoveries = new HashMap<>();
         this.eventsLog = new ArrayList<>();
@@ -89,9 +98,168 @@ public class Civilization {
         languagePatterns.put("RRRate", 0.0);
         languagePatterns.put("StartsWithVowelRate", 0.0);
         languagePatterns.put("StartsWithConsonantRate", 0.0);
+        languagePatterns.put("FinishesWithVowelRate", 0.0);
+        languagePatterns.put("FinishesWithConsonantRate", 0.0);
 
 
     }
+
+    public void feedLanguagePattern(String... words) {
+        languagePatterns.put("VowelsPerWord", calculateVowelsAvgInWords(words[0], Arrays.copyOfRange(words, 1, words.length)));
+        languagePatterns.put("ConsonantsPerWord", calculateConsonantsAvgInWords(words[0], Arrays.copyOfRange(words, 1, words.length)));
+        languagePatterns.put("VowelClusterRate", calculateVowelClusterRateInWords(words[0], Arrays.copyOfRange(words, 1, words.length)));
+        languagePatterns.put("ConsonantClusterRate", calculateConsonantClusterRateInWords(words[0], Arrays.copyOfRange(words, 1, words.length)));
+        languagePatterns.put("XYZRate", calculateXYZRateInWords(words[0], Arrays.copyOfRange(words, 1, words.length)));
+        languagePatterns.put("HRate", calculateHRateInWords(words[0], Arrays.copyOfRange(words, 1, words.length)));
+        languagePatterns.put("KRate", calculateKRateInWords(words[0], Arrays.copyOfRange(words, 1, words.length)));
+        languagePatterns.put("RRRate", calculateRRRateInWords(words[0], Arrays.copyOfRange(words, 1, words.length)));
+        languagePatterns.put("StartsWithVowelRate", calculateVowelStartingRate(words[0], Arrays.copyOfRange(words, 1, words.length)));
+        languagePatterns.put("StartsWithConsonantRate", calculateConsonantStartingRate(words[0], Arrays.copyOfRange(words, 1, words.length)));
+        languagePatterns.put("FinishesWithVowelRate", calculateFinishingWithVowelRate(words[0], Arrays.copyOfRange(words, 1, words.length)));
+        languagePatterns.put("FinishesWithConsonantRate", calculateFinishingWithConsonantRate(words[0], Arrays.copyOfRange(words, 1, words.length)));
+    }
+
+    public String generateWord() {
+        Random random = new Random();
+        boolean generateVowelCluster = false;
+        boolean generateConsonantCluster = false;
+        boolean generateXYZ = false;
+        boolean generateH = false;
+        boolean generateK = false;
+        boolean generateRR = false;
+        boolean generateVowelStarting = false;
+        boolean generateConsonantStarting = false;
+        boolean generateVowelFinishing = false;
+        boolean generateConsonantFinishing = false;
+        int vowelAvgAmount = (int) Math.round(languagePatterns.get("VowelsPerWord"));
+        int consonantAvgAmount = (int) Math.round(languagePatterns.get("ConsonantsPerWord"));
+
+        // Determinación de las probabilidades de generación
+        if (random.nextInt(1, 101) <= languagePatterns.get("VowelClusterRate").intValue()) {
+            generateVowelCluster = true;
+        }
+        if (random.nextInt(1, 101) <= languagePatterns.get("ConsonantClusterRate").intValue()) {
+            generateConsonantCluster = true;
+        }
+        if (random.nextInt(1, 101) <= languagePatterns.get("XYZRate").intValue()) {
+            generateXYZ = true;
+        }
+        if (random.nextInt(1, 101) <= languagePatterns.get("HRate").intValue()) {
+            generateH = true;
+        }
+        if (random.nextInt(1, 101) <= languagePatterns.get("KRate").intValue()) {
+            generateK = true;
+        }
+        if (random.nextInt(1, 101) <= languagePatterns.get("RRRate").intValue()) {
+            generateRR = true;
+        }
+        // Lógica de generación de inicio y final de la palabra (vocales o consonantes)
+        if (languagePatterns.get("StartsWithVowelRate") >= languagePatterns.get("StartsWithConsonantRate")) {
+            if (random.nextInt(1, 101) <= languagePatterns.get("StartsWithVowelRate").intValue()) {
+                generateVowelStarting = true;
+            } else {
+                generateConsonantStarting = true;
+            }
+        } else {
+            if (random.nextInt(1, 101) <= languagePatterns.get("StartsWithConsonantRate").intValue()) {
+                generateConsonantStarting = true;
+            } else {
+                generateVowelStarting = true;
+            }
+        }
+        if (languagePatterns.get("FinishesWithVowelRate") >= languagePatterns.get("FinishesWithConsonantRate")) {
+            if (random.nextInt(1, 101) <= languagePatterns.get("FinishesWithVowelRate").intValue()) {
+                generateVowelFinishing = true;
+            } else {
+                generateConsonantFinishing = true;
+            }
+        } else {
+            if (random.nextInt(1, 101) <= languagePatterns.get("FinishesWithConsonantRate").intValue()) {
+                generateConsonantFinishing = true;
+            } else {
+                generateVowelFinishing = true;
+            }
+        }
+
+        StringBuilder generatedWord = new StringBuilder();
+        String wordToString;
+        int vowelsToPlace;
+        int consonantsToPlace;
+        int totalCharacters = vowelAvgAmount + consonantAvgAmount;
+        final int maxAttempts = 5;
+        int attempts = 0; // Contador de intentos
+
+        do {
+            generatedWord.setLength(0);  // Limpiar la palabra generada
+            vowelsToPlace = vowelAvgAmount;
+            consonantsToPlace = consonantAvgAmount;
+            String vowels = "aeiou";
+            String consonants = "bcdfghjklmnpqrstvwxyz";
+            String xyzLetters = "xyz";
+
+            // Generar la palabra
+            do {
+                for (int i = 0; i < totalCharacters; i++) {
+                    if (i == 0) {
+                        if (generateVowelStarting) {
+                            generatedWord.append(Character.toUpperCase(vowels.charAt(random.nextInt(vowels.length()))));
+                            vowelsToPlace--;
+                        } else {
+                            generatedWord.append(Character.toUpperCase(consonants.charAt(random.nextInt(consonants.length()))));
+                            consonantsToPlace--;
+                        }
+                    } else if (i == (totalCharacters - 1)) {
+                        if (generateVowelFinishing) {
+                            generatedWord.append(vowels.charAt(random.nextInt(vowels.length())));
+                            vowelsToPlace--;
+                        } else {
+                            generatedWord.append(consonants.charAt(random.nextInt(consonants.length())));
+                            consonantsToPlace--;
+                        }
+                    } else {
+                        // Aquí puedes ajustar la lógica de selección de vocales y consonantes
+                        if (vowelsToPlace > 0 && consonantsToPlace > 0) {
+                            if (random.nextBoolean()) {
+                                generatedWord.append(vowels.charAt(random.nextInt(vowels.length())));
+                                vowelsToPlace--;
+                            } else {
+                                generatedWord.append(consonants.charAt(random.nextInt(consonants.length())));
+                                consonantsToPlace--;
+                            }
+                        } else if (vowelsToPlace > 0) {
+                            generatedWord.append(vowels.charAt(random.nextInt(vowels.length())));
+                            vowelsToPlace--;
+                        } else {
+                            generatedWord.append(consonants.charAt(random.nextInt(consonants.length())));
+                            consonantsToPlace--;
+                        }
+                    }
+                }
+            } while (calculateVowelsAvgInWords(generatedWord.toString()).intValue() != vowelAvgAmount &&
+                    calculateConsonantsAvgInWords(generatedWord.toString()).intValue() != consonantAvgAmount);
+
+            wordToString = generatedWord.toString();
+            attempts++;  // Incrementa el número de intentos
+
+            // Verifica si los intentos deben continuar
+            if (attempts >= maxAttempts) {
+                break;  // Detén el bucle después de maxAttempts
+            }
+        } while (wordToString.length() != totalCharacters &&
+                calculateVowelsAvgInWords(wordToString) != vowelAvgAmount &&
+                calculateConsonantsAvgInWords(wordToString) != consonantAvgAmount &&
+                generateVowelCluster != checkIfWordContainsVowelCluster(wordToString) &&
+                generateConsonantCluster != checkIfWordContainsConsonantCluster(wordToString) &&
+                generateXYZ != checkIfWordContainsXYZ(wordToString) &&
+                generateH != checkIfWordContainsH(wordToString) &&
+                generateK != checkIfWordContainsK(wordToString) &&
+                generateRR != checkIfWordContainsRR(wordToString) &&
+                generateVowelStarting != checkIfWordStartsWithVowel(wordToString) &&
+                generateVowelFinishing != checkIfWordFinishesWithVowel(wordToString));
+
+        return wordToString;
+    }
+
 
     public void passTime(int years) {
         age += years;
