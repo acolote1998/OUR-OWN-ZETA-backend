@@ -39,12 +39,15 @@ class CivilizationTest {
         assertEquals(0, civilization.getDiscoveries().get("Steam Power"));
         assertEquals(0, civilization.getDiscoveries().get("Electricity"));
         assertEquals(0, civilization.getDiscoveries().get("Computers"));
+        assertEquals(0, civilization.getDiscoveries().get("Artificial Intelligence"));
+
         // Culture
         assertEquals(0, civilization.getDiscoveries().get("Art"));
         assertEquals(0, civilization.getDiscoveries().get("Philosophy"));
         assertEquals(0, civilization.getDiscoveries().get("Music"));
         assertEquals(0, civilization.getDiscoveries().get("Theater"));
         assertEquals(0, civilization.getDiscoveries().get("Sculpting"));
+        assertEquals(0, civilization.getDiscoveries().get("Renaissance"));
 
         // Faith
         assertEquals(0, civilization.getDiscoveries().get("Monotheism"));
@@ -52,6 +55,7 @@ class CivilizationTest {
         assertEquals(0, civilization.getDiscoveries().get("Energies"));
         assertEquals(0, civilization.getDiscoveries().get("Divine Contact"));
         assertEquals(0, civilization.getDiscoveries().get("Enlightenment"));
+        assertEquals(0, civilization.getDiscoveries().get("Universal Faith"));
 
         // Raw Materials
         assertEquals(0, civilization.getDiscoveries().get("Copper"));
@@ -59,6 +63,7 @@ class CivilizationTest {
         assertEquals(0, civilization.getDiscoveries().get("Coal"));
         assertEquals(0, civilization.getDiscoveries().get("Oil"));
         assertEquals(0, civilization.getDiscoveries().get("Rare Earth Elements"));
+        assertEquals(0, civilization.getDiscoveries().get("Nuclear Fusion"));
 
         // Security
         assertEquals(0, civilization.getDiscoveries().get("Basic Defense"));
@@ -66,6 +71,11 @@ class CivilizationTest {
         assertEquals(0, civilization.getDiscoveries().get("Gunpowder"));
         assertEquals(0, civilization.getDiscoveries().get("Radar"));
         assertEquals(0, civilization.getDiscoveries().get("Invisibility"));
+        assertEquals(0, civilization.getDiscoveries().get("Cybersecurity"));
+
+        //Winning Discovery
+        assertEquals(0, civilization.getDiscoveries().get("World Domination"));
+
     }
 
     @Test

@@ -120,30 +120,37 @@ public class Civilization {
         discoveries.put("Steam Power", 0);
         discoveries.put("Electricity", 0);
         discoveries.put("Computers", 0);
+        discoveries.put("Artificial Intelligence", 0);
         //Culture
         discoveries.put("Art", 0);
         discoveries.put("Philosophy", 0);
         discoveries.put("Music", 0);
         discoveries.put("Theater", 0);
         discoveries.put("Sculpting", 0);
+        discoveries.put("Renaissance", 0);
         //Faith
         discoveries.put("Monotheism", 0);
         discoveries.put("Polytheism", 0);
         discoveries.put("Energies", 0);
         discoveries.put("Divine Contact", 0);
         discoveries.put("Enlightenment", 0);
+        discoveries.put("Universal Faith", 0);
         //Raw Materials
         discoveries.put("Copper", 0);
         discoveries.put("Iron", 0);
         discoveries.put("Coal", 0);
         discoveries.put("Oil", 0);
         discoveries.put("Rare Earth Elements", 0);
+        discoveries.put("Nuclear Fusion", 0);
         //Security
         discoveries.put("Basic Defense", 0);
         discoveries.put("Archery", 0);
         discoveries.put("Gunpowder", 0);
         discoveries.put("Radar", 0);
         discoveries.put("Invisibility", 0);
+        discoveries.put("Cybersecurity", 0);
+        //Winning Discovery
+        discoveries.put("World Domination", 0);
     }
 
     public void feedLanguagePattern(String... words) {
