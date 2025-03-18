@@ -20,13 +20,13 @@ public class Civilization {
     private int population;
     private Map<Person, String> importantIndividuals = new HashMap<>(); //<Person object, Name of the person>
     private List<String> eventsLog = new ArrayList<>();
-    private Map<String, Double> languagePatterns = new HashMap<>();
+    private Map<String, Integer> languagePatterns = new HashMap<>();
 
-    public Map<String, Double> getLanguagePatterns() {
+    public Map<String, Integer> getLanguagePatterns() {
         return languagePatterns;
     }
 
-    public void setLanguagePatterns(Map<String, Double> languagePatterns) {
+    public void setLanguagePatterns(Map<String, Integer> languagePatterns) {
         this.languagePatterns = languagePatterns;
     }
 
@@ -88,18 +88,18 @@ public class Civilization {
         this.population = 0;
         this.importantIndividuals = new HashMap<>();
         this.languagePatterns = new HashMap<>();
-        languagePatterns.put("VowelsPerWord", 0.0);
-        languagePatterns.put("ConsonantsPerWord", 0.0);
-        languagePatterns.put("VowelClusterRate", 0.0);
-        languagePatterns.put("ConsonantClusterRate", 0.0);
-        languagePatterns.put("XYZRate", 0.0);
-        languagePatterns.put("HRate", 0.0);
-        languagePatterns.put("KRate", 0.0);
-        languagePatterns.put("RRRate", 0.0);
-        languagePatterns.put("StartsWithVowelRate", 0.0);
-        languagePatterns.put("StartsWithConsonantRate", 0.0);
-        languagePatterns.put("FinishesWithVowelRate", 0.0);
-        languagePatterns.put("FinishesWithConsonantRate", 0.0);
+        languagePatterns.put("VowelsPerWord", 0);
+        languagePatterns.put("ConsonantsPerWord", 0);
+        languagePatterns.put("VowelClusterRate", 0);
+        languagePatterns.put("ConsonantClusterRate", 0);
+        languagePatterns.put("XYZRate", 0);
+        languagePatterns.put("HRate", 0);
+        languagePatterns.put("KRate", 0);
+        languagePatterns.put("RRRate", 0);
+        languagePatterns.put("StartsWithVowelRate", 0);
+        languagePatterns.put("StartsWithConsonantRate", 0);
+        languagePatterns.put("FinishesWithVowelRate", 0);
+        languagePatterns.put("FinishesWithConsonantRate", 0);
 
 
     }
@@ -141,40 +141,40 @@ public class Civilization {
         if (random.nextInt(1, 101) <= languagePatterns.get("ConsonantClusterRate").intValue()) {
             generateConsonantCluster = true;
         }
-        if (random.nextInt(1, 101) <= languagePatterns.get("XYZRate").intValue()) {
+        if (random.nextInt(1, 101) <= languagePatterns.get("XYZRate")) {
             generateXYZ = true;
         }
-        if (random.nextInt(1, 101) <= languagePatterns.get("HRate").intValue()) {
+        if (random.nextInt(1, 101) <= languagePatterns.get("HRate")) {
             generateH = true;
         }
-        if (random.nextInt(1, 101) <= languagePatterns.get("KRate").intValue()) {
+        if (random.nextInt(1, 101) <= languagePatterns.get("KRate")) {
             generateK = true;
         }
-        if (random.nextInt(1, 101) <= languagePatterns.get("RRRate").intValue()) {
+        if (random.nextInt(1, 101) <= languagePatterns.get("RRRate")) {
             generateRR = true;
         }
         // Lógica de generación de inicio y final de la palabra (vocales o consonantes)
         if (languagePatterns.get("StartsWithVowelRate") >= languagePatterns.get("StartsWithConsonantRate")) {
-            if (random.nextInt(1, 101) <= languagePatterns.get("StartsWithVowelRate").intValue()) {
+            if (random.nextInt(1, 101) <= languagePatterns.get("StartsWithVowelRate")) {
                 generateVowelStarting = true;
             } else {
                 generateConsonantStarting = true;
             }
         } else {
-            if (random.nextInt(1, 101) <= languagePatterns.get("StartsWithConsonantRate").intValue()) {
+            if (random.nextInt(1, 101) <= languagePatterns.get("StartsWithConsonantRate")) {
                 generateConsonantStarting = true;
             } else {
                 generateVowelStarting = true;
             }
         }
         if (languagePatterns.get("FinishesWithVowelRate") >= languagePatterns.get("FinishesWithConsonantRate")) {
-            if (random.nextInt(1, 101) <= languagePatterns.get("FinishesWithVowelRate").intValue()) {
+            if (random.nextInt(1, 101) <= languagePatterns.get("FinishesWithVowelRate")) {
                 generateVowelFinishing = true;
             } else {
                 generateConsonantFinishing = true;
             }
         } else {
-            if (random.nextInt(1, 101) <= languagePatterns.get("FinishesWithConsonantRate").intValue()) {
+            if (random.nextInt(1, 101) <= languagePatterns.get("FinishesWithConsonantRate")) {
                 generateConsonantFinishing = true;
             } else {
                 generateVowelFinishing = true;
@@ -186,19 +186,18 @@ public class Civilization {
         int vowelsToPlace;
         int consonantsToPlace;
         int totalCharacters = vowelAvgAmount + consonantAvgAmount;
-        final int maxAttempts = 5;
-        int attempts = 0; // Contador de intentos
-
+        final int maxAttempts = 100000;
+        
         do {
-            generatedWord.setLength(0);  // Limpiar la palabra generada
-            vowelsToPlace = vowelAvgAmount;
-            consonantsToPlace = consonantAvgAmount;
-            String vowels = "aeiou";
-            String consonants = "bcdfghjklmnpqrstvwxyz";
-            String xyzLetters = "xyz";
 
-            // Generar la palabra
+
             do {
+                generatedWord.setLength(0);  // Limpiar la palabra generada
+                vowelsToPlace = vowelAvgAmount;
+                consonantsToPlace = consonantAvgAmount;
+                String vowels = "aeiou";
+                String consonants = "bcdfghjklmnpqrstvwxyz";
+                String xyzLetters = "xyz";
                 for (int i = 0; i < totalCharacters; i++) {
                     if (i == 0) {
                         if (generateVowelStarting) {
@@ -235,8 +234,10 @@ public class Civilization {
                         }
                     }
                 }
-            } while (calculateVowelsAvgInWords(generatedWord.toString()).intValue() != vowelAvgAmount &&
-                    calculateConsonantsAvgInWords(generatedWord.toString()).intValue() != consonantAvgAmount);
+            }
+            while (calculateVowelsAvgInWords(generatedWord.toString()) != vowelAvgAmount &&
+                    calculateConsonantsAvgInWords(generatedWord.toString()) != consonantAvgAmount);
+
 
             wordToString = generatedWord.toString();
             attempts++;  // Incrementa el número de intentos
@@ -245,17 +246,14 @@ public class Civilization {
             if (attempts >= maxAttempts) {
                 break;  // Detén el bucle después de maxAttempts
             }
-        } while (wordToString.length() != totalCharacters &&
-                calculateVowelsAvgInWords(wordToString) != vowelAvgAmount &&
-                calculateConsonantsAvgInWords(wordToString) != consonantAvgAmount &&
-                generateVowelCluster != checkIfWordContainsVowelCluster(wordToString) &&
-                generateConsonantCluster != checkIfWordContainsConsonantCluster(wordToString) &&
-                generateXYZ != checkIfWordContainsXYZ(wordToString) &&
-                generateH != checkIfWordContainsH(wordToString) &&
-                generateK != checkIfWordContainsK(wordToString) &&
-                generateRR != checkIfWordContainsRR(wordToString) &&
-                generateVowelStarting != checkIfWordStartsWithVowel(wordToString) &&
-                generateVowelFinishing != checkIfWordFinishesWithVowel(wordToString));
+        } while (
+                wordToString.length() != totalCharacters ||
+                        generateXYZ != checkIfWordContainsXYZ(wordToString) ||
+                        generateH != checkIfWordContainsH(wordToString) ||
+                        generateK != checkIfWordContainsK(wordToString) ||
+                        generateRR != checkIfWordContainsRR(wordToString) ||
+                        generateVowelStarting != checkIfWordStartsWithVowel(wordToString) ||
+                        generateVowelFinishing != checkIfWordFinishesWithVowel(wordToString));
 
         return wordToString;
     }
@@ -284,9 +282,9 @@ public class Civilization {
         return person;
     }
 
-    public Double calculateVowelsAvgInWords(String word, String... others) {
+    public int calculateVowelsAvgInWords(String word, String... others) {
         char[] wordInChar = word.toLowerCase().toCharArray();
-        double amountOfVowels = 0;
+        int amountOfVowels = 0;
         int totalWords = 1 + others.length;
 
         amountOfVowels += countVowels(word);
@@ -308,9 +306,9 @@ public class Civilization {
         return count;
     }
 
-    public Double calculateConsonantsAvgInWords(String word, String... others) {
+    public int calculateConsonantsAvgInWords(String word, String... others) {
         char[] wordInChar = word.toLowerCase().toCharArray();
-        double amountOfConsonants = 0;
+        int amountOfConsonants = 0;
         int totalWords = 1 + others.length;
 
         amountOfConsonants += countConsonants(word);
@@ -343,10 +341,10 @@ public class Civilization {
         return false;
     }
 
-    public Double calculateVowelClusterRateInWords(String word, String... others) {
+    public int calculateVowelClusterRateInWords(String word, String... others) {
         int words = 1 + others.length;
         int wordsWCluster = 0;
-        Double wordsWithVowelClusterRate = 0.0;
+        int wordsWithVowelClusterRate = 0;
         if (checkIfWordContainsVowelCluster(word)) {
             wordsWCluster++;
         }
@@ -357,7 +355,7 @@ public class Civilization {
             }
         }
 
-        wordsWithVowelClusterRate = (wordsWCluster * 100.0 / words);
+        wordsWithVowelClusterRate = (wordsWCluster * 100 / words);
 
         return wordsWithVowelClusterRate;
 
@@ -374,7 +372,7 @@ public class Civilization {
         return false;
     }
 
-    public Double calculateXYZRateInWords(String word, String... others) {
+    public int calculateXYZRateInWords(String word, String... others) {
         int amountOfWords = 1 + others.length;
         int amountOfXYZWords = 0;
         if (checkIfWordContainsXYZ(word)) {
@@ -387,7 +385,7 @@ public class Civilization {
             }
         }
 
-        return amountOfXYZWords * 100.0 / amountOfWords;
+        return amountOfXYZWords * 100 / amountOfWords;
     }
 
     public boolean checkIfWordContainsH(String word) {
@@ -401,7 +399,7 @@ public class Civilization {
 
     }
 
-    public Double calculateHRateInWords(String word, String... others) {
+    public int calculateHRateInWords(String word, String... others) {
         int amountOfWords = 1 + others.length;
         int wordsWithH = 0;
 
@@ -415,7 +413,7 @@ public class Civilization {
             }
         }
 
-        return wordsWithH * 100.0 / amountOfWords;
+        return wordsWithH * 100 / amountOfWords;
 
     }
 
@@ -430,7 +428,7 @@ public class Civilization {
         return false;
     }
 
-    public Double calculateKRateInWords(String word, String... others) {
+    public int calculateKRateInWords(String word, String... others) {
         int words = 1 + others.length;
         int wordsWithK = 0;
         if (checkIfWordContainsK(word)) {
@@ -441,7 +439,7 @@ public class Civilization {
                 wordsWithK++;
             }
         }
-        return (wordsWithK * 100.0) / words;
+        return (wordsWithK * 100) / words;
     }
 
     public Boolean checkIfWordContainsRR(String word) {
@@ -458,7 +456,7 @@ public class Civilization {
         return false;
     }
 
-    public Double calculateRRRateInWords(String word, String... others) {
+    public int calculateRRRateInWords(String word, String... others) {
         int totalWords = 1 + others.length;
         int wordsWithRR = 0;
         if (checkIfWordContainsRR(word)) {
@@ -469,7 +467,7 @@ public class Civilization {
                 wordsWithRR++;
             }
         }
-        return wordsWithRR * 100.0 / totalWords;
+        return wordsWithRR * 100 / totalWords;
     }
 
     public Boolean checkIfWordContainsConsonantCluster(String word) {
@@ -484,7 +482,7 @@ public class Civilization {
         return false;
     }
 
-    public Double calculateConsonantClusterRateInWords(String word, String... others) {
+    public int calculateConsonantClusterRateInWords(String word, String... others) {
         int totalWords = 1 + others.length;
         int totalConsonantClusterWords = 0;
 
@@ -497,7 +495,7 @@ public class Civilization {
             }
         }
 
-        return totalConsonantClusterWords * 100.0 / totalWords;
+        return totalConsonantClusterWords * 100 / totalWords;
 
     }
 
@@ -509,7 +507,7 @@ public class Civilization {
         return false;
     }
 
-    public Double calculateVowelStartingRate(String word, String... others) {
+    public int calculateVowelStartingRate(String word, String... others) {
         int totalWords = 1 + others.length;
         int totalWordsStartingWVowel = 0;
         if (checkIfWordStartsWithVowel(word)) {
@@ -521,10 +519,10 @@ public class Civilization {
                 totalWordsStartingWVowel++;
             }
         }
-        return totalWordsStartingWVowel * 100.0 / totalWords;
+        return totalWordsStartingWVowel * 100 / totalWords;
     }
 
-    public Double calculateConsonantStartingRate(String word, String... others) {
+    public int calculateConsonantStartingRate(String word, String... others) {
         int totalWords = 1 + others.length;
         int totalWordsStartingConsonant = 0;
         if (!checkIfWordStartsWithVowel(word)) {
@@ -536,7 +534,7 @@ public class Civilization {
                 totalWordsStartingConsonant++;
             }
         }
-        return totalWordsStartingConsonant * 100.0 / totalWords;
+        return totalWordsStartingConsonant * 100 / totalWords;
     }
 
     public Boolean checkIfWordFinishesWithVowel(String word) {
@@ -547,7 +545,7 @@ public class Civilization {
         return false;
     }
 
-    public Double calculateFinishingWithVowelRate(String word, String... others) {
+    public int calculateFinishingWithVowelRate(String word, String... others) {
         int totalWords = 1 + others.length;
         int wordsFinishingWVowel = 0;
         if (checkIfWordFinishesWithVowel(word)) {
@@ -558,10 +556,10 @@ public class Civilization {
                 wordsFinishingWVowel++;
             }
         }
-        return wordsFinishingWVowel * 100.0 / totalWords;
+        return wordsFinishingWVowel * 100 / totalWords;
     }
 
-    public Double calculateFinishingWithConsonantRate(String word, String... others) {
+    public int calculateFinishingWithConsonantRate(String word, String... others) {
         int totalWords = 1 + others.length;
         int wordsFinishingWConsonant = 0;
         if (!checkIfWordFinishesWithVowel(word)) {
@@ -572,7 +570,7 @@ public class Civilization {
                 wordsFinishingWConsonant++;
             }
         }
-        return wordsFinishingWConsonant * 100.0 / totalWords;
+        return wordsFinishingWConsonant * 100 / totalWords;
     }
 
 
