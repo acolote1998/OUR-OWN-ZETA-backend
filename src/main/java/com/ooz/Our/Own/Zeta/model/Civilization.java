@@ -797,4 +797,35 @@ public class Civilization {
             }
         }
     }
+
+    public boolean isDiscoveringSomething(int porcentChance) {
+        Random random = new Random();
+        if (random.nextInt(1, 101) < porcentChance) {
+            discoverSomething();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isLearningResource(int porcentChance) {
+        Random random = new Random();
+        if (random.nextInt(1, 101) < porcentChance) {
+            int whatIsLearning = random.nextInt(1, 6);//1 Technology 2 Culture 3 Faith 4 Raw Materials 5 Security
+            if (whatIsLearning == 1) {
+                improveResource("Technology");
+            } else if (whatIsLearning == 2) {
+                improveResource("Culture");
+            } else if (whatIsLearning == 3) {
+                improveResource("Faith");
+            } else if (whatIsLearning == 4) {
+                improveResource("Raw Materials");
+            } else if (whatIsLearning == 5) {
+                improveResource("Security");
+            }
+            return true;
+        }
+        return false;
+    }
+
+
 }

@@ -500,8 +500,22 @@ class CivilizationTest {
     public void discoveringOneThing() {
         Civilization civilization = new Civilization();
         civilization.improveResource("Technology");
-        System.out.println(civilization.getResources().get("Technology"));
         civilization.discoverSomething();
         assertFalse(civilization.getDiscoveries().isEmpty());
+    }
+
+    @Test
+    public void discoveringSomethingOnce() {
+        Civilization civilization = new Civilization();
+        civilization.isLearningResource(100);
+        civilization.isDiscoveringSomething(100);
+        assertTrue(civilization.isDiscoveringSomething(100));
+    }
+
+    @Test
+    public void learnResourceOnce() {
+        Civilization civilization = new Civilization();
+        civilization.isLearningResource(100);
+        assertTrue(civilization.isLearningResource(100));
     }
 }
