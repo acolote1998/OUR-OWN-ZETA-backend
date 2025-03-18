@@ -441,6 +441,6 @@ class CivilizationTest {
     public void improvingTechnologyOnce() {
         Civilization civilization = new Civilization();
         civilization.improveResource("Technology");
-        assertEquals(civilization.getResources().get("Technology") == 1);
+        assertEquals(1, civilization.getResources().get("Technology"));
     }
 }
