@@ -433,5 +433,10 @@ class CivilizationTest {
 
     */
 
+    @Test
+    public void improveWoodResourceOnce() {
+        Civilization civilization = new Civilization();
+        civilization.improveResource("Wood");
+        assertEquals(civilization.getResources().get("Wood") == 1);
+    }
 }
-
