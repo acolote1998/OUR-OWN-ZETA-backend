@@ -135,8 +135,6 @@ public class Civilization {
         discoveries.put("Gunpowder", 0);
         discoveries.put("Radar", 0);
         discoveries.put("Invisibility", 0);
-
-
     }
 
     public void feedLanguagePattern(String... words) {
@@ -613,13 +611,144 @@ public class Civilization {
     }
 
     public void discoverSomething() {
-        /*
-
-         */
-
         Random random = new Random();
-        if (resources.get("Technology") == 1) {
-            discoveries.put("Wheel", discoveries.get("Wheel") + 1);
+        int whichOneToLevelUp = 0;
+        int discoveryToLevelUp = random.nextInt(1, 6);
+        /*
+        Number from 1 to 5
+        1=Technology
+        2=Culture
+        3=Faith
+        4=Raw Materials
+        5=Security
+        */
+        //Technology
+        if (discoveryToLevelUp == 1) {
+            if (resources.get("Technology") >= 5) {
+                whichOneToLevelUp = random.nextInt(1, 6);//1 to 5 Wheel,Writing,Steam Power, Electricity, Computers
+            } else if (resources.get("Technology") == 4) {
+                whichOneToLevelUp = random.nextInt(1, 5);//1 to 4 Wheel,Writing,Steam Power, Electricity
+            } else if (resources.get("Technology") == 3) {
+                whichOneToLevelUp = random.nextInt(1, 4);//1 to 3 Wheel,Writing,Steam Power
+            } else if (resources.get("Technology") == 2) {
+                whichOneToLevelUp = random.nextInt(1, 3);//1 to 2 Wheel,Writing
+            } else if (resources.get("Technology") == 1) {
+                whichOneToLevelUp = 1;
+            }
+            if (whichOneToLevelUp == 5) {
+                discoveries.put("Computers", discoveries.get("Computers") + 1); // ¡Ahora incrementa el descubrimiento correcto!
+            } else if (whichOneToLevelUp == 4) {
+                discoveries.put("Electricity", discoveries.get("Electricity") + 1);
+            } else if (whichOneToLevelUp == 3) {
+                discoveries.put("Steam Power", discoveries.get("Steam Power") + 1);
+            } else if (whichOneToLevelUp == 2) {
+                discoveries.put("Writing", discoveries.get("Writing") + 1);
+            } else if (whichOneToLevelUp == 1) {
+                discoveries.put("Wheel", discoveries.get("Wheel") + 1);
+            }
+        }// Cultura
+        else if (discoveryToLevelUp == 2) {
+            if (resources.get("Culture") >= 5) {
+                whichOneToLevelUp = random.nextInt(1, 6); // 1 to 5 Art, Philosophy, Music, Theater, Sculpting
+            } else if (resources.get("Culture") == 4) {
+                whichOneToLevelUp = random.nextInt(1, 5); // 1 to 4 Art, Philosophy, Music, Theater
+            } else if (resources.get("Culture") == 3) {
+                whichOneToLevelUp = random.nextInt(1, 4); // 1 to 3 Art, Philosophy, Music
+            } else if (resources.get("Culture") == 2) {
+                whichOneToLevelUp = random.nextInt(1, 3); // 1 to 2 Art, Philosophy
+            } else if (resources.get("Culture") == 1) {
+                whichOneToLevelUp = 1;
+            }
+            if (whichOneToLevelUp == 5) {
+                discoveries.put("Sculpting", discoveries.get("Sculpting") + 1);
+            } else if (whichOneToLevelUp == 4) {
+                discoveries.put("Theater", discoveries.get("Theater") + 1);
+            } else if (whichOneToLevelUp == 3) {
+                discoveries.put("Music", discoveries.get("Music") + 1);
+            } else if (whichOneToLevelUp == 2) {
+                discoveries.put("Philosophy", discoveries.get("Philosophy") + 1);
+            } else if (whichOneToLevelUp == 1) {
+                discoveries.put("Art", discoveries.get("Art") + 1);
+            }
         }
+
+        // Fe
+        else if (discoveryToLevelUp == 3) {
+            if (resources.get("Faith") >= 5) {
+                whichOneToLevelUp = random.nextInt(1, 6); // 1 to 5 Monotheism, Polytheism, Energies, Divine Contact, Enlightenment
+            } else if (resources.get("Faith") == 4) {
+                whichOneToLevelUp = random.nextInt(1, 5); // 1 to 4 Monotheism, Polytheism, Energies, Divine Contact
+            } else if (resources.get("Faith") == 3) {
+                whichOneToLevelUp = random.nextInt(1, 4); // 1 to 3 Monotheism, Polytheism, Energies
+            } else if (resources.get("Faith") == 2) {
+                whichOneToLevelUp = random.nextInt(1, 3); // 1 to 2 Monotheism, Polytheism
+            } else if (resources.get("Faith") == 1) {
+                whichOneToLevelUp = 1;
+            }
+            if (whichOneToLevelUp == 5) {
+                discoveries.put("Enlightenment", discoveries.get("Enlightenment") + 1);
+            } else if (whichOneToLevelUp == 4) {
+                discoveries.put("Divine Contact", discoveries.get("Divine Contact") + 1);
+            } else if (whichOneToLevelUp == 3) {
+                discoveries.put("Energies", discoveries.get("Energies") + 1);
+            } else if (whichOneToLevelUp == 2) {
+                discoveries.put("Polytheism", discoveries.get("Polytheism") + 1);
+            } else if (whichOneToLevelUp == 1) {
+                discoveries.put("Monotheism", discoveries.get("Monotheism") + 1);
+            }
+        }
+
+        // Materiales
+        else if (discoveryToLevelUp == 4) {
+            if (resources.get("Raw Materials") >= 5) {
+                whichOneToLevelUp = random.nextInt(1, 6); // 1 to 5 Copper, Iron, Coal, Oil, Rare Earth Elements
+            } else if (resources.get("Raw Materials") == 4) {
+                whichOneToLevelUp = random.nextInt(1, 5); // 1 to 4 Copper, Iron, Coal, Oil
+            } else if (resources.get("Raw Materials") == 3) {
+                whichOneToLevelUp = random.nextInt(1, 4); // 1 to 3 Copper, Iron, Coal
+            } else if (resources.get("Raw Materials") == 2) {
+                whichOneToLevelUp = random.nextInt(1, 3); // 1 to 2 Copper, Iron
+            } else if (resources.get("Raw Materials") == 1) {
+                whichOneToLevelUp = 1;
+            }
+            if (whichOneToLevelUp == 5) {
+                discoveries.put("Rare Earth Elements", discoveries.get("Rare Earth Elements") + 1);
+            } else if (whichOneToLevelUp == 4) {
+                discoveries.put("Oil", discoveries.get("Oil") + 1);
+            } else if (whichOneToLevelUp == 3) {
+                discoveries.put("Coal", discoveries.get("Coal") + 1);
+            } else if (whichOneToLevelUp == 2) {
+                discoveries.put("Iron", discoveries.get("Iron") + 1);
+            } else if (whichOneToLevelUp == 1) {
+                discoveries.put("Copper", discoveries.get("Copper") + 1);
+            }
+        }
+
+        // Seguridad
+        else if (discoveryToLevelUp == 5) {
+            if (resources.get("Security") >= 5) {
+                whichOneToLevelUp = random.nextInt(1, 6); // 1 to 5 Basic Defense, Archery, Gunpowder, Radar, Invisibility
+            } else if (resources.get("Security") == 4) {
+                whichOneToLevelUp = random.nextInt(1, 5); // 1 to 4 Basic Defense, Archery, Gunpowder, Radar
+            } else if (resources.get("Security") == 3) {
+                whichOneToLevelUp = random.nextInt(1, 4); // 1 to 3 Basic Defense, Archery, Gunpowder
+            } else if (resources.get("Security") == 2) {
+                whichOneToLevelUp = random.nextInt(1, 3); // 1 to 2 Basic Defense, Archery
+            } else if (resources.get("Security") == 1) {
+                whichOneToLevelUp = 1;
+            }
+            if (whichOneToLevelUp == 5) {
+                discoveries.put("Invisibility", discoveries.get("Invisibility") + 1);
+            } else if (whichOneToLevelUp == 4) {
+                discoveries.put("Radar", discoveries.get("Radar") + 1);
+            } else if (whichOneToLevelUp == 3) {
+                discoveries.put("Gunpowder", discoveries.get("Gunpowder") + 1);
+            } else if (whichOneToLevelUp == 2) {
+                discoveries.put("Archery", discoveries.get("Archery") + 1);
+            } else if (whichOneToLevelUp == 1) {
+                discoveries.put("Basic Defense", discoveries.get("Basic Defense") + 1);
+            }
+        }
+
     }
 }

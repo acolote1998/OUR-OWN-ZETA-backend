@@ -32,34 +32,35 @@ class CivilizationTest {
         assertEquals(0, civilization.getResources().get("Culture"));
         assertEquals(0, civilization.getResources().get("Faith"));
         assertEquals(0, civilization.getResources().get("Raw Materials"));
-        assertEquals(0, civilization.getResources().get("Security"));// Technology
+        assertEquals(0, civilization.getResources().get("Security"));
+        // Technology
         assertEquals(0, civilization.getDiscoveries().get("Wheel"));
         assertEquals(0, civilization.getDiscoveries().get("Writing"));
         assertEquals(0, civilization.getDiscoveries().get("Steam Power"));
         assertEquals(0, civilization.getDiscoveries().get("Electricity"));
         assertEquals(0, civilization.getDiscoveries().get("Computers"));
-// Culture
+        // Culture
         assertEquals(0, civilization.getDiscoveries().get("Art"));
         assertEquals(0, civilization.getDiscoveries().get("Philosophy"));
         assertEquals(0, civilization.getDiscoveries().get("Music"));
         assertEquals(0, civilization.getDiscoveries().get("Theater"));
         assertEquals(0, civilization.getDiscoveries().get("Sculpting"));
 
-// Faith
+        // Faith
         assertEquals(0, civilization.getDiscoveries().get("Monotheism"));
         assertEquals(0, civilization.getDiscoveries().get("Polytheism"));
         assertEquals(0, civilization.getDiscoveries().get("Energies"));
         assertEquals(0, civilization.getDiscoveries().get("Divine Contact"));
         assertEquals(0, civilization.getDiscoveries().get("Enlightenment"));
 
-// Raw Materials
+        // Raw Materials
         assertEquals(0, civilization.getDiscoveries().get("Copper"));
         assertEquals(0, civilization.getDiscoveries().get("Iron"));
         assertEquals(0, civilization.getDiscoveries().get("Coal"));
         assertEquals(0, civilization.getDiscoveries().get("Oil"));
         assertEquals(0, civilization.getDiscoveries().get("Rare Earth Elements"));
 
-// Security
+        // Security
         assertEquals(0, civilization.getDiscoveries().get("Basic Defense"));
         assertEquals(0, civilization.getDiscoveries().get("Archery"));
         assertEquals(0, civilization.getDiscoveries().get("Gunpowder"));
