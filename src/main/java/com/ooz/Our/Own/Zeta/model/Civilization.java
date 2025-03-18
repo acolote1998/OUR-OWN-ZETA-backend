@@ -14,6 +14,7 @@ public class Civilization {
         this.attempts = attempts;
     }
 
+    private String name;
     private int age;
     private Map<String, Integer> resources = new HashMap<>(); // <Resources Name, Level>
     private Map<String, Integer> discoveries = new HashMap<>(); // <Discoveries Name, Level>
@@ -21,6 +22,14 @@ public class Civilization {
     private Map<Person, String> importantIndividuals = new HashMap<>(); //<Person object, Name of the person>
     private List<String> eventsLog = new ArrayList<>();
     private Map<String, Integer> languagePatterns = new HashMap<>();
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Map<String, Integer> getLanguagePatterns() {
         return languagePatterns;
@@ -80,7 +89,7 @@ public class Civilization {
 
     public Civilization() {
 
-
+        this.name = "";
         this.age = 0;
         this.discoveries = new HashMap<>();
         this.eventsLog = new ArrayList<>();

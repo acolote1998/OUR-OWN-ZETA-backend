@@ -10,7 +10,7 @@ class CivilizationTest {
     public void civilizationStartsAtZero() {
 
         Civilization civilization = new Civilization();
-
+        assertEquals("", civilization.getName());
         assertEquals(0, civilization.getAge());
         assertEquals(0, civilization.getPopulation());
         assertTrue(civilization.getImportantIndividuals().isEmpty(), "Individuals is not empty");
