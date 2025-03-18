@@ -581,6 +581,4 @@ public class Civilization {
     public void improveResource(String word) {
         resources.put(word, resources.get(word) + 1);
     }
-
-
 }

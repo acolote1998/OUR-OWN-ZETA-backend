@@ -455,4 +455,12 @@ class CivilizationTest {
 
         assertEquals(5, civilization.getResources().get("Technology"));
     }
+
+    @Test
+    public void discoveringOneThing() {
+        Civilization civilization = new Civilization();
+        civilization.improveResource("Technology");
+        civilization.discoverSomething();
+        assertFalse(civilization.getDiscoveries().isEmpty());
+    }
 }
