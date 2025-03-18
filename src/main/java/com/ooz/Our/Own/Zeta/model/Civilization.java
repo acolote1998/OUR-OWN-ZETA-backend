@@ -105,6 +105,36 @@ public class Civilization {
         languagePatterns.put("StartsWithConsonantRate", 0);
         languagePatterns.put("FinishesWithVowelRate", 0);
         languagePatterns.put("FinishesWithConsonantRate", 0);
+        //Technolgy
+        discoveries.put("Wheel", 0);
+        discoveries.put("Writing", 0);
+        discoveries.put("Steam Power", 0);
+        discoveries.put("Electricity", 0);
+        discoveries.put("Computers", 0);
+        //Culture
+        discoveries.put("Art", 0);
+        discoveries.put("Philosophy", 0);
+        discoveries.put("Music", 0);
+        discoveries.put("Theater", 0);
+        discoveries.put("Sculpting", 0);
+        //Faith
+        discoveries.put("Monotheism", 0);
+        discoveries.put("Polytheism", 0);
+        discoveries.put("Energies", 0);
+        discoveries.put("Divine Contact", 0);
+        discoveries.put("Enlightenment", 0);
+        //Raw Materials
+        discoveries.put("Copper", 0);
+        discoveries.put("Iron", 0);
+        discoveries.put("Coal", 0);
+        discoveries.put("Oil", 0);
+        discoveries.put("Rare Earth Elements", 0);
+        //Security
+        discoveries.put("Basic Defense", 0);
+        discoveries.put("Archery", 0);
+        discoveries.put("Gunpowder", 0);
+        discoveries.put("Radar", 0);
+        discoveries.put("Invisibility", 0);
 
 
     }
@@ -580,5 +610,16 @@ public class Civilization {
 
     public void improveResource(String word) {
         resources.put(word, resources.get(word) + 1);
+    }
+
+    public void discoverSomething() {
+        /*
+
+         */
+
+        Random random = new Random();
+        if (resources.get("Technology") == 1) {
+            discoveries.put("Wheel", discoveries.get("Wheel") + 1);
+        }
     }
 }

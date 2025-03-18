@@ -12,8 +12,6 @@ class CivilizationTest {
         Civilization civilization = new Civilization();
 
         assertEquals(0, civilization.getAge());
-        assertTrue(civilization.getResources().isEmpty(), "Resources is not empty");
-        assertTrue(civilization.getDiscoveries().isEmpty(), "Discoveries is not empty");
         assertEquals(0, civilization.getPopulation());
         assertTrue(civilization.getImportantIndividuals().isEmpty(), "Individuals is not empty");
         assertTrue(civilization.getEventsLog().isEmpty(), "EventLogs is not empty");
@@ -30,12 +28,43 @@ class CivilizationTest {
         assertEquals(0, civilization.getLanguagePatterns().get("StartsWithConsonantRate"));
         assertEquals(0, civilization.getLanguagePatterns().get("FinishesWithVowelRate"));
         assertEquals(0, civilization.getLanguagePatterns().get("FinishesWithConsonantRate"));
-
         assertEquals(0, civilization.getResources().get("Technology"));
         assertEquals(0, civilization.getResources().get("Culture"));
         assertEquals(0, civilization.getResources().get("Faith"));
         assertEquals(0, civilization.getResources().get("Raw Materials"));
-        assertEquals(0, civilization.getResources().get("Security"));
+        assertEquals(0, civilization.getResources().get("Security"));// Technology
+        assertEquals(0, civilization.getDiscoveries().get("Wheel"));
+        assertEquals(0, civilization.getDiscoveries().get("Writing"));
+        assertEquals(0, civilization.getDiscoveries().get("Steam Power"));
+        assertEquals(0, civilization.getDiscoveries().get("Electricity"));
+        assertEquals(0, civilization.getDiscoveries().get("Computers"));
+// Culture
+        assertEquals(0, civilization.getDiscoveries().get("Art"));
+        assertEquals(0, civilization.getDiscoveries().get("Philosophy"));
+        assertEquals(0, civilization.getDiscoveries().get("Music"));
+        assertEquals(0, civilization.getDiscoveries().get("Theater"));
+        assertEquals(0, civilization.getDiscoveries().get("Sculpting"));
+
+// Faith
+        assertEquals(0, civilization.getDiscoveries().get("Monotheism"));
+        assertEquals(0, civilization.getDiscoveries().get("Polytheism"));
+        assertEquals(0, civilization.getDiscoveries().get("Energies"));
+        assertEquals(0, civilization.getDiscoveries().get("Divine Contact"));
+        assertEquals(0, civilization.getDiscoveries().get("Enlightenment"));
+
+// Raw Materials
+        assertEquals(0, civilization.getDiscoveries().get("Copper"));
+        assertEquals(0, civilization.getDiscoveries().get("Iron"));
+        assertEquals(0, civilization.getDiscoveries().get("Coal"));
+        assertEquals(0, civilization.getDiscoveries().get("Oil"));
+        assertEquals(0, civilization.getDiscoveries().get("Rare Earth Elements"));
+
+// Security
+        assertEquals(0, civilization.getDiscoveries().get("Basic Defense"));
+        assertEquals(0, civilization.getDiscoveries().get("Archery"));
+        assertEquals(0, civilization.getDiscoveries().get("Gunpowder"));
+        assertEquals(0, civilization.getDiscoveries().get("Radar"));
+        assertEquals(0, civilization.getDiscoveries().get("Invisibility"));
     }
 
     @Test
@@ -460,6 +489,7 @@ class CivilizationTest {
     public void discoveringOneThing() {
         Civilization civilization = new Civilization();
         civilization.improveResource("Technology");
+        System.out.println(civilization.getResources().get("Technology"));
         civilization.discoverSomething();
         assertFalse(civilization.getDiscoveries().isEmpty());
     }
