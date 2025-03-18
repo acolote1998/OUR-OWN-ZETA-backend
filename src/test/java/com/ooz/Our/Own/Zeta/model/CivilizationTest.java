@@ -443,4 +443,16 @@ class CivilizationTest {
         civilization.improveResource("Technology");
         assertEquals(1, civilization.getResources().get("Technology"));
     }
+
+    @Test
+    public void improvingTechnologyFiveTimes() {
+        Civilization civilization = new Civilization();
+        civilization.improveResource("Technology");
+        civilization.improveResource("Technology");
+        civilization.improveResource("Technology");
+        civilization.improveResource("Technology");
+        civilization.improveResource("Technology");
+
+        assertEquals(5, civilization.getResources().get("Technology"));
+    }
 }
