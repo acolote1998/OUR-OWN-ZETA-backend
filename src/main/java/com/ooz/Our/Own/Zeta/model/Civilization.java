@@ -88,6 +88,11 @@ public class Civilization {
         this.population = 0;
         this.importantIndividuals = new HashMap<>();
         this.languagePatterns = new HashMap<>();
+        resources.put("Technology", 0);
+        resources.put("Culture", 0);
+        resources.put("Faith", 0);
+        resources.put("Raw Materials", 0);
+        resources.put("Security", 0);
         languagePatterns.put("VowelsPerWord", 0);
         languagePatterns.put("ConsonantsPerWord", 0);
         languagePatterns.put("VowelClusterRate", 0);
@@ -187,7 +192,7 @@ public class Civilization {
         int consonantsToPlace;
         int totalCharacters = vowelAvgAmount + consonantAvgAmount;
         final int maxAttempts = 100000;
-        
+
         do {
 
 
@@ -571,6 +576,12 @@ public class Civilization {
             }
         }
         return wordsFinishingWConsonant * 100 / totalWords;
+    }
+
+    public void improveResource(String word) {
+        if (resources.get(word)) {
+
+        }
     }
 
 

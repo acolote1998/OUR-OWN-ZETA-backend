@@ -31,7 +31,11 @@ class CivilizationTest {
         assertEquals(0, civilization.getLanguagePatterns().get("FinishesWithVowelRate"));
         assertEquals(0, civilization.getLanguagePatterns().get("FinishesWithConsonantRate"));
 
-
+        assertEquals(0, civilization.getResources().get("Technology"));
+        assertEquals(0, civilization.getResources().get("Culture"));
+        assertEquals(0, civilization.getResources().get("Faith"));
+        assertEquals(0, civilization.getResources().get("Raw Materials"));
+        assertEquals(0, civilization.getResources().get("Security"));
     }
 
     @Test
@@ -434,9 +438,9 @@ class CivilizationTest {
     */
 
     @Test
-    public void improveWoodResourceOnce() {
+    public void improvingTechnologyOnce() {
         Civilization civilization = new Civilization();
-        civilization.improveResource("Wood");
-        assertEquals(civilization.getResources().get("Wood") == 1);
+        civilization.improveResource("Technology");
+        assertEquals(civilization.getResources().get("Technology") == 1);
     }
 }
