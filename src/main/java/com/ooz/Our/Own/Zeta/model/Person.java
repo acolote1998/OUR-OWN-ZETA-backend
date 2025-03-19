@@ -86,25 +86,27 @@ public class Person {
         this.age += 1;
         Random random = new Random();
         if (age >= 100) {
-            passAway();
+            if (random.nextInt(1, 101) <= 35) {
+                passAway();
+            }
         } else if (age > 90) {
-            if (random.nextInt(1, 101) <= 70) {
+            if (random.nextInt(1, 101) <= 25) {
                 passAway();
             }
         } else if (age > 80) {
-            if (random.nextInt(1, 101) <= 60) {
-                passAway();
-            }
-        } else if (age > 70) {
-            if (random.nextInt(1, 101) <= 50) {
-                passAway();
-            }
-        } else if (age > 60) {
             if (random.nextInt(1, 101) <= 10) {
                 passAway();
             }
-        } else if (age > 40) {
+        } else if (age > 70) {
+            if (random.nextInt(1, 101) <= 4) {
+                passAway();
+            }
+        } else if (age > 60) {
             if (random.nextInt(1, 101) <= 3) {
+                passAway();
+            }
+        } else if (age > 40) {
+            if (random.nextInt(1, 101) <= 2) {
                 passAway();
             }
         } else if (age > 20) {
