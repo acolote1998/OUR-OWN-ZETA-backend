@@ -549,6 +549,8 @@ class CivilizationTest {
     public void logLearningResourceToEventsLog() {
         Civilization civilization = new Civilization();
         String learnedResource = civilization.learningResource(100);
+        civilization.feedLanguagePattern("Manuel", "Pablo", "Ezequiel", "Rodrigo");
+        civilization.setName(civilization.generateName());
         assertEquals(1, civilization.getResources().get("Raw Materials") + civilization.getResources().get("Technology") + civilization.getResources().get("Security") + civilization.getResources().get("Faith") + civilization.getResources().get("Culture"));
         assertNotEquals("", learnedResource);
         System.out.println(civilization.getEventsLog());

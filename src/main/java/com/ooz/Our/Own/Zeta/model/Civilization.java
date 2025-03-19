@@ -388,6 +388,18 @@ public class Civilization {
         }
     }
 
+    public String generateName() {
+        Random random = new Random();
+        int randomNumber = random.nextInt(1, 3);
+        String finishing = "";
+        if (randomNumber == 1) {
+            finishing = "s";
+        } else if (randomNumber == 2) {
+            finishing = "an";
+        }
+        return generateWord() + finishing;
+    }
+
     public int calculateVowelsAvgInWords(String word, String... others) {
         char[] wordInChar = word.toLowerCase().toCharArray();
         int amountOfVowels = 0;
