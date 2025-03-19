@@ -335,6 +335,31 @@ public class Civilization {
         String message = "";
         if (languagePatterns.get("VowelsPerWord") == 0 && languagePatterns.get("ConsonantsPerWord") == 0) {
             message = "Error: There are no name patterns";
+        } else {
+            Random random = new Random();
+            int typeOfPerson = random.nextInt(1, 5);//1 Artist 2 Athlete 3 Doctor 4 Scientist
+            String fieldToBe = "";
+            switch (typeOfPerson) {
+                case 1:
+                    fieldToBe = "Artist";
+                    break;
+                case 2:
+                    fieldToBe = "Athlete";
+                    break;
+                case 3:
+                    fieldToBe = "Doctor";
+                    break;
+                case 4:
+                    fieldToBe = "Scientist";
+                    break;
+                default:
+                    fieldToBe = "Cannot generate field";
+            }
+            if (!fieldToBe.equals("Cannot generate field")) {
+                Person createdPerson = createImportantPerson(0, generateWord(), fieldToBe, null, true, 0);
+                importantIndividuals.put(createdPerson, createdPerson.getName());
+                message = createdPerson.getName() + ", a promising " + createdPerson.getField().toLowerCase() + " was born!";
+            }
         }
         return message;
     }
