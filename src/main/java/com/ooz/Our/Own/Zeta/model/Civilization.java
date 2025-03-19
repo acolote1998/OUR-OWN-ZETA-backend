@@ -331,6 +331,7 @@ public class Civilization {
         return person;
     }
 
+
     public int calculateVowelsAvgInWords(String word, String... others) {
         char[] wordInChar = word.toLowerCase().toCharArray();
         int amountOfVowels = 0;

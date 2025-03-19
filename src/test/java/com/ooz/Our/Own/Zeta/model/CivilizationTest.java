@@ -518,4 +518,26 @@ class CivilizationTest {
         civilization.isLearningResource(100);
         assertTrue(civilization.isLearningResource(100));
     }
+
+    @Test
+    public void creatingRandomPersonWithoutName() {
+
+    /*
+
+
+    public void createRandomPerson() {
+
+    }
+
+            this.age=0;
+        this.name="";
+        this.field="";
+        this.discoveries = new HashMap<>();
+        this.alive=true;
+        this.knowledge=0;
+     */
+        Civilization civilization = new Civilization();
+        assertEquals("There are no name patterns",
+                civilization.createRandomPerson());
+    }
 }
