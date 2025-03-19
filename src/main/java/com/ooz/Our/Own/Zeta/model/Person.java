@@ -1,6 +1,8 @@
 package com.ooz.Our.Own.Zeta.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Person {
@@ -10,6 +12,15 @@ public class Person {
     Map<String, Integer> discoveries = new HashMap<>();//<Name of Discovery, Tier>
     boolean alive;
     int knowledge;
+    private Map<Integer, String> lifeLog = new HashMap<>();
+
+    public Map<Integer, String> getLifeLog() {
+        return lifeLog;
+    }
+
+    public void setLifeLog(Map<Integer, String> lifeLog) {
+        this.lifeLog = lifeLog;
+    }
 
     public int getAge() {
         return age;
