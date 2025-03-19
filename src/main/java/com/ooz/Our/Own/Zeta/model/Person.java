@@ -71,6 +71,13 @@ public class Person {
 
     public void passYears(int years) {
         this.age += years;
+        if (age >= 100) {
+            passAway();
+        }
+    }
+
+    public void passAway() {
+        this.alive = false;
     }
 
     @Override
