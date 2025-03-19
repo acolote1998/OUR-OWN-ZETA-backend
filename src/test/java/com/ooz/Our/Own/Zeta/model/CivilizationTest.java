@@ -525,9 +525,7 @@ class CivilizationTest {
     /*
 
 
-    public void createRandomPerson() {
 
-    }
 
             this.age=0;
         this.name="";
@@ -537,7 +535,7 @@ class CivilizationTest {
         this.knowledge=0;
      */
         Civilization civilization = new Civilization();
-        assertEquals("There are no name patterns",
+        assertEquals("Error: There are no name patterns",
                 civilization.createRandomPerson());
     }
 }

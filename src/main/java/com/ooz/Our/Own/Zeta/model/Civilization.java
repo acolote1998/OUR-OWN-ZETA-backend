@@ -331,6 +331,13 @@ public class Civilization {
         return person;
     }
 
+    public String createRandomPerson() {
+        String message = "";
+        if (languagePatterns.get("VowelsPerWord") == 0 && languagePatterns.get("ConsonantsPerWord") == 0) {
+            message = "Error: There are no name patterns";
+        }
+        return message;
+    }
 
     public int calculateVowelsAvgInWords(String word, String... others) {
         char[] wordInChar = word.toLowerCase().toCharArray();
