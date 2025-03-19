@@ -694,7 +694,7 @@ public class Civilization {
         resources.put(word, resources.get(word) + 1);
     }
 
-    public void discoverSomething() {
+    public String discoverSomething() {
         Random random = new Random();
         int whichOneToLevelUp = 0;
         int discoveryToLevelUp = random.nextInt(1, 6);
@@ -706,6 +706,7 @@ public class Civilization {
         4=Raw Materials
         5=Security
         */
+        String discovery = "";
         //Technology
         if (discoveryToLevelUp == 1) {
             if (resources.get("Technology") > 5 && discoveries.get("Computers") >= 1 && discoveries.get("Electricity") >= 1 && discoveries.get("Steam Power") >= 1 && discoveries.get("Writing") >= 1 && discoveries.get("Wheel") >= 1) {
@@ -722,17 +723,21 @@ public class Civilization {
                 whichOneToLevelUp = 1;
             }
             if (whichOneToLevelUp == 6) {
-                discoveries.put("Artificial Intelligence", discoveries.get("Artificial Intelligence") + 1);
+                discovery = "Artificial Intelligence";
             } else if (whichOneToLevelUp == 5) {
-                discoveries.put("Computers", discoveries.get("Computers") + 1);
+                discovery = "Computers";
             } else if (whichOneToLevelUp == 4) {
-                discoveries.put("Electricity", discoveries.get("Electricity") + 1);
+                discovery = "Electricity";
             } else if (whichOneToLevelUp == 3) {
-                discoveries.put("Steam Power", discoveries.get("Steam Power") + 1);
+                discovery = "Steam Power";
             } else if (whichOneToLevelUp == 2) {
-                discoveries.put("Writing", discoveries.get("Writing") + 1);
+                discovery = "Writing";
             } else if (whichOneToLevelUp == 1) {
-                discoveries.put("Wheel", discoveries.get("Wheel") + 1);
+                discovery = "Wheel";
+            }
+
+            if (!discovery.isEmpty()) {
+                discoveries.put(discovery, discoveries.get(discovery) + 1);
             }
         }
         // Cultura
@@ -752,17 +757,21 @@ public class Civilization {
                 whichOneToLevelUp = 1;
             }
             if (whichOneToLevelUp == 6) {
-                discoveries.put("Renaissance", discoveries.get("Renaissance") + 1);
+                discovery = "Renaissance";
             } else if (whichOneToLevelUp == 5) {
-                discoveries.put("Sculpting", discoveries.get("Sculpting") + 1);
+                discovery = "Sculpting";
             } else if (whichOneToLevelUp == 4) {
-                discoveries.put("Theater", discoveries.get("Theater") + 1);
+                discovery = "Theater";
             } else if (whichOneToLevelUp == 3) {
-                discoveries.put("Music", discoveries.get("Music") + 1);
+                discovery = "Music";
             } else if (whichOneToLevelUp == 2) {
-                discoveries.put("Philosophy", discoveries.get("Philosophy") + 1);
+                discovery = "Philosophy";
             } else if (whichOneToLevelUp == 1) {
-                discoveries.put("Art", discoveries.get("Art") + 1);
+                discovery = "Art";
+            }
+
+            if (!discovery.isEmpty()) {
+                discoveries.put(discovery, discoveries.get(discovery) + 1);
             }
         }
 
@@ -783,17 +792,21 @@ public class Civilization {
                 whichOneToLevelUp = 1;
             }
             if (whichOneToLevelUp == 6) {
-                discoveries.put("Universal Faith", discoveries.get("Universal Faith") + 1);
+                discovery = "Universal Faith";
             } else if (whichOneToLevelUp == 5) {
-                discoveries.put("Enlightenment", discoveries.get("Enlightenment") + 1);
+                discovery = "Enlightenment";
             } else if (whichOneToLevelUp == 4) {
-                discoveries.put("Divine Contact", discoveries.get("Divine Contact") + 1);
+                discovery = "Divine Contact";
             } else if (whichOneToLevelUp == 3) {
-                discoveries.put("Energies", discoveries.get("Energies") + 1);
+                discovery = "Energies";
             } else if (whichOneToLevelUp == 2) {
-                discoveries.put("Polytheism", discoveries.get("Polytheism") + 1);
+                discovery = "Polytheism";
             } else if (whichOneToLevelUp == 1) {
-                discoveries.put("Monotheism", discoveries.get("Monotheism") + 1);
+                discovery = "Monotheism";
+            }
+
+            if (!discovery.isEmpty()) {
+                discoveries.put(discovery, discoveries.get(discovery) + 1);
             }
         }
 
@@ -814,17 +827,21 @@ public class Civilization {
                 whichOneToLevelUp = 1;
             }
             if (whichOneToLevelUp == 6) {
-                discoveries.put("Nuclear Fusion", discoveries.get("Nanomaterials") + 1);
+                discovery = "Nuclear Fusion";
             } else if (whichOneToLevelUp == 5) {
-                discoveries.put("Rare Earth Elements", discoveries.get("Rare Earth Elements") + 1);
+                discovery = "Rare Earth Elements";
             } else if (whichOneToLevelUp == 4) {
-                discoveries.put("Oil", discoveries.get("Oil") + 1);
+                discovery = "Oil";
             } else if (whichOneToLevelUp == 3) {
-                discoveries.put("Coal", discoveries.get("Coal") + 1);
+                discovery = "Coal";
             } else if (whichOneToLevelUp == 2) {
-                discoveries.put("Iron", discoveries.get("Iron") + 1);
+                discovery = "Iron";
             } else if (whichOneToLevelUp == 1) {
-                discoveries.put("Copper", discoveries.get("Copper") + 1);
+                discovery = "Copper";
+            }
+
+            if (!discovery.isEmpty()) {
+                discoveries.put(discovery, discoveries.get(discovery) + 1);
             }
         }
 
@@ -845,30 +862,53 @@ public class Civilization {
                 whichOneToLevelUp = 1;
             }
             if (whichOneToLevelUp == 6) {
-                discoveries.put("Cybersecurity", discoveries.get("Cybersecurity") + 1);
+                discovery = "Cybersecurity";
             } else if (whichOneToLevelUp == 5) {
-                discoveries.put("Invisibility", discoveries.get("Invisibility") + 1);
+                discovery = "Invisibility";
             } else if (whichOneToLevelUp == 4) {
-                discoveries.put("Radar", discoveries.get("Radar") + 1);
+                discovery = "Radar";
             } else if (whichOneToLevelUp == 3) {
-                discoveries.put("Gunpowder", discoveries.get("Gunpowder") + 1);
+                discovery = "Gunpowder";
             } else if (whichOneToLevelUp == 2) {
-                discoveries.put("Archery", discoveries.get("Archery") + 1);
+                discovery = "Archery";
             } else if (whichOneToLevelUp == 1) {
-                discoveries.put("Basic Defense", discoveries.get("Basic Defense") + 1);
+                discovery = "Basic Defense";
+            }
+
+            if (!discovery.isEmpty()) {
+                discoveries.put(discovery, discoveries.get(discovery) + 1);
             }
         }
-        if (discoveries.get("Artificial Intelligence") >= 1 && discoveries.get("Renaissance") >= 1 && discoveries.get("Universal Faith") >= 1 && discoveries.get("Nuclear Fusion") >= 1 && discoveries.get("Cybersecurity") >= 1) {
+        if (discoveries.get("Artificial Intelligence") >= 1 &&
+                discoveries.get("Renaissance") >= 1 &&
+                discoveries.get("Universal Faith") >= 1 &&
+                discoveries.get("Nuclear Fusion") >= 1 &&
+                discoveries.get("Cybersecurity") >= 1) {
+
             int randomChanceOfWinning = random.nextInt(1, 101);
-            if (randomChanceOfWinning <= 5) { //5% chance of winning
-                discoveries.put("World Domination", 1);
+
+            if (randomChanceOfWinning <= 5) { // 5% chance of winning
+                discovery = "World Domination";
+                discoveries.put(discovery, 1);
+            }
+        }
+        logEventDiscovery(discovery);
+        return discovery;
+    }
+
+    public void logEventDiscovery(String discovery) {
+        if (!discovery.isEmpty()) {
+            if (discoveries.get(discovery) <= 1) {
+                eventsLog.add("Year " + age + ": The " + name + " people has discovered the " + discovery.toLowerCase() + ", " + discovery + " is now Level " + discoveries.get(discovery));
+            } else {
+                eventsLog.add("Year " + age + ": The " + name + " people has improved their " + discovery.toLowerCase() + ", " + discovery + " is now Level " + discoveries.get(discovery));
             }
         }
     }
 
     public boolean isDiscoveringSomething(int porcentChance) {
         Random random = new Random();
-        if (random.nextInt(1, 101) < porcentChance) {
+        if (random.nextInt(1, 101) <= porcentChance) {
             discoverSomething();
             return true;
         }
