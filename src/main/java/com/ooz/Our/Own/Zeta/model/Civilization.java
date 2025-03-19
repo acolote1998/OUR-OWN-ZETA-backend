@@ -359,9 +359,20 @@ public class Civilization {
                 Person createdPerson = createImportantPerson(0, generateWord(), fieldToBe, null, true, 0);
                 importantIndividuals.put(createdPerson, createdPerson.getName());
                 message = createdPerson.getName() + ", a promising " + createdPerson.getField().toLowerCase() + " was born!";
+                logEvent("Birth", createdPerson);
             }
         }
         return message;
+    }
+
+    public void logEvent(String typeOfEvent, Person... personToCheck) {
+        //Types of events
+        /*
+        "Birth" = new important person was born
+         */
+        if (typeOfEvent == "Birth" && personToCheck.length > 0) {
+            eventsLog.add("Year " + age + ": " + personToCheck[0].getName() + ", a promising " + personToCheck[0].getField().toLowerCase() + " was born");
+        }
     }
 
     public int calculateVowelsAvgInWords(String word, String... others) {
