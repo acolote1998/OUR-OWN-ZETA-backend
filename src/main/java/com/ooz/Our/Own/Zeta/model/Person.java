@@ -1,9 +1,6 @@
 package com.ooz.Our.Own.Zeta.model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Person {
     int age;
@@ -82,9 +79,35 @@ public class Person {
 
     public void passYears(int years) {
         this.age += years;
+        Random random = new Random();
         if (age >= 100) {
             passAway();
+        } else if (age > 90) {
+            if (random.nextInt(1, 101) <= 80) {
+                passAway();
+            }
+        } else if (age > 80) {
+            if (random.nextInt(1, 101) <= 70) {
+                passAway();
+            }
+        } else if (age > 70) {
+            if (random.nextInt(1, 101) <= 60) {
+                passAway();
+            }
+        } else if (age > 60) {
+            if (random.nextInt(1, 101) <= 20) {
+                passAway();
+            }
+        } else if (age > 40) {
+            if (random.nextInt(1, 101) <= 5) {
+                passAway();
+            }
+        } else if (age > 20) {
+            if (random.nextInt(1, 101) <= 1) {
+                passAway();
+            }
         }
+
     }
 
     public String passAway() {
