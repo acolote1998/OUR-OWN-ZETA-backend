@@ -906,19 +906,19 @@ public class Civilization {
         }
     }
 
-    public boolean isDiscoveringSomething(int porcentChance) {
+    public boolean isDiscoveringSomething(int percentChance) {
         Random random = new Random();
-        if (random.nextInt(1, 101) <= porcentChance) {
+        if (random.nextInt(1, 101) <= percentChance) {
             discoverSomething();
             return true;
         }
         return false;
     }
 
-    public String learningResource(int porcentChance) {
+    public String learningResource(int percentChance) {
         Random random = new Random();
         String resourceToImprove = "";
-        if (random.nextInt(1, 101) < porcentChance) {
+        if (random.nextInt(1, 101) < percentChance) {
             int whatIsLearning = random.nextInt(1, 6);//1 Technology 2 Culture 3 Faith 4 Raw Materials 5 Security
             if (whatIsLearning == 1) {
                 improveResource("Technology");
