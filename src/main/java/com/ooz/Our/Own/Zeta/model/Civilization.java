@@ -921,20 +921,20 @@ public class Civilization {
         if (random.nextInt(1, 101) < percentChance) {
             int whatIsLearning = random.nextInt(1, 6);//1 Technology 2 Culture 3 Faith 4 Raw Materials 5 Security
             if (whatIsLearning == 1) {
-                improveResource("Technology");
                 resourceToImprove = "Technology";
+                improveResource(resourceToImprove);
             } else if (whatIsLearning == 2) {
-                improveResource("Culture");
                 resourceToImprove = "Culture";
+                improveResource(resourceToImprove);
             } else if (whatIsLearning == 3) {
-                improveResource("Faith");
                 resourceToImprove = "Faith";
+                improveResource(resourceToImprove);
             } else if (whatIsLearning == 4) {
-                improveResource("Raw Materials");
                 resourceToImprove = "Raw Materials";
+                improveResource(resourceToImprove);
             } else if (whatIsLearning == 5) {
-                improveResource("Security");
                 resourceToImprove = "Security";
+                improveResource(resourceToImprove);
             }
             if (!resourceToImprove.isEmpty()) {
                 logEventResource(resourceToImprove);
