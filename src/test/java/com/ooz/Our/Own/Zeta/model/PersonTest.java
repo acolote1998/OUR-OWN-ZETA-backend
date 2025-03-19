@@ -21,14 +21,14 @@ class PersonTest {
     @Test
     public void passing20Years() {
         Person person = new Person();
-        person.passYears(20);
+        person.passManyYears(20);
         assertEquals(20, person.getAge());
     }
 
     @Test
     public void passingAwayWith100Years() {
         Person person = new Person();
-        person.passYears(100);
+        person.passManyYears(100);
         assertEquals(100, person.getAge());
         assertFalse(person.isAlive());
         assertFalse(person.getLifeLog().isEmpty());

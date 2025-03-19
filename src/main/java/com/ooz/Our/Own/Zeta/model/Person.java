@@ -76,30 +76,35 @@ public class Person {
         this.knowledge = 0;
     }
 
+    public void passManyYears(int years) {
+        for (int i = 0; i < years; i++) {
+            pasOneYear();
+        }
+    }
 
-    public void passYears(int years) {
-        this.age += years;
+    public void pasOneYear() {
+        this.age += 1;
         Random random = new Random();
         if (age >= 100) {
             passAway();
         } else if (age > 90) {
-            if (random.nextInt(1, 101) <= 80) {
-                passAway();
-            }
-        } else if (age > 80) {
             if (random.nextInt(1, 101) <= 70) {
                 passAway();
             }
-        } else if (age > 70) {
+        } else if (age > 80) {
             if (random.nextInt(1, 101) <= 60) {
                 passAway();
             }
+        } else if (age > 70) {
+            if (random.nextInt(1, 101) <= 50) {
+                passAway();
+            }
         } else if (age > 60) {
-            if (random.nextInt(1, 101) <= 20) {
+            if (random.nextInt(1, 101) <= 10) {
                 passAway();
             }
         } else if (age > 40) {
-            if (random.nextInt(1, 101) <= 5) {
+            if (random.nextInt(1, 101) <= 3) {
                 passAway();
             }
         } else if (age > 20) {
