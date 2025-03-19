@@ -507,7 +507,7 @@ class CivilizationTest {
     @Test
     public void discoveringSomethingOnce() {
         Civilization civilization = new Civilization();
-        civilization.isLearningResource(100);
+        civilization.learningResource(100);
         civilization.isDiscoveringSomething(100);
         assertTrue(civilization.isDiscoveringSomething(100));
     }
@@ -515,8 +515,8 @@ class CivilizationTest {
     @Test
     public void learnResourceOnce() {
         Civilization civilization = new Civilization();
-        civilization.isLearningResource(100);
-        assertTrue(civilization.isLearningResource(100));
+        civilization.learningResource(100);
+        assertNotEquals("", civilization.learningResource(100));
     }
 
     @Test
@@ -548,12 +548,12 @@ class CivilizationTest {
     @Test
     public void logLearningResourceToEventsLog() {
         Civilization civilization = new Civilization();
-        //System.out.println(civilization.getResources());
-        civilization.isLearningResource(100);
-        //System.out.println(civilization.getResources());
-        assertEquals(1, civilization.getResources().get("Raw Materials") + civilization.getResources().get("Technology") + civilization.getResources().get("Faith") + civilization.getResources().get("Culture"));
-        assertTrue(civilization.isLearningResource(100));
-        String learnedResource = civilization.learningResource();
+        System.out.println(civilization.getResources());
+        String learnedResource = civilization.learningResource(100);
+        System.out.println(civilization.getResources());
+        assertEquals(1, civilization.getResources().get("Raw Materials") + civilization.getResources().get("Technology") + civilization.getResources().get("Security") + civilization.getResources().get("Faith") + civilization.getResources().get("Culture"));
+        assertNotEquals("", learnedResource);
+        System.out.println(civilization.getEventsLog());
         assertFalse(civilization.getEventsLog().isEmpty());
     }
 }

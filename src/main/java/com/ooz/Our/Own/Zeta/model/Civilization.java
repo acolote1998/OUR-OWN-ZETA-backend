@@ -359,20 +359,32 @@ public class Civilization {
                 Person createdPerson = createImportantPerson(0, generateWord(), fieldToBe, null, true, 0);
                 importantIndividuals.put(createdPerson, createdPerson.getName());
                 message = createdPerson.getName() + ", a promising " + createdPerson.getField().toLowerCase() + " was born!";
-                logEvent("Birth", createdPerson);
+                logEventPerson(createdPerson);
             }
         }
         return message;
     }
 
-    public void logEvent(String typeOfEvent, Person... personToCheck) {
+    public void logEventPerson(Person personToLog) {
         //Types of events
         /*
         "Birth" = new important person was born
         "Resource" = civilization learned a new resource
          */
-        if (typeOfEvent == "Birth" && personToCheck.length > 0) {
-            eventsLog.add("Year " + age + ": " + personToCheck[0].getName() + ", a promising " + personToCheck[0].getField().toLowerCase() + " was born");
+        if (personToLog != null) {
+            eventsLog.add("Year " + age + ": " + personToLog.getName() + ", a promising " + personToLog.getField().toLowerCase() + " was born");
+        }
+    }
+
+    public void logEventResource(String resourceToLog) {
+        //Types of events
+        /*
+        "Birth" = new important person was born
+        "Resource" = civilization learned a new resource
+         */
+        if (!resourceToLog.isEmpty()) {
+            eventsLog.add("Year " + age + ": The " + name + " people has improved their " + resourceToLog.toLowerCase() + "!");
+            eventsLog.add(resourceToLog + " is now Level " + resources.get(resourceToLog));
         }
     }
 
@@ -852,24 +864,33 @@ public class Civilization {
         return false;
     }
 
-    public boolean isLearningResource(int porcentChance) {
+    public String learningResource(int porcentChance) {
         Random random = new Random();
+        String resourceToImprove = "";
         if (random.nextInt(1, 101) < porcentChance) {
             int whatIsLearning = random.nextInt(1, 6);//1 Technology 2 Culture 3 Faith 4 Raw Materials 5 Security
             if (whatIsLearning == 1) {
                 improveResource("Technology");
+                resourceToImprove = "Technology";
             } else if (whatIsLearning == 2) {
                 improveResource("Culture");
+                resourceToImprove = "Culture";
             } else if (whatIsLearning == 3) {
                 improveResource("Faith");
+                resourceToImprove = "Faith";
             } else if (whatIsLearning == 4) {
                 improveResource("Raw Materials");
+                resourceToImprove = "Raw Materials";
             } else if (whatIsLearning == 5) {
                 improveResource("Security");
+                resourceToImprove = "Security";
             }
-            return true;
+            if (!resourceToImprove.isEmpty()) {
+                logEventResource(resourceToImprove);
+            }
+            return resourceToImprove;
         }
-        return false;
+        return resourceToImprove;
     }
 
 
