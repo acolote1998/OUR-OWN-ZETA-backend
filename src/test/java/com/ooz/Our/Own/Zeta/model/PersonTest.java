@@ -31,6 +31,8 @@ class PersonTest {
         person.passYears(100);
         assertEquals(100, person.getAge());
         assertFalse(person.isAlive());
+        assertFalse(person.getLifeLog().isEmpty());
+        System.out.println(person.getLifeLog());
     }
 
 }

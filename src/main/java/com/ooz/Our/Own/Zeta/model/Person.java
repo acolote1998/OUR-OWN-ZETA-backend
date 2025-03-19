@@ -12,13 +12,13 @@ public class Person {
     Map<String, Integer> discoveries = new HashMap<>();//<Name of Discovery, Tier>
     boolean alive;
     int knowledge;
-    private Map<Integer, String> lifeLog = new HashMap<>();
+    private List<String> lifeLog = new ArrayList<>();
 
-    public Map<Integer, String> getLifeLog() {
+    public List<String> getLifeLog() {
         return lifeLog;
     }
 
-    public void setLifeLog(Map<Integer, String> lifeLog) {
+    public void setLifeLog(List<String> lifeLog) {
         this.lifeLog = lifeLog;
     }
 
@@ -87,8 +87,11 @@ public class Person {
         }
     }
 
-    public void passAway() {
+    public String passAway() {
         this.alive = false;
+        String message = name + " has passed away at the age of " + age;
+        lifeLog.add(message);
+        return message;
     }
 
     @Override
