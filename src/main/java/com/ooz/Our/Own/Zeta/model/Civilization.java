@@ -369,6 +369,7 @@ public class Civilization {
         //Types of events
         /*
         "Birth" = new important person was born
+        "Resource" = civilization learned a new resource
          */
         if (typeOfEvent == "Birth" && personToCheck.length > 0) {
             eventsLog.add("Year " + age + ": " + personToCheck[0].getName() + ", a promising " + personToCheck[0].getField().toLowerCase() + " was born");

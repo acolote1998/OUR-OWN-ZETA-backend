@@ -544,4 +544,16 @@ class CivilizationTest {
         assertFalse(civilization.getImportantIndividuals().isEmpty());
         assertFalse(civilization.getEventsLog().isEmpty());
     }
+
+    @Test
+    public void logLearningResourceToEventsLog() {
+        Civilization civilization = new Civilization();
+        //System.out.println(civilization.getResources());
+        civilization.isLearningResource(100);
+        //System.out.println(civilization.getResources());
+        assertEquals(1, civilization.getResources().get("Raw Materials") + civilization.getResources().get("Technology") + civilization.getResources().get("Faith") + civilization.getResources().get("Culture"));
+        assertTrue(civilization.isLearningResource(100));
+        String learnedResource = civilization.learningResource();
+        assertFalse(civilization.getEventsLog().isEmpty());
+    }
 }
