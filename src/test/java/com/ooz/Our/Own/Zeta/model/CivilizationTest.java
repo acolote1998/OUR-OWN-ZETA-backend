@@ -535,4 +535,13 @@ class CivilizationTest {
         assertFalse(civilization.getImportantIndividuals().isEmpty());
     }
 
+    @Test
+    public void logPersonCreationToEventsLog() {
+        Civilization civilization = new Civilization();
+        assertTrue(civilization.getEventsLog().isEmpty());
+        civilization.feedLanguagePattern("Manuel", "Pablo", "Ezequiel", "Rodrigo");
+        civilization.createRandomPerson();
+        assertFalse(civilization.getImportantIndividuals().isEmpty());
+        assertFalse(civilization.getEventsLog().isEmpty());
+    }
 }
