@@ -382,7 +382,7 @@ public class Civilization {
         "Birth" = new important person was born
         "Resource" = civilization learned a new resource
          */
-        if (!resourceToLog.isEmpty()) {
+        if (!resourceToLog.isEmpty() && !name.isBlank()) {
             eventsLog.add("Year " + age + ": The " + name + " people has improved their " + resourceToLog.toLowerCase() + "!");
             eventsLog.add(resourceToLog + " is now Level " + resources.get(resourceToLog));
         }
