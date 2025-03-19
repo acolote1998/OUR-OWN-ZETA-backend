@@ -135,4 +135,8 @@ public class Person {
                 ", knowledge=" + knowledge +
                 '}';
     }
+
+    public String discoverSomething() {
+        return "";
+    }
 }
