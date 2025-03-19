@@ -7,7 +7,7 @@ public class Person {
     int age;
     String name;
     String field;
-    Map<String,Integer> discoveries = new HashMap<>();//<Name of Discovery, Tier>
+    Map<String, Integer> discoveries = new HashMap<>();//<Name of Discovery, Tier>
     boolean alive;
     int knowledge;
 
@@ -59,12 +59,24 @@ public class Person {
         this.knowledge = knowledge;
     }
 
-    public Person(){
-        this.age=0;
-        this.name="";
-        this.field="";
+    public Person() {
+        this.age = 0;
+        this.name = "";
+        this.field = "";
         this.discoveries = new HashMap<>();
-        this.alive=true;
-        this.knowledge=0;
+        this.alive = true;
+        this.knowledge = 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "age=" + age +
+                ", name='" + name + '\'' +
+                ", field='" + field + '\'' +
+                ", discoveries=" + discoveries +
+                ", alive=" + alive +
+                ", knowledge=" + knowledge +
+                '}';
     }
 }

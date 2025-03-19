@@ -521,21 +521,18 @@ class CivilizationTest {
 
     @Test
     public void creatingRandomPersonWithoutName() {
-
-    /*
-
-
-
-
-            this.age=0;
-        this.name="";
-        this.field="";
-        this.discoveries = new HashMap<>();
-        this.alive=true;
-        this.knowledge=0;
-     */
         Civilization civilization = new Civilization();
         assertEquals("Error: There are no name patterns",
                 civilization.createRandomPerson());
     }
+
+    @Test
+    public void creatingARandomPerson() {
+        Civilization civilization = new Civilization();
+        civilization.feedLanguagePattern("Manuel", "Pablo", "Ezequiel", "Rodrigo");
+        assertTrue(civilization.getImportantIndividuals().isEmpty());
+        civilization.createRandomPerson();
+        assertFalse(civilization.getImportantIndividuals().isEmpty());
+    }
+
 }
