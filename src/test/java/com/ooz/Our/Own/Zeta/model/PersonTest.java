@@ -25,4 +25,12 @@ class PersonTest {
         assertEquals(20, person.getAge());
     }
 
+    @Test
+    public void passingAwayWith100Years() {
+        Person person = new Person();
+        person.passYears(100);
+        assertEquals(100, person.getAge());
+        assertFalse(person.isAlive());
+    }
+
 }

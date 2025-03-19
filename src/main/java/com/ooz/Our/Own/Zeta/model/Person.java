@@ -68,6 +68,11 @@ public class Person {
         this.knowledge = 0;
     }
 
+
+    public void passYears(int years) {
+        this.age += years;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
