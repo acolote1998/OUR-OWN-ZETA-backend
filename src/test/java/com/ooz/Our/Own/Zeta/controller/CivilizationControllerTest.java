@@ -8,8 +8,12 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.http.*;
+
+import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CivilizationControllerTest {
 
     @Autowired
-    TestRestTemplate restTemplate;
+    private TestRestTemplate restTemplate;
 
     @Test
     @Order(1)
@@ -32,14 +36,4 @@ class CivilizationControllerTest {
         // Opcional: Verificar que el cuerpo de la respuesta contenga un mensaje de error
         assertTrue(response.getBody().contains("Civilization not found"));
     }
-
-    @Order(2)
-    void cannotCreateACivilizationWithoutNamePatterns() {
-        ResponseEntity<String> response = restTemplate.getForEntity("/civilizations/create", String.class);
-
-        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
-
-        assertTrue(response.getBody().contains("The Civilization has not received name patterns yet"));
-    }
-
 }

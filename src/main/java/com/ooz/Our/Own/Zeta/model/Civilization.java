@@ -5,15 +5,6 @@ import java.util.*;
 public class Civilization {
 
     int attempts = 0;
-
-    public int getAttempts() {
-        return attempts;
-    }
-
-    public void setAttempts(int attempts) {
-        this.attempts = attempts;
-    }
-
     private String name;
     private int age;
     private Map<String, Integer> resources = new HashMap<>(); // <Resources Name, Level>
@@ -22,6 +13,14 @@ public class Civilization {
     private Map<Person, String> importantIndividuals = new HashMap<>(); //<Person object, Name of the person>
     private List<String> eventsLog = new ArrayList<>();
     private Map<String, Integer> languagePatterns = new HashMap<>();
+
+    public int getAttempts() {
+        return attempts;
+    }
+
+    public void setAttempts(int attempts) {
+        this.attempts = attempts;
+    }
 
     public String getName() {
         return name;
@@ -88,7 +87,6 @@ public class Civilization {
     }
 
     public Civilization() {
-
         this.name = "";
         this.age = 0;
         this.discoveries = new HashMap<>();
@@ -944,5 +942,18 @@ public class Civilization {
         return resourceToImprove;
     }
 
-
+    @Override
+    public String toString() {
+        return "Civilization{" +
+                "attempts=" + attempts +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", resources=" + resources +
+                ", discoveries=" + discoveries +
+                ", population=" + population +
+                ", importantIndividuals=" + importantIndividuals +
+                ", eventsLog=" + eventsLog +
+                ", languagePatterns=" + languagePatterns +
+                '}';
+    }
 }
