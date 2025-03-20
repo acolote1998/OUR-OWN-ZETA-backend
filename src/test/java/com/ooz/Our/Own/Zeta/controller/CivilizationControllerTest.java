@@ -33,4 +33,13 @@ class CivilizationControllerTest {
         assertTrue(response.getBody().contains("Civilization not found"));
     }
 
+    @Order(2)
+    void cannotCreateACivilizationWithoutNamePatterns() {
+        ResponseEntity<String> response = restTemplate.getForEntity("/civilizations/create", String.class);
+
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+
+        assertTrue(response.getBody().contains("The Civilization has not received name patterns yet"));
+    }
+
 }
