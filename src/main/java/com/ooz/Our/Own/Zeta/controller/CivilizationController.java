@@ -31,6 +31,13 @@ public class CivilizationController {
         return civilization;
     }
 
+    // Obtaining all civilizations
+    // GET http://localhost:8080/civilizations/getAll
+    @GetMapping("/getAll")
+    public Map<String, Civilization> getAllCivilizations() {
+        return civilizations;
+    }
+
     // Creating Civilization
     // POST http://localhost:8080/civlizations
     @PostMapping

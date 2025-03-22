@@ -55,7 +55,7 @@ class CivilizationControllerTest {
     @Order(3)
     void getAllCivilizations() {
         ResponseEntity<Map> response = restTemplate.getForEntity("/civilizations/getAll", Map.class);
-        System.out.println(response);
+        System.out.println(response.getBody());
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 }
