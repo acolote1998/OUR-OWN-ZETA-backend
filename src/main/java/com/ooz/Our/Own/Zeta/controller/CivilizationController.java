@@ -42,7 +42,7 @@ public class CivilizationController {
     // POST http://localhost:8080/civlizations
     @PostMapping
     public CivilizationDto createCivilization() {
-        CivilizationDto civilizationDto = new CivilizationDto(civilizationNameGenerator.generateName());
+        CivilizationDto civilizationDto = new CivilizationDto(civilizationNameGenerator.generateName(), civilizationNameGenerator.getLanguagePatterns());
         Civilization civilizationObject = civilizationDto.createCivilization();
         if (!civilizationDto.name().isBlank()) {
             civilizations.put(civilizationObject.getName(), civilizationObject);
