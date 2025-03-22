@@ -14,6 +14,7 @@ import org.springframework.http.*;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
+import java.util.Map;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -41,12 +42,12 @@ class CivilizationControllerTest {
     @Test
     @Order(2)
     void createNewCivilizations() {
-        Civilization civilization = new Civilization();
-        civilization.feedLanguagePattern("Test");
-        //civilization.generateName();
-        civilization.setName("Pruebitos");
-        CivilizationDto civilizationDto = new CivilizationDto(civilization.getName());
-        ResponseEntity<CivilizationDto> response = restTemplate.postForEntity("/civilizations", civilizationDto, CivilizationDto.class);
-        System.out.println(response);
+        String[] wordsToFeed = new String[]{"Manuel", "Miguel", "Mandela"};
+        ResponseEntity<Map> responseFeed = restTemplate.postForEntity("/civilizations/feedingLanguagePatterns", wordsToFeed, Map.class);
+        System.out.println(responseFeed);
+        ResponseEntity<CivilizationDto> response = restTemplate.postForEntity("/civilizations", null, CivilizationDto.class);
+        System.out.println(response.getBody());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(HttpStatus.OK, responseFeed.getStatusCode());
     }
 }

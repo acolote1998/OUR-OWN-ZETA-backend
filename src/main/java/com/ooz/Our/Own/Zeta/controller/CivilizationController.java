@@ -34,13 +34,13 @@ public class CivilizationController {
     // Creating Civilization
     // POST http://localhost:8080/civlizations
     @PostMapping
-    public Civilization createCivilization() {
+    public CivilizationDto createCivilization() {
         CivilizationDto civilizationDto = new CivilizationDto(civilizationNameGenerator.generateName());
         Civilization civilizationObject = civilizationDto.createCivilization();
-        if (!civilizationObject.getName().isBlank()) {
+        if (!civilizationDto.name().isBlank()) {
             civilizations.put(civilizationObject.getName(), civilizationObject);
         }
-        return civilizationObject;
+        return civilizationDto;
     }
 
     // Feeding Name Patterns
