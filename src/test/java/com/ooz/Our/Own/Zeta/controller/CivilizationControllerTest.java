@@ -1,6 +1,7 @@
 package com.ooz.Our.Own.Zeta.controller;
 
 import com.ooz.Our.Own.Zeta.model.Civilization;
+import com.ooz.Our.Own.Zeta.model.Person;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -35,5 +36,17 @@ class CivilizationControllerTest {
 
         // Opcional: Verificar que el cuerpo de la respuesta contenga un mensaje de error
         assertTrue(response.getBody().contains("Civilization not found"));
+    }
+
+    @Test
+    @Order(2)
+    void createNewCivilizations() {
+        Civilization civilization = new Civilization();
+        civilization.feedLanguagePattern("Test");
+        //civilization.generateName();
+        civilization.setName("Pruebitos");
+        CivilizationDto civilizationDto = new CivilizationDto(civilization.getName());
+        ResponseEntity<CivilizationDto> response = restTemplate.postForEntity("/civilizations", civilizationDto, CivilizationDto.class);
+        System.out.println(response);
     }
 }
