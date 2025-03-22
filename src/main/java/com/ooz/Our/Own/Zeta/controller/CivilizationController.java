@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -13,6 +14,7 @@ import java.util.Map;
 public class CivilizationController {
 
     private final Map<String, Civilization> civilizations = new HashMap<>();
+    private final Civilization civilizationNameGenerator = new Civilization();
 
     // Initializing some civilizations in the future maybe
     public CivilizationController() {
@@ -32,13 +34,21 @@ public class CivilizationController {
     // Creating Civilization
     // POST http://localhost:8080/civlizations
     @PostMapping
-    public Civilization createCivilization(@RequestBody CivilizationDto civilizationDto) {
-
+    public Civilization createCivilization() {
+        CivilizationDto civilizationDto = new CivilizationDto(civilizationNameGenerator.generateName());
         Civilization civilizationObject = civilizationDto.createCivilization();
         if (!civilizationObject.getName().isBlank()) {
             civilizations.put(civilizationObject.getName(), civilizationObject);
         }
         return civilizationObject;
+    }
+
+    // Feeding Name Patterns
+    // POST http://localhost:8000/civilizations/feedingLanguagePatterns
+    @PostMapping("/feedingLanguagePatterns")
+    public Map<String, Integer> feedNamePatterns(@RequestBody String... others) {
+        civilizationNameGenerator.feedLanguagePattern(others);
+        return civilizationNameGenerator.getLanguagePatterns();
     }
 
 
