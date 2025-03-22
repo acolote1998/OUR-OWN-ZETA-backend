@@ -44,9 +44,7 @@ class CivilizationControllerTest {
     void createNewCivilizations() {
         String[] wordsToFeed = new String[]{"Manuel", "Miguel", "Mandela"};
         ResponseEntity<Map> responseFeed = restTemplate.postForEntity("/civilizations/feedingLanguagePatterns", wordsToFeed, Map.class);
-        System.out.println(responseFeed);
         ResponseEntity<CivilizationDto> response = restTemplate.postForEntity("/civilizations", null, CivilizationDto.class);
-        System.out.println(response.getBody());
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(HttpStatus.OK, responseFeed.getStatusCode());
     }
@@ -54,8 +52,16 @@ class CivilizationControllerTest {
     @Test
     @Order(3)
     void getAllCivilizations() {
-        ResponseEntity<Map> response = restTemplate.getForEntity("/civilizations/getAll", Map.class);
-        System.out.println(response.getBody());
-        assertEquals(HttpStatus.OK, response.getStatusCode());
+        String[] wordsToFeed = new String[]{"Manuel", "Miguel", "Mandela"};
+        ResponseEntity<Map> responseFeed = restTemplate.postForEntity("/civilizations/feedingLanguagePatterns", wordsToFeed, Map.class);
+        ResponseEntity<CivilizationDto> responseCiv1 = restTemplate.postForEntity("/civilizations", null, CivilizationDto.class);
+        ResponseEntity<CivilizationDto> responseCiv2 = restTemplate.postForEntity("/civilizations", null, CivilizationDto.class);
+        ResponseEntity<CivilizationDto> responseCiv3 = restTemplate.postForEntity("/civilizations", null, CivilizationDto.class);
+        ResponseEntity<Map> responseAllCivilizations = restTemplate.getForEntity("/civilizations/getAll", Map.class);
+        assertEquals(HttpStatus.OK, responseCiv1.getStatusCode());
+        assertEquals(HttpStatus.OK, responseCiv2.getStatusCode());
+        assertEquals(HttpStatus.OK, responseCiv3.getStatusCode());
+        assertEquals(HttpStatus.OK, responseFeed.getStatusCode());
+        assertEquals(HttpStatus.OK, responseAllCivilizations.getStatusCode());
     }
 }
