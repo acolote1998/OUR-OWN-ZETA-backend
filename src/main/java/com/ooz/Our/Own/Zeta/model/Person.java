@@ -77,8 +77,11 @@ public class Person {
     }
 
     public void passManyYears(int years) {
+
         for (int i = 0; i < years; i++) {
-            pasOneYear();
+            if (alive) {
+                pasOneYear();
+            }
         }
     }
 

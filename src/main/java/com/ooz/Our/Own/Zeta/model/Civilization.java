@@ -308,6 +308,10 @@ public class Civilization {
 
     public void passTime(int years) {
         age += years;
+
+        for (Map.Entry<String, Person> person : importantIndividuals.entrySet()) {
+            person.getValue().passManyYears(years);
+        }
     }
 
     public Person createImportantPerson(int age, String name, String field, Map<String, Integer> discoveries, boolean alive, int knowledge) {
