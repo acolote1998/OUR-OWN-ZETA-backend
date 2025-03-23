@@ -14,10 +14,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.http.*;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.UUID;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -140,5 +137,20 @@ class CivilizationControllerTest {
         ResponseEntity<String> responsePerso = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/createSpecialPerson", null, String.class);
         assertEquals(HttpStatus.OK, responsePerso.getStatusCode());
         assertTrue(responsePerso.getBody().contains("was born!"));
+    }
+
+    @Test
+    void getHistoryLog() {
+        String[] wordToFeed = new String[]{"Aki", "Capo", "Del", "Mundo"};
+        ResponseEntity<Map> responseFeed = restTemplate.postForEntity("/civilizations/feedingLanguagePatterns", wordToFeed, Map.class);
+        assertEquals(HttpStatus.OK, responseFeed.getStatusCode());
+        ResponseEntity<Civilization> response = restTemplate.postForEntity("/civilizations", null, Civilization.class);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        String nameCivliztion = response.getBody().getName();
+        ResponseEntity<List> responseHistoryLog = restTemplate.getForEntity("/civilizations/" + nameCivliztion + "/getHistoryLog", List.class);
+        System.out.println(responseHistoryLog.getBody());
+        assertEquals(HttpStatus.OK, responseHistoryLog.getStatusCode());
+        assertFalse(responseHistoryLog.getBody().isEmpty());
+
     }
 }
