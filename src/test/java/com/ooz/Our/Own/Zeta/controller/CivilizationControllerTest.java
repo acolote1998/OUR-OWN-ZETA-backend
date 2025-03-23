@@ -70,11 +70,21 @@ class CivilizationControllerTest {
     void getAllCivilizations() {
         String[] wordsToFeed = new String[]{"Manuel", "Miguel", "Mandela"};
         ResponseEntity<Map> responseFeed = restTemplate.postForEntity("/civilizations/feedingLanguagePatterns", wordsToFeed, Map.class);
-        createNewCivilizations();
-        createNewCivilizations();
-        createNewCivilizations();
+        ResponseEntity<CivilizationDto> responseCiv1 = restTemplate.postForEntity("/civilizations", null, CivilizationDto.class);
+        ResponseEntity<CivilizationDto> responseCiv2 = restTemplate.postForEntity("/civilizations", null, CivilizationDto.class);
+        ResponseEntity<CivilizationDto> responseCiv3 = restTemplate.postForEntity("/civilizations", null, CivilizationDto.class);
         ResponseEntity<Map> responseAllCivilizations = restTemplate.getForEntity("/civilizations/getAll", Map.class);
+        assertEquals(HttpStatus.OK, responseCiv1.getStatusCode());
+        assertEquals(HttpStatus.OK, responseCiv2.getStatusCode());
+        assertEquals(HttpStatus.OK, responseCiv3.getStatusCode());
         assertEquals(HttpStatus.OK, responseFeed.getStatusCode());
         assertEquals(HttpStatus.OK, responseAllCivilizations.getStatusCode());
+    }
+
+    @Test
+    void learnAResource() {
+        createNewCivilizations();
+        ResponseEntity<Map> responseAllCivilizations = restTemplate.getForEntity("/civilizations/getAll", Map.class);
+
     }
 }
