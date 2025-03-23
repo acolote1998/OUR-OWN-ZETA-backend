@@ -91,7 +91,7 @@ class CivilizationControllerTest {
         ResponseEntity<Civilization> respondeCreatedCiv = restTemplate.postForEntity("/civilizations", null, Civilization.class);
         assertEquals(HttpStatus.OK, respondeCreatedCiv.getStatusCode());
         String civilizationName = respondeCreatedCiv.getBody().getName();
-        ResponseEntity<Map> responseResources = restTemplate.postForEntity("/civilizations/" + civilizationName + "/learnResource", 100, Map.class);
+        ResponseEntity<String> responseResources = restTemplate.postForEntity("/civilizations/" + civilizationName + "/learnResource", 100, String.class);
         System.out.println(responseResources);
         assertEquals(HttpStatus.OK, responseResources.getStatusCode());
     }

@@ -40,6 +40,20 @@ public class CivilizationController {
         return civilizations;
     }
 
+    // Learning a new resource
+    // POST http://localhost:8080/civilizations/name/learnResource
+    @PostMapping("/{name}/learnResource")
+    public String learnResource(@PathVariable String name, @RequestBody Integer chancesOfLearningResource) {
+        String answer = "";
+        if (!civilizations.get(name).getName().isEmpty()) {
+            String learnedResource = civilizations.get(name).learningResource(chancesOfLearningResource);
+            answer = "The Civilization has improved their " + learnedResource;
+        } else {
+            answer = "Civilization not found";
+        }
+        return answer;
+    }
+
     // Creating Civilization
     // POST http://localhost:8080/civlizations
     @PostMapping
