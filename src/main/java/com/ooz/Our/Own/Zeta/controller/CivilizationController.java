@@ -87,5 +87,19 @@ public class CivilizationController {
         return civilizationNameGenerator.getLanguagePatterns();
     }
 
+    //Aging the civlization
+    //POST http://localhost:8080/civilizations/{name}/ageCivilization/{years}
+    @PostMapping("/{name}/ageCivilization")
+    public String ageCivilization(@PathVariable String name, @RequestBody Integer yearsToPass) {
+        String answer = "";
+        if (!civilizations.get(name).getName().isEmpty()) {
+            civilizations.get(name).passTime(yearsToPass);
+            answer = yearsToPass + " years have passed";
+        } else {
+            answer = "Civilization not found";
+        }
+        return answer;
+    }
+
 
 }

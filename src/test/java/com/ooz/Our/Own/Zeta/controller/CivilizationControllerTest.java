@@ -115,10 +115,15 @@ class CivilizationControllerTest {
 
     @Test
     void ageCivilization() {
-        ResponseEntity<Civilization> response = restTemplate.postForEntity("/civilizations/", null, Civilization.class);
+        String[] wordToFeed = new String[]{"Aki", "Capo", "Del", "Mundo"};
+        ResponseEntity<Map> responseFeed = restTemplate.postForEntity("/civilizations/feedingLanguagePatterns", wordToFeed, Map.class);
+        assertEquals(HttpStatus.OK, responseFeed.getStatusCode());
+        ResponseEntity<Civilization> response = restTemplate.postForEntity("/civilizations", null, Civilization.class);
         assertEquals(HttpStatus.OK, response.getStatusCode());
+        String nameCivliztion = response.getBody().getName();
         String years = "100";
-        ResponseEntity<String> responseAging = restTemplate.postForEntity("/civilizations/ageCivilization/" + years, null, String.class);
-        System.out.println(responseAging);
+        ResponseEntity<String> responseAging = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/ageCivilization", 100, String.class);
+        assertEquals(HttpStatus.OK, responseAging.getStatusCode());
+        assertTrue(responseAging.getBody().contains("have passed"));
     }
 }
