@@ -5,9 +5,11 @@ import com.ooz.Our.Own.Zeta.model.Person;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/civilizations")
@@ -40,6 +42,19 @@ public class CivilizationController {
         return civilizations;
     }
 
+    // Obtaining the history log
+    // GET http://localhost:8080/civilizations/{name}/getHistoryLog
+    @GetMapping("/{name}/getHistoryLog")
+    public List<String> getHistoryLog(@PathVariable String name) {
+        List<String> eventsLog = new ArrayList<>();
+        if (!civilizations.get(name).getName().isEmpty()) {
+            eventsLog = civilizations.get(name).getEventsLog();
+        } else {
+            throw new RuntimeException("Civilization not found");
+        }
+        return eventsLog;
+    }
+
     // Learning a new resource
     // POST http://localhost:8080/civilizations/name/learnResource
     @PostMapping("/{name}/learnResource")
@@ -54,6 +69,7 @@ public class CivilizationController {
     }
 
     //Discovering something
+    // POST http://localhost:8080/civlizations/{name}/discoverSomething
     @PostMapping("/{name}/discoverSomething")
     public String discoverSomething(@PathVariable String name, @RequestBody Integer chancesOfDiscoveringSomething) {
         String answer = "";
