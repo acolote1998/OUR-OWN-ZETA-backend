@@ -38,6 +38,7 @@ class CivilizationControllerTest {
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
 
         // Opcional: Verificar que el cuerpo de la respuesta contenga un mensaje de error
+        //System.out.println(response.getBody());
         assertTrue(response.getBody().contains("Civilization not found"));
     }
 /*
@@ -63,6 +64,10 @@ class CivilizationControllerTest {
         ResponseEntity<CivilizationDto> response = restTemplate.postForEntity("/civilizations", null, CivilizationDto.class);
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(HttpStatus.OK, responseFeed.getStatusCode());
+        System.out.println("////////////");
+        System.out.println("////////////");
+        System.out.println("////////////");
+        System.out.println(response.getBody());
     }
 
     @Test
@@ -83,8 +88,13 @@ class CivilizationControllerTest {
 
     @Test
     void learnAResource() {
-        createNewCivilizations();
-        ResponseEntity<Map> responseAllCivilizations = restTemplate.getForEntity("/civilizations/getAll", Map.class);
+        String[] wordsToFeed = new String[]{"Manuel", "Miguel", "Mandela"};
+        ResponseEntity<Map> responseFeed = restTemplate.postForEntity("/civilizations/feedingLanguagePatterns", wordsToFeed, Map.class);
+        ResponseEntity<CivilizationDto> responseCiv1 = restTemplate.postForEntity("/civilizations", null, CivilizationDto.class);
+        String civlizationName = responseCiv1.getBody().name();
+        ResponseEntity<Civilization> responseCivilization = restTemplate.getForEntity("/civilizations/" + civlizationName, Civilization.class);
+        System.out.println(responseCivilization.getBody());
+        System.out.println(responseCivilization.getStatusCode());
 
     }
 }

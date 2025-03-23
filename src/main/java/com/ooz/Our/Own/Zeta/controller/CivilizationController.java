@@ -23,12 +23,23 @@ public class CivilizationController {
     // Obtaining civilization by name
     // GET http://localhost:8080/civlizations/name
     @GetMapping(value = "/{name}", produces = "application/json")
-    public Civilization getCivilization(@PathVariable String name) {
-        Civilization civilization = civilizations.get(name);
-        if (civilization == null) {
+    public CivilizationDto getCivilization(@PathVariable String name) {
+        CivilizationDto civilizationDto = null;
+        if (civilizations.get(name) != null) {
+            civilizationDto = new CivilizationDto(civilizations.get(name).getName()
+                    , civilizations.get(name).getAge()
+                    , civilizations.get(name).getResources()
+                    , civilizations.get(name).getDiscoveries()
+                    , civilizations.get(name).getPopulation()
+                    , civilizations.get(name).getImportantIndividuals()
+                    , civilizations.get(name).getEventsLog()
+                    , civilizations.get(name).getLanguagePatterns());
+
+
+        } else {
             throw new RuntimeException("Civilization not found");
         }
-        return civilization;
+        return civilizationDto;
     }
 
     // Obtaining all civilizations
@@ -42,7 +53,15 @@ public class CivilizationController {
     // POST http://localhost:8080/civlizations
     @PostMapping
     public CivilizationDto createCivilization() {
-        CivilizationDto civilizationDto = new CivilizationDto(civilizationNameGenerator.generateName(), civilizationNameGenerator.getLanguagePatterns());
+        CivilizationDto civilizationDto = new CivilizationDto(
+                civilizationNameGenerator.generateName()
+                , civilizationNameGenerator.getAge()
+                , civilizationNameGenerator.getResources()
+                , civilizationNameGenerator.getDiscoveries()
+                , civilizationNameGenerator.getPopulation()
+                , civilizationNameGenerator.getImportantIndividuals()
+                , civilizationNameGenerator.getEventsLog()
+                , civilizationNameGenerator.getLanguagePatterns());
         Civilization civilizationObject = civilizationDto.createCivilization();
         if (!civilizationDto.name().isBlank()) {
             civilizations.put(civilizationObject.getName(), civilizationObject);

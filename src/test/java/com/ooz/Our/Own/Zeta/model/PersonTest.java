@@ -35,4 +35,5 @@ class PersonTest {
         System.out.println(person.getLifeLog());
     }
 
+
 }

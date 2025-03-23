@@ -10,7 +10,7 @@ public class Civilization {
     private Map<String, Integer> resources = new HashMap<>(); // <Resources Name, Level>
     private Map<String, Integer> discoveries = new HashMap<>(); // <Discoveries Name, Level>
     private int population;
-    private Map<Person, String> importantIndividuals = new HashMap<>(); //<Person object, Name of the person>
+    private Map<String, Person> importantIndividuals = new HashMap<>();
     private List<String> eventsLog = new ArrayList<>();
     private Map<String, Integer> languagePatterns = new HashMap<>();
 
@@ -70,11 +70,11 @@ public class Civilization {
         this.population = population;
     }
 
-    public Map<Person, String> getImportantIndividuals() {
+    public Map<String, Person> getImportantIndividuals() {
         return importantIndividuals;
     }
 
-    public void setImportantIndividuals(Map<Person, String> importantIndividuals) {
+    public void setImportantIndividuals(Map<String, Person> importantIndividuals) {
         this.importantIndividuals = importantIndividuals;
     }
 
@@ -355,7 +355,7 @@ public class Civilization {
             }
             if (!fieldToBe.equals("Cannot generate field")) {
                 Person createdPerson = createImportantPerson(0, generateWord(), fieldToBe, null, true, 0);
-                importantIndividuals.put(createdPerson, createdPerson.getName());
+                importantIndividuals.put(createdPerson.getName(), createdPerson);
                 message = createdPerson.getName() + ", a promising " + createdPerson.getField().toLowerCase() + " was born!";
                 logEventPerson(createdPerson);
             }
