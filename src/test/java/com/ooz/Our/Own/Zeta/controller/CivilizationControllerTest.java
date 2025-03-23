@@ -112,4 +112,13 @@ class CivilizationControllerTest {
         assertEquals(HttpStatus.OK, responseDiscovery.getStatusCode());
         assertTrue(responseDiscovery.getBody().contains("discovered"));
     }
+
+    @Test
+    void ageCivilization() {
+        ResponseEntity<Civilization> response = restTemplate.postForEntity("/civilizations/", null, Civilization.class);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        String years = "100";
+        ResponseEntity<String> responseAging = restTemplate.postForEntity("/civilizations/ageCivilization/" + years, null, String.class);
+        System.out.println(responseAging);
+    }
 }
