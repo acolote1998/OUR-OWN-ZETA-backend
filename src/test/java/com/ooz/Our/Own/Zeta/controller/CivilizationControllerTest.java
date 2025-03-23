@@ -126,4 +126,16 @@ class CivilizationControllerTest {
         assertEquals(HttpStatus.OK, responseAging.getStatusCode());
         assertTrue(responseAging.getBody().contains("have passed"));
     }
+
+    @Test
+    void createSpecialPerson() {
+        String[] wordToFeed = new String[]{"Aki", "Capo", "Del", "Mundo"};
+        ResponseEntity<Map> responseFeed = restTemplate.postForEntity("/civilizations/feedingLanguagePatterns", wordToFeed, Map.class);
+        assertEquals(HttpStatus.OK, responseFeed.getStatusCode());
+        ResponseEntity<Civilization> response = restTemplate.postForEntity("/civilizations", null, Civilization.class);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        String nameCivliztion = response.getBody().getName();
+        ResponseEntity<Person> responsePerso = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/createSpecialPerson", null, Person.class);
+        assertEquals(HttpStatus.OK, responsePerso.getStatusCode());
+    }
 }
