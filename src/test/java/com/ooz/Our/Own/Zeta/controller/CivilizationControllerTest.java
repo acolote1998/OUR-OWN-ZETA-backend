@@ -132,8 +132,6 @@ class CivilizationControllerTest {
         ResponseEntity<Civilization> response = restTemplate.postForEntity("/civilizations", null, Civilization.class);
         assertEquals(HttpStatus.OK, response.getStatusCode());
         String nameCivliztion = response.getBody().getName();
-
-        System.out.println(response.getBody());
         ResponseEntity<String> responsePerso = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/createSpecialPerson", null, String.class);
         assertEquals(HttpStatus.OK, responsePerso.getStatusCode());
         assertTrue(responsePerso.getBody().contains("was born!"));
@@ -147,8 +145,16 @@ class CivilizationControllerTest {
         ResponseEntity<Civilization> response = restTemplate.postForEntity("/civilizations", null, Civilization.class);
         assertEquals(HttpStatus.OK, response.getStatusCode());
         String nameCivliztion = response.getBody().getName();
+        ResponseEntity<String> responsePerso = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/createSpecialPerson", null, String.class);
+        assertEquals(HttpStatus.OK, responsePerso.getStatusCode());
+        assertTrue(responsePerso.getBody().contains("was born!"));
+        ResponseEntity<String> responseResources = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/learnResource", 100, String.class);
+        assertEquals(HttpStatus.OK, responseResources.getStatusCode());
+        assertTrue(responseResources.getBody().contains("discovered"));
+        ResponseEntity<String> responseDiscovery = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/discoverSomething", 100, String.class);
+        assertEquals(HttpStatus.OK, responseDiscovery.getStatusCode());
+        assertTrue(responseDiscovery.getBody().contains("discovered"));
         ResponseEntity<List> responseHistoryLog = restTemplate.getForEntity("/civilizations/" + nameCivliztion + "/getHistoryLog", List.class);
-        System.out.println(responseHistoryLog.getBody());
         assertEquals(HttpStatus.OK, responseHistoryLog.getStatusCode());
         assertFalse(responseHistoryLog.getBody().isEmpty());
 
