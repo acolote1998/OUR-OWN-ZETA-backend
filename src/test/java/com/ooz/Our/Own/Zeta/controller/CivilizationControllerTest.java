@@ -63,6 +63,7 @@ class CivilizationControllerTest {
         ResponseEntity<Civilization> response = restTemplate.postForEntity("/civilizations", null, Civilization.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertFalse(response.getBody().getName().isEmpty());
         assertEquals(HttpStatus.OK, responseFeed.getStatusCode());
     }
 
@@ -84,13 +85,6 @@ class CivilizationControllerTest {
 
     @Test
     void learnAResource() {
-        String[] wordsToFeed = new String[]{"Manuel", "Miguel", "Mandela"};
-        ResponseEntity<Map> responseFeed = restTemplate.postForEntity("/civilizations/feedingLanguagePatterns", wordsToFeed, Map.class);
-        ResponseEntity<CivilizationDto> responseCiv1 = restTemplate.postForEntity("/civilizations", null, CivilizationDto.class);
-        String civlizationName = responseCiv1.getBody().name();
-        ResponseEntity<Civilization> responseCivilization = restTemplate.getForEntity("/civilizations/" + civlizationName, Civilization.class);
-        System.out.println(responseCivilization.getBody());
-        System.out.println(responseCivilization.getStatusCode());
 
     }
 }
