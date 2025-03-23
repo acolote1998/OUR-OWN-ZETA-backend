@@ -92,7 +92,24 @@ class CivilizationControllerTest {
         assertEquals(HttpStatus.OK, respondeCreatedCiv.getStatusCode());
         String civilizationName = respondeCreatedCiv.getBody().getName();
         ResponseEntity<String> responseResources = restTemplate.postForEntity("/civilizations/" + civilizationName + "/learnResource", 100, String.class);
-        System.out.println(responseResources);
         assertEquals(HttpStatus.OK, responseResources.getStatusCode());
+        assertTrue(responseResources.getBody().contains("improved"));
+    }
+
+    @Test
+    void discoverSomething() {
+        String[] wordToFeed = new String[]{"Aki", "Capo", "Del", "Mundo"};
+        ResponseEntity<Map> responseFeed = restTemplate.postForEntity("/civilizations/feedingLanguagePatterns", wordToFeed, Map.class);
+        assertEquals(HttpStatus.OK, responseFeed.getStatusCode());
+        ResponseEntity<Civilization> respondeCreatedCiv = restTemplate.postForEntity("/civilizations", null, Civilization.class);
+        assertEquals(HttpStatus.OK, respondeCreatedCiv.getStatusCode());
+        String civilizationName = respondeCreatedCiv.getBody().getName();
+        ResponseEntity<String> responseResources = restTemplate.postForEntity("/civilizations/" + civilizationName + "/learnResource", 100, String.class);
+        assertEquals(HttpStatus.OK, responseResources.getStatusCode());
+        assertTrue(responseResources.getBody().contains("improved"));
+        ResponseEntity<String> responseDiscovery = restTemplate.postForEntity("/civilizations/" + civilizationName + "/discoverSomething", 100, String.class);
+        System.out.println(responseDiscovery);
+        assertEquals(HttpStatus.OK, responseDiscovery.getStatusCode());
+        assertTrue(responseDiscovery.getBody().contains("discovered"));
     }
 }
