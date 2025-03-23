@@ -41,33 +41,29 @@ class CivilizationControllerTest {
         //System.out.println(response.getBody());
         assertTrue(response.getBody().contains("Civilization not found"));
     }
-/*
+
     @Test
     void getACivlization() {
-        String[] wordsToFeed = new String[]{"X"};
+        String[] wordsToFeed = new String[]{"Manuel", "Miguel", "Mandela"};
         ResponseEntity<Map> responseFeed = restTemplate.postForEntity("/civilizations/feedingLanguagePatterns", wordsToFeed, Map.class);
-        ResponseEntity<CivilizationDto> responseCivCreated = restTemplate.postForEntity("/civilizations", null, CivilizationDto.class);
-        assertEquals(HttpStatus.OK, responseCivCreated.getStatusCode());
+        ResponseEntity<Civilization> response = restTemplate.postForEntity("/civilizations", null, Civilization.class);
+        String nameOfCreated = response.getBody().getName();
+        assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(HttpStatus.OK, responseFeed.getStatusCode());
-        ResponseEntity<Civilization> responseGetOne = restTemplate.getForEntity("/civilizations/NAMEHERE", Civilization.class);
-        System.out.println(responseGetOne.getStatusCode());
-        System.out.println(responseGetOne.getBody());
+        ResponseEntity<Civilization> responseCivilization = restTemplate.getForEntity("/civilizations/" + nameOfCreated, Civilization.class);
+        assertEquals(HttpStatus.OK, responseCivilization.getStatusCode());
+        assertFalse(responseCivilization.getBody().getName().isEmpty());
     }
- */
 
 
     @Test
-        //@Order(3)
     void createNewCivilizations() {
         String[] wordsToFeed = new String[]{"Manuel", "Miguel", "Mandela"};
         ResponseEntity<Map> responseFeed = restTemplate.postForEntity("/civilizations/feedingLanguagePatterns", wordsToFeed, Map.class);
-        ResponseEntity<CivilizationDto> response = restTemplate.postForEntity("/civilizations", null, CivilizationDto.class);
+        ResponseEntity<Civilization> response = restTemplate.postForEntity("/civilizations", null, Civilization.class);
+
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(HttpStatus.OK, responseFeed.getStatusCode());
-        System.out.println("////////////");
-        System.out.println("////////////");
-        System.out.println("////////////");
-        System.out.println(response.getBody());
     }
 
     @Test
@@ -75,9 +71,9 @@ class CivilizationControllerTest {
     void getAllCivilizations() {
         String[] wordsToFeed = new String[]{"Manuel", "Miguel", "Mandela"};
         ResponseEntity<Map> responseFeed = restTemplate.postForEntity("/civilizations/feedingLanguagePatterns", wordsToFeed, Map.class);
-        ResponseEntity<CivilizationDto> responseCiv1 = restTemplate.postForEntity("/civilizations", null, CivilizationDto.class);
-        ResponseEntity<CivilizationDto> responseCiv2 = restTemplate.postForEntity("/civilizations", null, CivilizationDto.class);
-        ResponseEntity<CivilizationDto> responseCiv3 = restTemplate.postForEntity("/civilizations", null, CivilizationDto.class);
+        ResponseEntity<Civilization> responseCiv1 = restTemplate.postForEntity("/civilizations", null, Civilization.class);
+        ResponseEntity<Civilization> responseCiv2 = restTemplate.postForEntity("/civilizations", null, Civilization.class);
+        ResponseEntity<Civilization> responseCiv3 = restTemplate.postForEntity("/civilizations", null, Civilization.class);
         ResponseEntity<Map> responseAllCivilizations = restTemplate.getForEntity("/civilizations/getAll", Map.class);
         assertEquals(HttpStatus.OK, responseCiv1.getStatusCode());
         assertEquals(HttpStatus.OK, responseCiv2.getStatusCode());
