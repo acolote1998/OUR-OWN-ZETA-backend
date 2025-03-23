@@ -74,6 +74,7 @@ public class CivilizationController {
         civilization.setName(civilizationNameGenerator.generateName());
         if (!civilization.getName().isBlank()) {
             civilizations.put(civilization.getName(), civilization);
+            civilizations.get(civilization.getName()).setLanguagePatterns(civilizationNameGenerator.getLanguagePatterns());
         }
 
         return civilization;
@@ -97,6 +98,19 @@ public class CivilizationController {
             answer = yearsToPass + " years have passed";
         } else {
             answer = "Civilization not found";
+        }
+        return answer;
+    }
+
+    //Creating a special person
+    //POST http://localhost:8080/civilizations/{name}/createSpecialPerson
+    @PostMapping("/{name}/createSpecialPerson")
+    public String createSpecialPerson(@PathVariable String name) {
+        String answer = "";
+        if (!civilizations.get(name).getName().isEmpty()) {
+            answer = civilizations.get(name).createRandomPerson();
+        } else {
+            return "Civilization not found.";
         }
         return answer;
     }

@@ -135,7 +135,10 @@ class CivilizationControllerTest {
         ResponseEntity<Civilization> response = restTemplate.postForEntity("/civilizations", null, Civilization.class);
         assertEquals(HttpStatus.OK, response.getStatusCode());
         String nameCivliztion = response.getBody().getName();
-        ResponseEntity<Person> responsePerso = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/createSpecialPerson", null, Person.class);
+
+        System.out.println(response.getBody());
+        ResponseEntity<String> responsePerso = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/createSpecialPerson", null, String.class);
         assertEquals(HttpStatus.OK, responsePerso.getStatusCode());
+        assertTrue(responsePerso.getBody().contains("was born!"));
     }
 }
