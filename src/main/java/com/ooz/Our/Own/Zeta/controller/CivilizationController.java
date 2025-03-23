@@ -54,6 +54,18 @@ public class CivilizationController {
         return answer;
     }
 
+    //Discovering something
+    @PostMapping("/{name}/discoverSomething")
+    public String discoverSomething(@PathVariable String name, @RequestBody Integer chancesOfDiscoveringSomething) {
+        String answer = "";
+        if (!civilizations.get(name).getName().isEmpty()) {
+            String learned;
+        } else {
+            answer = "Civilization not found";
+        }
+        return answer;
+    }
+
     // Creating Civilization
     // POST http://localhost:8080/civlizations
     @PostMapping

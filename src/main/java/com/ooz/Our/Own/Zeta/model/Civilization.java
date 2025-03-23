@@ -692,10 +692,15 @@ public class Civilization {
         resources.put(word, resources.get(word) + 1);
     }
 
-    public String discoverSomething() {
+    public String discoverSomething(int percentChance) {
         Random random = new Random();
-        int whichOneToLevelUp = 0;
-        int discoveryToLevelUp = random.nextInt(1, 6);
+        String discovery = "";
+
+        if (random.nextInt(1, 101) <= percentChance) {
+
+
+            int whichOneToLevelUp = 0;
+            int discoveryToLevelUp = random.nextInt(1, 6);
         /*
         Number from 1 to 5
         1=Technology
@@ -704,194 +709,197 @@ public class Civilization {
         4=Raw Materials
         5=Security
         */
-        String discovery = "";
-        //Technology
-        if (discoveryToLevelUp == 1) {
-            if (resources.get("Technology") > 5 && discoveries.get("Computers") >= 1 && discoveries.get("Electricity") >= 1 && discoveries.get("Steam Power") >= 1 && discoveries.get("Writing") >= 1 && discoveries.get("Wheel") >= 1) {
-                whichOneToLevelUp = random.nextInt(1, 7);//1 to 6 Wheel,Writing,Steam Power, Electricity, Computers, Artificial Intelligence
-            } else if (resources.get("Technology") == 5) {
-                whichOneToLevelUp = random.nextInt(1, 6);//1 to 5 Wheel,Writing,Steam Power, Electricity, Computers
-            } else if (resources.get("Technology") == 4) {
-                whichOneToLevelUp = random.nextInt(1, 5);//1 to 4 Wheel,Writing,Steam Power, Electricity
-            } else if (resources.get("Technology") == 3) {
-                whichOneToLevelUp = random.nextInt(1, 4);//1 to 3 Wheel,Writing,Steam Power
-            } else if (resources.get("Technology") == 2) {
-                whichOneToLevelUp = random.nextInt(1, 3);//1 to 2 Wheel,Writing
-            } else if (resources.get("Technology") == 1) {
-                whichOneToLevelUp = 1;
+            //Technology
+            if (discoveryToLevelUp == 1) {
+                if (resources.get("Technology") > 5 && discoveries.get("Computers") >= 1 && discoveries.get("Electricity") >= 1 && discoveries.get("Steam Power") >= 1 && discoveries.get("Writing") >= 1 && discoveries.get("Wheel") >= 1) {
+                    whichOneToLevelUp = random.nextInt(1, 7);//1 to 6 Wheel,Writing,Steam Power, Electricity, Computers, Artificial Intelligence
+                } else if (resources.get("Technology") == 5) {
+                    whichOneToLevelUp = random.nextInt(1, 6);//1 to 5 Wheel,Writing,Steam Power, Electricity, Computers
+                } else if (resources.get("Technology") == 4) {
+                    whichOneToLevelUp = random.nextInt(1, 5);//1 to 4 Wheel,Writing,Steam Power, Electricity
+                } else if (resources.get("Technology") == 3) {
+                    whichOneToLevelUp = random.nextInt(1, 4);//1 to 3 Wheel,Writing,Steam Power
+                } else if (resources.get("Technology") == 2) {
+                    whichOneToLevelUp = random.nextInt(1, 3);//1 to 2 Wheel,Writing
+                } else if (resources.get("Technology") == 1) {
+                    whichOneToLevelUp = 1;
+                }
+                if (whichOneToLevelUp == 6) {
+                    discovery = "Artificial Intelligence";
+                } else if (whichOneToLevelUp == 5) {
+                    discovery = "Computers";
+                } else if (whichOneToLevelUp == 4) {
+                    discovery = "Electricity";
+                } else if (whichOneToLevelUp == 3) {
+                    discovery = "Steam Power";
+                } else if (whichOneToLevelUp == 2) {
+                    discovery = "Writing";
+                } else if (whichOneToLevelUp == 1) {
+                    discovery = "Wheel";
+                }
+
+                if (!discovery.isEmpty()) {
+                    discoveries.put(discovery, discoveries.get(discovery) + 1);
+                }
             }
-            if (whichOneToLevelUp == 6) {
-                discovery = "Artificial Intelligence";
-            } else if (whichOneToLevelUp == 5) {
-                discovery = "Computers";
-            } else if (whichOneToLevelUp == 4) {
-                discovery = "Electricity";
-            } else if (whichOneToLevelUp == 3) {
-                discovery = "Steam Power";
-            } else if (whichOneToLevelUp == 2) {
-                discovery = "Writing";
-            } else if (whichOneToLevelUp == 1) {
-                discovery = "Wheel";
+            // Cultura
+            else if (discoveryToLevelUp == 2) {
+                if (resources.get("Culture") >= 5 && discoveries.get("Art") >= 1 && discoveries.get("Philosophy") >= 1
+                        && discoveries.get("Music") >= 1 && discoveries.get("Theater") >= 1 && discoveries.get("Sculpting") >= 1) {
+                    whichOneToLevelUp = random.nextInt(1, 7); // 1 to 6 Art, Philosophy, Music, Theater, Sculpting, Renaissance
+                } else if (resources.get("Culture") == 5) {
+                    whichOneToLevelUp = random.nextInt(1, 6); // 1 to 5 Art, Philosophy, Music, Theater, Sculpting
+                } else if (resources.get("Culture") == 4) {
+                    whichOneToLevelUp = random.nextInt(1, 5); // 1 to 4 Art, Philosophy, Music, Theater
+                } else if (resources.get("Culture") == 3) {
+                    whichOneToLevelUp = random.nextInt(1, 4); // 1 to 3 Art, Philosophy, Music
+                } else if (resources.get("Culture") == 2) {
+                    whichOneToLevelUp = random.nextInt(1, 3); // 1 to 2 Art, Philosophy
+                } else if (resources.get("Culture") == 1) {
+                    whichOneToLevelUp = 1;
+                }
+                if (whichOneToLevelUp == 6) {
+                    discovery = "Renaissance";
+                } else if (whichOneToLevelUp == 5) {
+                    discovery = "Sculpting";
+                } else if (whichOneToLevelUp == 4) {
+                    discovery = "Theater";
+                } else if (whichOneToLevelUp == 3) {
+                    discovery = "Music";
+                } else if (whichOneToLevelUp == 2) {
+                    discovery = "Philosophy";
+                } else if (whichOneToLevelUp == 1) {
+                    discovery = "Art";
+                }
+
+                if (!discovery.isEmpty()) {
+                    discoveries.put(discovery, discoveries.get(discovery) + 1);
+                }
             }
 
-            if (!discovery.isEmpty()) {
-                discoveries.put(discovery, discoveries.get(discovery) + 1);
+            // Fe
+            else if (discoveryToLevelUp == 3) {
+                if (resources.get("Faith") >= 5 && discoveries.get("Monotheism") >= 1 && discoveries.get("Polytheism") >= 1
+                        && discoveries.get("Energies") >= 1 && discoveries.get("Divine Contact") >= 1 && discoveries.get("Enlightenment") >= 1) {
+                    whichOneToLevelUp = random.nextInt(1, 7); // 1 to 6 Monotheism, Polytheism, Energies, Divine Contact, Enlightenment, New Creed
+                } else if (resources.get("Faith") == 5) {
+                    whichOneToLevelUp = random.nextInt(1, 6); // 1 to 5 Monotheism, Polytheism, Energies, Divine Contact, Enlightenment
+                } else if (resources.get("Faith") == 4) {
+                    whichOneToLevelUp = random.nextInt(1, 5); // 1 to 4 Monotheism, Polytheism, Energies, Divine Contact
+                } else if (resources.get("Faith") == 3) {
+                    whichOneToLevelUp = random.nextInt(1, 4); // 1 to 3 Monotheism, Polytheism, Energies
+                } else if (resources.get("Faith") == 2) {
+                    whichOneToLevelUp = random.nextInt(1, 3); // 1 to 2 Monotheism, Polytheism
+                } else if (resources.get("Faith") == 1) {
+                    whichOneToLevelUp = 1;
+                }
+                if (whichOneToLevelUp == 6) {
+                    discovery = "Universal Faith";
+                } else if (whichOneToLevelUp == 5) {
+                    discovery = "Enlightenment";
+                } else if (whichOneToLevelUp == 4) {
+                    discovery = "Divine Contact";
+                } else if (whichOneToLevelUp == 3) {
+                    discovery = "Energies";
+                } else if (whichOneToLevelUp == 2) {
+                    discovery = "Polytheism";
+                } else if (whichOneToLevelUp == 1) {
+                    discovery = "Monotheism";
+                }
+
+                if (!discovery.isEmpty()) {
+                    discoveries.put(discovery, discoveries.get(discovery) + 1);
+                }
             }
+
+            // Materiales
+            else if (discoveryToLevelUp == 4) {
+                if (resources.get("Raw Materials") >= 5 && discoveries.get("Copper") >= 1 && discoveries.get("Iron") >= 1
+                        && discoveries.get("Coal") >= 1 && discoveries.get("Oil") >= 1 && discoveries.get("Rare Earth Elements") >= 1) {
+                    whichOneToLevelUp = random.nextInt(1, 7); // 1 to 6 Copper, Iron, Coal, Oil, Rare Earth Elements, Nanomaterials
+                } else if (resources.get("Raw Materials") == 5) {
+                    whichOneToLevelUp = random.nextInt(1, 6); // 1 to 5 Copper, Iron, Coal, Oil, Rare Earth Elements
+                } else if (resources.get("Raw Materials") == 4) {
+                    whichOneToLevelUp = random.nextInt(1, 5); // 1 to 4 Copper, Iron, Coal, Oil
+                } else if (resources.get("Raw Materials") == 3) {
+                    whichOneToLevelUp = random.nextInt(1, 4); // 1 to 3 Copper, Iron, Coal
+                } else if (resources.get("Raw Materials") == 2) {
+                    whichOneToLevelUp = random.nextInt(1, 3); // 1 to 2 Copper, Iron
+                } else if (resources.get("Raw Materials") == 1) {
+                    whichOneToLevelUp = 1;
+                }
+                if (whichOneToLevelUp == 6) {
+                    discovery = "Nuclear Fusion";
+                } else if (whichOneToLevelUp == 5) {
+                    discovery = "Rare Earth Elements";
+                } else if (whichOneToLevelUp == 4) {
+                    discovery = "Oil";
+                } else if (whichOneToLevelUp == 3) {
+                    discovery = "Coal";
+                } else if (whichOneToLevelUp == 2) {
+                    discovery = "Iron";
+                } else if (whichOneToLevelUp == 1) {
+                    discovery = "Copper";
+                }
+
+                if (!discovery.isEmpty()) {
+                    discoveries.put(discovery, discoveries.get(discovery) + 1);
+                }
+            }
+
+            // Seguridad
+            else if (discoveryToLevelUp == 5) {
+                if (resources.get("Security") >= 5 && discoveries.get("Basic Defense") >= 1 && discoveries.get("Archery") >= 1
+                        && discoveries.get("Gunpowder") >= 1 && discoveries.get("Radar") >= 1 && discoveries.get("Invisibility") >= 1) {
+                    whichOneToLevelUp = random.nextInt(1, 7); // 1 to 6 Basic Defense, Archery, Gunpowder, Radar, Invisibility, Cyber Defense
+                } else if (resources.get("Security") == 5) {
+                    whichOneToLevelUp = random.nextInt(1, 6); // 1 to 5 Basic Defense, Archery, Gunpowder, Radar, Invisibility
+                } else if (resources.get("Security") == 4) {
+                    whichOneToLevelUp = random.nextInt(1, 5); // 1 to 4 Basic Defense, Archery, Gunpowder, Radar
+                } else if (resources.get("Security") == 3) {
+                    whichOneToLevelUp = random.nextInt(1, 4); // 1 to 3 Basic Defense, Archery, Gunpowder
+                } else if (resources.get("Security") == 2) {
+                    whichOneToLevelUp = random.nextInt(1, 3); // 1 to 2 Basic Defense, Archery
+                } else if (resources.get("Security") == 1) {
+                    whichOneToLevelUp = 1;
+                }
+                if (whichOneToLevelUp == 6) {
+                    discovery = "Cybersecurity";
+                } else if (whichOneToLevelUp == 5) {
+                    discovery = "Invisibility";
+                } else if (whichOneToLevelUp == 4) {
+                    discovery = "Radar";
+                } else if (whichOneToLevelUp == 3) {
+                    discovery = "Gunpowder";
+                } else if (whichOneToLevelUp == 2) {
+                    discovery = "Archery";
+                } else if (whichOneToLevelUp == 1) {
+                    discovery = "Basic Defense";
+                }
+
+                if (!discovery.isEmpty()) {
+                    discoveries.put(discovery, discoveries.get(discovery) + 1);
+                }
+            }
+            if (discoveries.get("Artificial Intelligence") >= 1 &&
+                    discoveries.get("Renaissance") >= 1 &&
+                    discoveries.get("Universal Faith") >= 1 &&
+                    discoveries.get("Nuclear Fusion") >= 1 &&
+                    discoveries.get("Cybersecurity") >= 1) {
+
+                int randomChanceOfWinning = random.nextInt(1, 101);
+
+                if (randomChanceOfWinning <= 5) { // 5% chance of winning
+                    discovery = "World Domination";
+                    discoveries.put(discovery, 1);
+                }
+            }
+            logEventDiscovery(discovery);
+
+        } else {
+            discovery = "The Civilization has not discovered anything";
         }
-        // Cultura
-        else if (discoveryToLevelUp == 2) {
-            if (resources.get("Culture") >= 5 && discoveries.get("Art") >= 1 && discoveries.get("Philosophy") >= 1
-                    && discoveries.get("Music") >= 1 && discoveries.get("Theater") >= 1 && discoveries.get("Sculpting") >= 1) {
-                whichOneToLevelUp = random.nextInt(1, 7); // 1 to 6 Art, Philosophy, Music, Theater, Sculpting, Renaissance
-            } else if (resources.get("Culture") == 5) {
-                whichOneToLevelUp = random.nextInt(1, 6); // 1 to 5 Art, Philosophy, Music, Theater, Sculpting
-            } else if (resources.get("Culture") == 4) {
-                whichOneToLevelUp = random.nextInt(1, 5); // 1 to 4 Art, Philosophy, Music, Theater
-            } else if (resources.get("Culture") == 3) {
-                whichOneToLevelUp = random.nextInt(1, 4); // 1 to 3 Art, Philosophy, Music
-            } else if (resources.get("Culture") == 2) {
-                whichOneToLevelUp = random.nextInt(1, 3); // 1 to 2 Art, Philosophy
-            } else if (resources.get("Culture") == 1) {
-                whichOneToLevelUp = 1;
-            }
-            if (whichOneToLevelUp == 6) {
-                discovery = "Renaissance";
-            } else if (whichOneToLevelUp == 5) {
-                discovery = "Sculpting";
-            } else if (whichOneToLevelUp == 4) {
-                discovery = "Theater";
-            } else if (whichOneToLevelUp == 3) {
-                discovery = "Music";
-            } else if (whichOneToLevelUp == 2) {
-                discovery = "Philosophy";
-            } else if (whichOneToLevelUp == 1) {
-                discovery = "Art";
-            }
-
-            if (!discovery.isEmpty()) {
-                discoveries.put(discovery, discoveries.get(discovery) + 1);
-            }
-        }
-
-        // Fe
-        else if (discoveryToLevelUp == 3) {
-            if (resources.get("Faith") >= 5 && discoveries.get("Monotheism") >= 1 && discoveries.get("Polytheism") >= 1
-                    && discoveries.get("Energies") >= 1 && discoveries.get("Divine Contact") >= 1 && discoveries.get("Enlightenment") >= 1) {
-                whichOneToLevelUp = random.nextInt(1, 7); // 1 to 6 Monotheism, Polytheism, Energies, Divine Contact, Enlightenment, New Creed
-            } else if (resources.get("Faith") == 5) {
-                whichOneToLevelUp = random.nextInt(1, 6); // 1 to 5 Monotheism, Polytheism, Energies, Divine Contact, Enlightenment
-            } else if (resources.get("Faith") == 4) {
-                whichOneToLevelUp = random.nextInt(1, 5); // 1 to 4 Monotheism, Polytheism, Energies, Divine Contact
-            } else if (resources.get("Faith") == 3) {
-                whichOneToLevelUp = random.nextInt(1, 4); // 1 to 3 Monotheism, Polytheism, Energies
-            } else if (resources.get("Faith") == 2) {
-                whichOneToLevelUp = random.nextInt(1, 3); // 1 to 2 Monotheism, Polytheism
-            } else if (resources.get("Faith") == 1) {
-                whichOneToLevelUp = 1;
-            }
-            if (whichOneToLevelUp == 6) {
-                discovery = "Universal Faith";
-            } else if (whichOneToLevelUp == 5) {
-                discovery = "Enlightenment";
-            } else if (whichOneToLevelUp == 4) {
-                discovery = "Divine Contact";
-            } else if (whichOneToLevelUp == 3) {
-                discovery = "Energies";
-            } else if (whichOneToLevelUp == 2) {
-                discovery = "Polytheism";
-            } else if (whichOneToLevelUp == 1) {
-                discovery = "Monotheism";
-            }
-
-            if (!discovery.isEmpty()) {
-                discoveries.put(discovery, discoveries.get(discovery) + 1);
-            }
-        }
-
-        // Materiales
-        else if (discoveryToLevelUp == 4) {
-            if (resources.get("Raw Materials") >= 5 && discoveries.get("Copper") >= 1 && discoveries.get("Iron") >= 1
-                    && discoveries.get("Coal") >= 1 && discoveries.get("Oil") >= 1 && discoveries.get("Rare Earth Elements") >= 1) {
-                whichOneToLevelUp = random.nextInt(1, 7); // 1 to 6 Copper, Iron, Coal, Oil, Rare Earth Elements, Nanomaterials
-            } else if (resources.get("Raw Materials") == 5) {
-                whichOneToLevelUp = random.nextInt(1, 6); // 1 to 5 Copper, Iron, Coal, Oil, Rare Earth Elements
-            } else if (resources.get("Raw Materials") == 4) {
-                whichOneToLevelUp = random.nextInt(1, 5); // 1 to 4 Copper, Iron, Coal, Oil
-            } else if (resources.get("Raw Materials") == 3) {
-                whichOneToLevelUp = random.nextInt(1, 4); // 1 to 3 Copper, Iron, Coal
-            } else if (resources.get("Raw Materials") == 2) {
-                whichOneToLevelUp = random.nextInt(1, 3); // 1 to 2 Copper, Iron
-            } else if (resources.get("Raw Materials") == 1) {
-                whichOneToLevelUp = 1;
-            }
-            if (whichOneToLevelUp == 6) {
-                discovery = "Nuclear Fusion";
-            } else if (whichOneToLevelUp == 5) {
-                discovery = "Rare Earth Elements";
-            } else if (whichOneToLevelUp == 4) {
-                discovery = "Oil";
-            } else if (whichOneToLevelUp == 3) {
-                discovery = "Coal";
-            } else if (whichOneToLevelUp == 2) {
-                discovery = "Iron";
-            } else if (whichOneToLevelUp == 1) {
-                discovery = "Copper";
-            }
-
-            if (!discovery.isEmpty()) {
-                discoveries.put(discovery, discoveries.get(discovery) + 1);
-            }
-        }
-
-        // Seguridad
-        else if (discoveryToLevelUp == 5) {
-            if (resources.get("Security") >= 5 && discoveries.get("Basic Defense") >= 1 && discoveries.get("Archery") >= 1
-                    && discoveries.get("Gunpowder") >= 1 && discoveries.get("Radar") >= 1 && discoveries.get("Invisibility") >= 1) {
-                whichOneToLevelUp = random.nextInt(1, 7); // 1 to 6 Basic Defense, Archery, Gunpowder, Radar, Invisibility, Cyber Defense
-            } else if (resources.get("Security") == 5) {
-                whichOneToLevelUp = random.nextInt(1, 6); // 1 to 5 Basic Defense, Archery, Gunpowder, Radar, Invisibility
-            } else if (resources.get("Security") == 4) {
-                whichOneToLevelUp = random.nextInt(1, 5); // 1 to 4 Basic Defense, Archery, Gunpowder, Radar
-            } else if (resources.get("Security") == 3) {
-                whichOneToLevelUp = random.nextInt(1, 4); // 1 to 3 Basic Defense, Archery, Gunpowder
-            } else if (resources.get("Security") == 2) {
-                whichOneToLevelUp = random.nextInt(1, 3); // 1 to 2 Basic Defense, Archery
-            } else if (resources.get("Security") == 1) {
-                whichOneToLevelUp = 1;
-            }
-            if (whichOneToLevelUp == 6) {
-                discovery = "Cybersecurity";
-            } else if (whichOneToLevelUp == 5) {
-                discovery = "Invisibility";
-            } else if (whichOneToLevelUp == 4) {
-                discovery = "Radar";
-            } else if (whichOneToLevelUp == 3) {
-                discovery = "Gunpowder";
-            } else if (whichOneToLevelUp == 2) {
-                discovery = "Archery";
-            } else if (whichOneToLevelUp == 1) {
-                discovery = "Basic Defense";
-            }
-
-            if (!discovery.isEmpty()) {
-                discoveries.put(discovery, discoveries.get(discovery) + 1);
-            }
-        }
-        if (discoveries.get("Artificial Intelligence") >= 1 &&
-                discoveries.get("Renaissance") >= 1 &&
-                discoveries.get("Universal Faith") >= 1 &&
-                discoveries.get("Nuclear Fusion") >= 1 &&
-                discoveries.get("Cybersecurity") >= 1) {
-
-            int randomChanceOfWinning = random.nextInt(1, 101);
-
-            if (randomChanceOfWinning <= 5) { // 5% chance of winning
-                discovery = "World Domination";
-                discoveries.put(discovery, 1);
-            }
-        }
-        logEventDiscovery(discovery);
-        return discovery;
+        return "The Civilization has discovered" + discovery;
     }
 
     public void logEventDiscovery(String discovery) {
@@ -902,15 +910,6 @@ public class Civilization {
                 eventsLog.add("Year " + age + ": The " + name + " people has improved their " + discovery.toLowerCase() + ", " + discovery + " is now Level " + discoveries.get(discovery));
             }
         }
-    }
-
-    public boolean isDiscoveringSomething(int percentChance) {
-        Random random = new Random();
-        if (random.nextInt(1, 101) <= percentChance) {
-            discoverSomething();
-            return true;
-        }
-        return false;
     }
 
     public String learningResource(int percentChance) {

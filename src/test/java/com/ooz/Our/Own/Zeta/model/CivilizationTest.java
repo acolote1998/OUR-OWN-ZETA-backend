@@ -500,7 +500,7 @@ class CivilizationTest {
     public void discoveringOneThing() {
         Civilization civilization = new Civilization();
         civilization.improveResource("Technology");
-        civilization.discoverSomething();
+        civilization.discoverSomething(100);
         assertFalse(civilization.getDiscoveries().isEmpty());
     }
 
@@ -508,8 +508,8 @@ class CivilizationTest {
     public void discoveringSomethingOnce() {
         Civilization civilization = new Civilization();
         civilization.learningResource(100);
-        civilization.isDiscoveringSomething(100);
-        assertTrue(civilization.isDiscoveringSomething(100));
+        civilization.discoverSomething(100);
+        assertTrue(civilization.discoverSomething(100).contains("has discovered"));
     }
 
     @Test
@@ -564,7 +564,7 @@ class CivilizationTest {
         String learnedResource = civilization.learningResource(100);
         assertEquals(1, civilization.getResources().get("Raw Materials") + civilization.getResources().get("Technology") + civilization.getResources().get("Security") + civilization.getResources().get("Faith") + civilization.getResources().get("Culture"));
         assertNotEquals("", learnedResource);
-        civilization.isDiscoveringSomething(100);
+        civilization.discoverSomething(100);
         // It varies assertFalse(civilization.getEventsLog().get(1).isEmpty());
     }
 
