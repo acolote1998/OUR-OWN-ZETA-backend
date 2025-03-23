@@ -899,7 +899,16 @@ public class Civilization {
         } else {
             discovery = "The Civilization has not discovered anything";
         }
-        return "The Civilization has discovered" + discovery;
+        if (!discovery.isEmpty()) {
+            if (discoveries.get(discovery) == 1) {
+                return "The Civilization has discovered " + discovery + " " + getDiscoveries().get(discovery);
+            } else {
+                return "The Civilization has improved their " + discovery + ", now they have " + discovery + " " + getDiscoveries().get(discovery);
+            }
+        } else {
+            discovery = "The Civilization has not discovered anything";
+        }
+        return discovery;
     }
 
     public void logEventDiscovery(String discovery) {
@@ -936,7 +945,11 @@ public class Civilization {
             if (!resourceToImprove.isEmpty()) {
                 logEventResource(resourceToImprove);
             }
-            return resourceToImprove;
+            if (resources.get(resourceToImprove) == 1) {
+                return "The Civilization has discovered " + resourceToImprove + " 1";
+            } else {
+                return "The Civilization has improved their " + resourceToImprove + ", now they have " + resourceToImprove + " " + getResources().get(resourceToImprove);
+            }
         }
         return resourceToImprove;
     }

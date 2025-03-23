@@ -46,8 +46,7 @@ public class CivilizationController {
     public String learnResource(@PathVariable String name, @RequestBody Integer chancesOfLearningResource) {
         String answer = "";
         if (!civilizations.get(name).getName().isEmpty()) {
-            String learnedResource = civilizations.get(name).learningResource(chancesOfLearningResource);
-            answer = "The Civilization has improved their " + learnedResource;
+            answer = civilizations.get(name).learningResource(chancesOfLearningResource);
         } else {
             answer = "Civilization not found";
         }
@@ -59,7 +58,7 @@ public class CivilizationController {
     public String discoverSomething(@PathVariable String name, @RequestBody Integer chancesOfDiscoveringSomething) {
         String answer = "";
         if (!civilizations.get(name).getName().isEmpty()) {
-            String learned;
+            answer = civilizations.get(name).discoverSomething(chancesOfDiscoveringSomething);
         } else {
             answer = "Civilization not found";
         }
