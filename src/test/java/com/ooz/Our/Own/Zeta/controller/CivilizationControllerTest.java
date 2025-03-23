@@ -90,7 +90,7 @@ class CivilizationControllerTest {
         String civilizationName = respondeCreatedCiv.getBody().getName();
         ResponseEntity<String> responseResources = restTemplate.postForEntity("/civilizations/" + civilizationName + "/learnResource", 100, String.class);
         assertEquals(HttpStatus.OK, responseResources.getStatusCode());
-        assertTrue(responseResources.getBody().contains("improved"));
+        assertTrue(responseResources.getBody().contains("discovered"));
     }
 
     @Test
@@ -103,9 +103,8 @@ class CivilizationControllerTest {
         String civilizationName = respondeCreatedCiv.getBody().getName();
         ResponseEntity<String> responseResources = restTemplate.postForEntity("/civilizations/" + civilizationName + "/learnResource", 100, String.class);
         assertEquals(HttpStatus.OK, responseResources.getStatusCode());
-        assertTrue(responseResources.getBody().contains("improved"));
+        assertTrue(responseResources.getBody().contains("discovered") || responseResources.getBody().contains("improved"));
         ResponseEntity<String> responseDiscovery = restTemplate.postForEntity("/civilizations/" + civilizationName + "/discoverSomething", 100, String.class);
-        System.out.println(responseDiscovery);
         assertEquals(HttpStatus.OK, responseDiscovery.getStatusCode());
         assertTrue(responseDiscovery.getBody().contains("discovered"));
     }

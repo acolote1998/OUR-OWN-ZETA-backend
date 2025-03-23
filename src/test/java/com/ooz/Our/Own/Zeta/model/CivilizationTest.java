@@ -576,4 +576,14 @@ class CivilizationTest {
         assertNotEquals("", civilization.getName());
     }
 
+
+    @Test
+    public void passing50Years() {
+        Civilization civilization = new Civilization();
+        civilization.feedLanguagePattern("Manuel", "Pablo", "Ezequiel", "Rodrigo");
+        civilization.setName(civilization.generateName());
+        civilization.createRandomPerson();
+        civilization.passTime(50);
+        System.out.println(civilization);
+    }
 }
