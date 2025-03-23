@@ -2,6 +2,7 @@ package com.ooz.Our.Own.Zeta.controller;
 
 import com.ooz.Our.Own.Zeta.model.Civilization;
 import com.ooz.Our.Own.Zeta.model.Person;
+import net.bytebuddy.build.ToStringPlugin;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,7 @@ import org.springframework.http.*;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,7 +29,7 @@ class CivilizationControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    @Order(1)
+        //@Order(1)
     void gettingCivilizationThatDoesNotExist() {
         // Llamada a la API con un nombre que no existe
         ResponseEntity<String> response = restTemplate.getForEntity("/civilizations/Aztecs", String.class);
@@ -38,9 +40,23 @@ class CivilizationControllerTest {
         // Opcional: Verificar que el cuerpo de la respuesta contenga un mensaje de error
         assertTrue(response.getBody().contains("Civilization not found"));
     }
+/*
+    @Test
+    void getACivlization() {
+        String[] wordsToFeed = new String[]{"X"};
+        ResponseEntity<Map> responseFeed = restTemplate.postForEntity("/civilizations/feedingLanguagePatterns", wordsToFeed, Map.class);
+        ResponseEntity<CivilizationDto> responseCivCreated = restTemplate.postForEntity("/civilizations", null, CivilizationDto.class);
+        assertEquals(HttpStatus.OK, responseCivCreated.getStatusCode());
+        assertEquals(HttpStatus.OK, responseFeed.getStatusCode());
+        ResponseEntity<Civilization> responseGetOne = restTemplate.getForEntity("/civilizations/NAMEHERE", Civilization.class);
+        System.out.println(responseGetOne.getStatusCode());
+        System.out.println(responseGetOne.getBody());
+    }
+ */
+
 
     @Test
-    @Order(2)
+        //@Order(3)
     void createNewCivilizations() {
         String[] wordsToFeed = new String[]{"Manuel", "Miguel", "Mandela"};
         ResponseEntity<Map> responseFeed = restTemplate.postForEntity("/civilizations/feedingLanguagePatterns", wordsToFeed, Map.class);
@@ -50,7 +66,7 @@ class CivilizationControllerTest {
     }
 
     @Test
-    @Order(3)
+        // @Order(4)
     void getAllCivilizations() {
         String[] wordsToFeed = new String[]{"Manuel", "Miguel", "Mandela"};
         ResponseEntity<Map> responseFeed = restTemplate.postForEntity("/civilizations/feedingLanguagePatterns", wordsToFeed, Map.class);
