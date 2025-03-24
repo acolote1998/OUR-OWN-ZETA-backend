@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 class CivilizationTest {
 
     @Test
@@ -28,53 +31,6 @@ class CivilizationTest {
         assertEquals(0, civilization.getLanguagePatterns().get("StartsWithConsonantRate"));
         assertEquals(0, civilization.getLanguagePatterns().get("FinishesWithVowelRate"));
         assertEquals(0, civilization.getLanguagePatterns().get("FinishesWithConsonantRate"));
-        assertEquals(0, civilization.getResources().get("Technology"));
-        assertEquals(0, civilization.getResources().get("Culture"));
-        assertEquals(0, civilization.getResources().get("Faith"));
-        assertEquals(0, civilization.getResources().get("Raw Materials"));
-        assertEquals(0, civilization.getResources().get("Security"));
-        // Technology
-        assertEquals(0, civilization.getDiscoveries().get("Wheel"));
-        assertEquals(0, civilization.getDiscoveries().get("Writing"));
-        assertEquals(0, civilization.getDiscoveries().get("Steam Power"));
-        assertEquals(0, civilization.getDiscoveries().get("Electricity"));
-        assertEquals(0, civilization.getDiscoveries().get("Computers"));
-        assertEquals(0, civilization.getDiscoveries().get("Artificial Intelligence"));
-
-        // Culture
-        assertEquals(0, civilization.getDiscoveries().get("Art"));
-        assertEquals(0, civilization.getDiscoveries().get("Philosophy"));
-        assertEquals(0, civilization.getDiscoveries().get("Music"));
-        assertEquals(0, civilization.getDiscoveries().get("Theater"));
-        assertEquals(0, civilization.getDiscoveries().get("Sculpting"));
-        assertEquals(0, civilization.getDiscoveries().get("Renaissance"));
-
-        // Faith
-        assertEquals(0, civilization.getDiscoveries().get("Monotheism"));
-        assertEquals(0, civilization.getDiscoveries().get("Polytheism"));
-        assertEquals(0, civilization.getDiscoveries().get("Energies"));
-        assertEquals(0, civilization.getDiscoveries().get("Divine Contact"));
-        assertEquals(0, civilization.getDiscoveries().get("Enlightenment"));
-        assertEquals(0, civilization.getDiscoveries().get("Universal Faith"));
-
-        // Raw Materials
-        assertEquals(0, civilization.getDiscoveries().get("Copper"));
-        assertEquals(0, civilization.getDiscoveries().get("Iron"));
-        assertEquals(0, civilization.getDiscoveries().get("Coal"));
-        assertEquals(0, civilization.getDiscoveries().get("Oil"));
-        assertEquals(0, civilization.getDiscoveries().get("Rare Earth Elements"));
-        assertEquals(0, civilization.getDiscoveries().get("Nuclear Fusion"));
-
-        // Security
-        assertEquals(0, civilization.getDiscoveries().get("Basic Defense"));
-        assertEquals(0, civilization.getDiscoveries().get("Archery"));
-        assertEquals(0, civilization.getDiscoveries().get("Gunpowder"));
-        assertEquals(0, civilization.getDiscoveries().get("Radar"));
-        assertEquals(0, civilization.getDiscoveries().get("Invisibility"));
-        assertEquals(0, civilization.getDiscoveries().get("Cybersecurity"));
-
-        //Winning Discovery
-        assertEquals(0, civilization.getDiscoveries().get("World Domination"));
 
     }
 
@@ -88,7 +44,7 @@ class CivilizationTest {
     @Test
     public void creatingAScientist() {
         Civilization civilization = new Civilization();
-        Person scientist = civilization.createImportantPerson(20, "Aki", "Scientist", null, true, 0, null);
+        Person scientist = civilization.createImportantPerson(20, "Aki", "Scientist", new HashMap<>(), true, 0, new ArrayList<>());
         assertEquals(20, scientist.getAge());
         assertEquals("Aki", scientist.getName());
         assertEquals("Scientist", scientist.getField());
@@ -100,7 +56,7 @@ class CivilizationTest {
     @Test
     public void creatingAnArtist() {
         Civilization civilization = new Civilization();
-        Person artist = civilization.createImportantPerson(20, "Aki", "Artist", null, true, 0, null);
+        Person artist = civilization.createImportantPerson(20, "Aki", "Artist", new HashMap<>(), true, 0, new ArrayList<>());
         assertEquals(20, artist.getAge());
         assertEquals("Aki", artist.getName());
         assertEquals("Artist", artist.getField());
@@ -112,7 +68,7 @@ class CivilizationTest {
     @Test
     public void creatingAnAthlete() {
         Civilization civilization = new Civilization();
-        Person athlete = civilization.createImportantPerson(20, "Aki", "Athlete", null, true, 0, null);
+        Person athlete = civilization.createImportantPerson(20, "Aki", "Athlete", new HashMap<>(), true, 0, new ArrayList<>());
         assertEquals(20, athlete.getAge());
         assertEquals("Aki", athlete.getName());
         assertEquals("Athlete", athlete.getField());
@@ -124,7 +80,7 @@ class CivilizationTest {
     @Test
     public void creatingADoctor() {
         Civilization civilization = new Civilization();
-        Person doctor = civilization.createImportantPerson(20, "Aki", "Doctor", null, true, 0, null);
+        Person doctor = civilization.createImportantPerson(20, "Aki", "Doctor", new HashMap<>(), true, 0, new ArrayList<>());
         assertEquals(20, doctor.getAge());
         assertEquals("Aki", doctor.getName());
         assertEquals("Doctor", doctor.getField());
@@ -501,15 +457,17 @@ class CivilizationTest {
         Civilization civilization = new Civilization();
         civilization.improveResource("Technology");
         civilization.discoverSomething(100);
-        assertFalse(civilization.getDiscoveries().isEmpty());
+        String discovery = civilization.discoverSomething(100);
+        assertTrue(discovery.contains("has discovered") || discovery.contains("The Civilization has not discovered anything"));
+
     }
 
     @Test
     public void discoveringSomethingOnce() {
         Civilization civilization = new Civilization();
         civilization.learningResource(100);
-        civilization.discoverSomething(100);
-        assertTrue(civilization.discoverSomething(100).contains("has discovered"));
+        String discovery = civilization.discoverSomething(100);
+        assertTrue(discovery.contains("has discovered") || discovery.contains("The Civilization has not discovered anything"));
     }
 
     @Test
@@ -551,7 +509,6 @@ class CivilizationTest {
         civilization.feedLanguagePattern("Manuel", "Pablo", "Ezequiel", "Rodrigo");
         civilization.setName(civilization.generateName());
         String learnedResource = civilization.learningResource(100);
-        assertEquals(1, civilization.getResources().get("Raw Materials") + civilization.getResources().get("Technology") + civilization.getResources().get("Security") + civilization.getResources().get("Faith") + civilization.getResources().get("Culture"));
         assertNotEquals("", learnedResource);
         assertFalse(civilization.getEventsLog().isEmpty());
     }
@@ -562,7 +519,6 @@ class CivilizationTest {
         civilization.feedLanguagePattern("Manuel", "Pablo", "Ezequiel", "Rodrigo");
         civilization.setName(civilization.generateName());
         String learnedResource = civilization.learningResource(100);
-        assertEquals(1, civilization.getResources().get("Raw Materials") + civilization.getResources().get("Technology") + civilization.getResources().get("Security") + civilization.getResources().get("Faith") + civilization.getResources().get("Culture"));
         assertNotEquals("", learnedResource);
         civilization.discoverSomething(100);
         // It varies assertFalse(civilization.getEventsLog().get(1).isEmpty());

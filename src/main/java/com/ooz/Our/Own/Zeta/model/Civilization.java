@@ -61,7 +61,13 @@ public class Civilization {
     }
 
     public Map<String, Integer> getDiscoveries() {
-        return discoveries;
+        Map<String, Integer> discoveriesNotZer = new HashMap<>();
+        for (Map.Entry<String, Integer> discovery : discoveries.entrySet()) {
+            if (discovery.getValue() > 0) {
+                discoveriesNotZer.put(discovery.getKey(), discovery.getValue());
+            }
+        }
+        return discoveriesNotZer;
     }
 
     public void setDiscoveries(Map<String, Integer> discoveries) {
@@ -973,8 +979,8 @@ public class Civilization {
                 "attempts=" + attempts +
                 ", name='" + name + '\'' +
                 ", age=" + age +
-                ", resources=" + resources +
-                ", discoveries=" + discoveries +
+                ", resources=" + getResources() +
+                ", discoveries=" + getDiscoveries() +
                 ", population=" + population +
                 ", importantIndividuals=" + importantIndividuals +
                 ", eventsLog=" + eventsLog +
