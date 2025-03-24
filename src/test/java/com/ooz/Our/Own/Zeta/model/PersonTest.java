@@ -2,6 +2,9 @@ package com.ooz.Our.Own.Zeta.model;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PersonTest {
@@ -35,6 +38,13 @@ class PersonTest {
         assertFalse(person.isAlive());
         assertFalse(person.getLifeLog().isEmpty());
         System.out.println(person.getLifeLog());
+    }
+
+    @Test
+    public void discoveringSomething() {
+        Person person = new Artist(0, "Pepe", "Artist", new HashMap<String, Integer>(), true, 0, new ArrayList<String>());
+        person.discoverSomething(100);
+        assertTrue(person.getKnowledge() > 0);
     }
 
 

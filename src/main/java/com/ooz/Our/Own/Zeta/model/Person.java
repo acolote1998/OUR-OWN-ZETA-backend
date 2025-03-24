@@ -717,8 +717,5 @@ public class Person {
                 ", lifeLog=" + lifeLog +
                 '}';
     }
-
-    public String discoverSomething() {
-        return "";
-    }
+    
 }
