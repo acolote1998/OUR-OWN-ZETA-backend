@@ -52,21 +52,13 @@ class PersonTest {
         Person person = new Artist(0, "Pepe", "Artist", new HashMap<String, Integer>(), true, 0, new ArrayList<String>());
         person.discoverSomething(100);
         person.discoverSomething(100);
-
         person.discoverSomething(100);
-
         person.discoverSomething(100);
-
         person.discoverSomething(100);
-
         person.discoverSomething(100);
-
         person.discoverSomething(100);
-
         person.discoverSomething(100);
-
         person.discoverSomething(100);
-
         person.discoverSomething(100);
         System.out.println(person.getDiscoveries());
         assertTrue(person.getKnowledge() > 0);

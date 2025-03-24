@@ -47,7 +47,13 @@ public class Civilization {
     }
 
     public Map<String, Integer> getResources() {
-        return resources;
+        Map<String, Integer> resourcesNotZer = new HashMap<>();
+        for (Map.Entry<String, Integer> resource : resources.entrySet()) {
+            if (resource.getValue() > 0) {
+                resourcesNotZer.put(resource.getKey(), resource.getValue());
+            }
+        }
+        return resourcesNotZer;
     }
 
     public void setResources(Map<String, Integer> resources) {
