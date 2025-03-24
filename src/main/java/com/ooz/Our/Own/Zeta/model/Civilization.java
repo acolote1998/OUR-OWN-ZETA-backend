@@ -310,24 +310,27 @@ public class Civilization {
         age += years;
 
         for (Map.Entry<String, Person> person : importantIndividuals.entrySet()) {
-            person.getValue().passManyYears(years);
+            person.getValue().pasOneYear();
+            for (String event : person.getValue().getLifeLog()) {
+                getEventsLog().add(event);
+            }
         }
     }
 
-    public Person createImportantPerson(int age, String name, String field, Map<String, Integer> discoveries, boolean alive, int knowledge) {
+    public Person createImportantPerson(int age, String name, String field, Map<String, Integer> discoveries, boolean alive, int knowledge, List<String> lifeLog) {
         Person person = null;
         switch (field) {
             case "Scientist":
-                person = new Scientist(age, name, field, discoveries, alive, knowledge);
+                person = new Scientist(age, name, field, discoveries, alive, knowledge, lifeLog);
                 break;
             case "Artist":
-                person = new Artist(age, name, field, discoveries, alive, knowledge);
+                person = new Artist(age, name, field, discoveries, alive, knowledge, lifeLog);
                 break;
             case "Athlete":
-                person = new Athlete(age, name, field, discoveries, alive, knowledge);
+                person = new Athlete(age, name, field, discoveries, alive, knowledge, lifeLog);
                 break;
             case "Doctor":
-                person = new Doctor(age, name, field, discoveries, alive, knowledge);
+                person = new Doctor(age, name, field, discoveries, alive, knowledge, lifeLog);
                 break;
         }
         return person;
@@ -358,7 +361,7 @@ public class Civilization {
                     fieldToBe = "Cannot generate field";
             }
             if (!fieldToBe.equals("Cannot generate field")) {
-                Person createdPerson = createImportantPerson(0, generateWord(), fieldToBe, null, true, 0);
+                Person createdPerson = createImportantPerson(0, generateWord(), fieldToBe, new HashMap<String, Integer>(), true, 0, new ArrayList<String>());
                 importantIndividuals.put(createdPerson.getName(), createdPerson);
                 message = createdPerson.getName() + ", a promising " + createdPerson.getField().toLowerCase() + " was born!";
                 logEventPerson(createdPerson);

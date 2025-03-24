@@ -9,7 +9,7 @@ public class Person {
     Map<String, Integer> discoveries = new HashMap<>();//<Name of Discovery, Tier>
     boolean alive;
     int knowledge;
-    private List<String> lifeLog = new ArrayList<>();
+    List<String> lifeLog = new ArrayList<>();
 
     public List<String> getLifeLog() {
         return lifeLog;
@@ -67,13 +67,14 @@ public class Person {
         this.knowledge = knowledge;
     }
 
-    public Person() {
-        this.age = 0;
-        this.name = "";
-        this.field = "";
-        this.discoveries = new HashMap<>();
-        this.alive = true;
-        this.knowledge = 0;
+    public Person(int age, String name, String field, Map<String, Integer> discoveries, boolean alive, int knowledge, List<String> lifeLog) {
+        this.age = age;
+        this.name = name;
+        this.field = field;
+        this.discoveries = discoveries;
+        this.alive = alive;
+        this.knowledge = knowledge;
+        this.lifeLog = lifeLog;
     }
 
     public void passManyYears(int years) {
@@ -136,6 +137,7 @@ public class Person {
                 ", discoveries=" + discoveries +
                 ", alive=" + alive +
                 ", knowledge=" + knowledge +
+                ", lifeLog=" + lifeLog +
                 '}';
     }
 

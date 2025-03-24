@@ -88,7 +88,7 @@ class CivilizationTest {
     @Test
     public void creatingAScientist() {
         Civilization civilization = new Civilization();
-        Person scientist = civilization.createImportantPerson(20, "Aki", "Scientist", null, true, 0);
+        Person scientist = civilization.createImportantPerson(20, "Aki", "Scientist", null, true, 0, null);
         assertEquals(20, scientist.getAge());
         assertEquals("Aki", scientist.getName());
         assertEquals("Scientist", scientist.getField());
@@ -100,7 +100,7 @@ class CivilizationTest {
     @Test
     public void creatingAnArtist() {
         Civilization civilization = new Civilization();
-        Person artist = civilization.createImportantPerson(20, "Aki", "Artist", null, true, 0);
+        Person artist = civilization.createImportantPerson(20, "Aki", "Artist", null, true, 0, null);
         assertEquals(20, artist.getAge());
         assertEquals("Aki", artist.getName());
         assertEquals("Artist", artist.getField());
@@ -112,7 +112,7 @@ class CivilizationTest {
     @Test
     public void creatingAnAthlete() {
         Civilization civilization = new Civilization();
-        Person athlete = civilization.createImportantPerson(20, "Aki", "Athlete", null, true, 0);
+        Person athlete = civilization.createImportantPerson(20, "Aki", "Athlete", null, true, 0, null);
         assertEquals(20, athlete.getAge());
         assertEquals("Aki", athlete.getName());
         assertEquals("Athlete", athlete.getField());
@@ -124,7 +124,7 @@ class CivilizationTest {
     @Test
     public void creatingADoctor() {
         Civilization civilization = new Civilization();
-        Person doctor = civilization.createImportantPerson(20, "Aki", "Doctor", null, true, 0);
+        Person doctor = civilization.createImportantPerson(20, "Aki", "Doctor", null, true, 0, null);
         assertEquals(20, doctor.getAge());
         assertEquals("Aki", doctor.getName());
         assertEquals("Doctor", doctor.getField());
