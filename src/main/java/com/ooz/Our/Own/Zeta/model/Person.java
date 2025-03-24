@@ -44,7 +44,13 @@ public class Person {
     }
 
     public Map<String, Integer> getDiscoveries() {
-        return discoveries;
+        Map<String, Integer> discoveriesNotZer = new HashMap<>();
+        for (Map.Entry<String, Integer> discovery : discoveries.entrySet()) {
+            if (discovery.getValue() > 0) {
+                discoveriesNotZer.put(discovery.getKey(), discovery.getValue());
+            }
+        }
+        return discoveriesNotZer;
     }
 
     public void setDiscoveries(Map<String, Integer> discoveries) {
@@ -717,5 +723,5 @@ public class Person {
                 ", lifeLog=" + lifeLog +
                 '}';
     }
-    
+
 }
