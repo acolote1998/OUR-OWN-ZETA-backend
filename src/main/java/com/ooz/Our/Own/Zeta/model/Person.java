@@ -717,7 +717,7 @@ public class Person {
                 "age=" + age +
                 ", name='" + name + '\'' +
                 ", field='" + field + '\'' +
-                ", discoveries=" + discoveries +
+                ", discoveries=" + getDiscoveries() +
                 ", alive=" + alive +
                 ", knowledge=" + knowledge +
                 ", lifeLog=" + lifeLog +

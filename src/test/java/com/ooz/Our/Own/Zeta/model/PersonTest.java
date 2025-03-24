@@ -60,7 +60,6 @@ class PersonTest {
         person.discoverSomething(100);
         person.discoverSomething(100);
         person.discoverSomething(100);
-        System.out.println(person.getDiscoveries());
         assertTrue(person.getKnowledge() > 0);
     }
 
