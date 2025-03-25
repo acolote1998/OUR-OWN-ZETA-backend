@@ -329,6 +329,16 @@ public class Civilization {
     }
 
 
+    public int calculateDiscoveriesValue() {
+        // Each Discovery is worth 150 points
+        int discoveriesValue = 0;
+
+        for (Map.Entry<String, Integer> discovery : getDiscoveries().entrySet()) {
+            discoveriesValue += discovery.getValue() * 150;
+        }
+        return discoveriesValue;
+    }
+
     public int calculateResourcesValue() {
         // Each resource is worth 100 points
         int resourcesValue = 0;
