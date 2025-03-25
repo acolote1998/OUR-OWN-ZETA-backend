@@ -208,6 +208,20 @@ public class Person {
 
     }
 
+    public int calculateValue() {
+        double isAliveMod = 0;
+        int value = 0;
+        if (isAlive()) {
+            isAliveMod = 1.2;
+        } else {
+            isAliveMod = 1;
+        }
+        for (Map.Entry<String, Integer> discovery : discoveries.entrySet()) {
+            value += 100; // gives 100 points of value per discovery
+        }
+        return (int) Math.round(value * isAliveMod);
+    }
+
     public String discoverSomething(int chanceOfLearning) {
         String discovered = "";
         Random random = new Random();
