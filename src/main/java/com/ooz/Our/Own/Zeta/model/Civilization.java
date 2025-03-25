@@ -47,13 +47,13 @@ public class Civilization {
     }
 
     public Map<String, Integer> getResources() {
-        Map<String, Integer> resourcesNotZer = new HashMap<>();
+        Map<String, Integer> resourcesNotZero = new HashMap<>();
         for (Map.Entry<String, Integer> resource : resources.entrySet()) {
             if (resource.getValue() > 0) {
-                resourcesNotZer.put(resource.getKey(), resource.getValue());
+                resourcesNotZero.put(resource.getKey(), resource.getValue());
             }
         }
-        return resourcesNotZer;
+        return resourcesNotZero;
     }
 
     public void setResources(Map<String, Integer> resources) {
@@ -61,13 +61,13 @@ public class Civilization {
     }
 
     public Map<String, Integer> getDiscoveries() {
-        Map<String, Integer> discoveriesNotZer = new HashMap<>();
+        Map<String, Integer> discoveriesNotZero = new HashMap<>();
         for (Map.Entry<String, Integer> discovery : discoveries.entrySet()) {
             if (discovery.getValue() > 0) {
-                discoveriesNotZer.put(discovery.getKey(), discovery.getValue());
+                discoveriesNotZero.put(discovery.getKey(), discovery.getValue());
             }
         }
-        return discoveriesNotZer;
+        return discoveriesNotZero;
     }
 
     public void setDiscoveries(Map<String, Integer> discoveries) {
@@ -320,13 +320,21 @@ public class Civilization {
 
     public void passTime(int years) {
         age += years;
-
         for (Map.Entry<String, Person> person : importantIndividuals.entrySet()) {
             person.getValue().pasOneYear();
             for (String event : person.getValue().getLifeLog()) {
                 getEventsLog().add(event);
             }
         }
+    }
+    
+    public int calculateImportantPeopleValue() {
+        int importantPeopleValue = 0;
+
+        for (Map.Entry<String, Person> person : importantIndividuals.entrySet()) {
+            importantPeopleValue += person.getValue().calculateValue();
+        }
+        return importantPeopleValue;
     }
 
     public Person createImportantPerson(int age, String name, String field, Map<String, Integer> discoveries, boolean alive, int knowledge, List<String> lifeLog) {
