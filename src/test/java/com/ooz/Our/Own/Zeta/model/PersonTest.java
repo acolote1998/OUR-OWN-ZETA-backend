@@ -63,5 +63,12 @@ class PersonTest {
         assertTrue(person.getKnowledge() > 0);
     }
 
+    @Test
+    public void checkLogAfter100Years() {
+        Person person = new Scientist(0, "Pepe", "Artist", new HashMap<String, Integer>(), true, 0, new ArrayList<String>());
+        person.passManyYears(100);
+        assertFalse(person.getLifeLog().isEmpty());
+    }
+
 
 }

@@ -672,6 +672,7 @@ public class Person {
     public void pasOneYear() {
         this.age += 1;
         Random random = new Random();
+        discoverSomething(5 + (45 * knowledge / 100)); // Chances of discovering something is 5% + 25% of their knowledge
         if (age >= 100) {
             if (random.nextInt(1, 101) <= 35) {
                 passAway();
@@ -701,7 +702,6 @@ public class Person {
                 passAway();
             }
         }
-        discoverSomething(5 + (5 * knowledge / 100)); // Chances of discovering something is 5% + 5% of their knowledge
     }
 
     public String passAway() {
