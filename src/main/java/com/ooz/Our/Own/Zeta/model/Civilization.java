@@ -331,7 +331,15 @@ public class Civilization {
         for (Map.Entry<String, Person> person : importantIndividuals.entrySet()) {
             person.getValue().pasOneYear();
             for (String event : person.getValue().getLifeLog()) {
-                getEventsLog().add("Year " + age + ": " + event);
+                boolean eventExists = false;
+                for (int i = 0; i < getEventsLog().size(); i++) {
+                    if (getEventsLog().get(i).contains(event)) {
+                        eventExists = true;
+                    }
+                }
+                if (!eventExists) {
+                    getEventsLog().add("Year " + age + ": " + event);
+                }
             }
         }
         int chancesOfImproving = 1 + (5 * importantIndividuals.size() / 100);// 5% of the amount of important individuals will help improving
@@ -443,7 +451,8 @@ public class Civilization {
                 Person createdPerson = createImportantPerson(0, generateWord(), fieldToBe, new HashMap<String, Integer>(), true, 0, new ArrayList<String>());
                 importantIndividuals.put(createdPerson.getName(), createdPerson);
                 message = createdPerson.getName() + ", a promising " + createdPerson.getField().toLowerCase() + " was born!";
-                logEventPerson(createdPerson);
+                createdPerson.getLifeLog().add(message);
+                // logEventPerson(createdPerson);
             }
         }
         return message;

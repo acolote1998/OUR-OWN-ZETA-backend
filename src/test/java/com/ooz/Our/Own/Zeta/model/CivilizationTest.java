@@ -607,7 +607,7 @@ class CivilizationTest {
     }
 
     @Test
-    public void passing100YearsAndSeeingHowItAffectsAPerson() {
+    public void passing150YearsAndSeeingHowItAffectsAPerson() {
         Civilization civilization = new Civilization();
         civilization.feedLanguagePattern("Manuel", "Pablo", "Ezequiel", "Rodrigo");
         civilization.createRandomPerson();
@@ -617,15 +617,7 @@ class CivilizationTest {
             personName = person.getKey();
             personLifeLog = person.getValue().getLifeLog();
         }
-        System.out.println(civilization.getEventsLog());
-        System.out.println(personName);
-        System.out.println(personLifeLog);
-        civilization.passTime(100);
-        System.out.println("/////////");
-        System.out.println(civilization.getEventsLog());
-        System.out.println(personName);
-        System.out.println(personLifeLog);
+        civilization.passTime(150);
         assertEquals(civilization.getEventsLog().size(), personLifeLog.size());
-
     }
 }

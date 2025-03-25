@@ -684,36 +684,38 @@ public class Person {
     }
 
     public void pasOneYear() {
-        this.age += 1;
-        Random random = new Random();
-        discoverSomething(5 + (45 * knowledge / 100)); // Chances of discovering something is 5% + 25% of their knowledge
-        if (age >= 100) {
-            if (random.nextInt(1, 101) <= 35) {
-                passAway();
-            }
-        } else if (age > 90) {
-            if (random.nextInt(1, 101) <= 25) {
-                passAway();
-            }
-        } else if (age > 80) {
-            if (random.nextInt(1, 101) <= 10) {
-                passAway();
-            }
-        } else if (age > 70) {
-            if (random.nextInt(1, 101) <= 4) {
-                passAway();
-            }
-        } else if (age > 60) {
-            if (random.nextInt(1, 101) <= 3) {
-                passAway();
-            }
-        } else if (age > 40) {
-            if (random.nextInt(1, 101) <= 2) {
-                passAway();
-            }
-        } else if (age > 20) {
-            if (random.nextInt(1, 101) <= 1) {
-                passAway();
+        if (isAlive()) {
+            this.age += 1;
+            Random random = new Random();
+            discoverSomething(5 + (45 * knowledge / 100)); // Chances of discovering something is 5% + 25% of their knowledge
+            if (age >= 100) {
+                if (random.nextInt(1, 101) <= 35) {
+                    passAway();
+                }
+            } else if (age > 90) {
+                if (random.nextInt(1, 101) <= 25) {
+                    passAway();
+                }
+            } else if (age > 80) {
+                if (random.nextInt(1, 101) <= 10) {
+                    passAway();
+                }
+            } else if (age > 70) {
+                if (random.nextInt(1, 101) <= 4) {
+                    passAway();
+                }
+            } else if (age > 60) {
+                if (random.nextInt(1, 101) <= 3) {
+                    passAway();
+                }
+            } else if (age > 40) {
+                if (random.nextInt(1, 101) <= 2) {
+                    passAway();
+                }
+            } else if (age > 20) {
+                if (random.nextInt(1, 101) <= 1) {
+                    passAway();
+                }
             }
         }
     }
