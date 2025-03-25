@@ -14,6 +14,8 @@ public class Civilization {
     private List<String> eventsLog = new ArrayList<>();
     private Map<String, Integer> languagePatterns = new HashMap<>();
 
+    /// ////////// END FIELDS
+
     public int getAttempts() {
         return attempts;
     }
