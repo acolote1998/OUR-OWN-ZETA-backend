@@ -340,7 +340,11 @@ public class Civilization {
         int discoveriesValue = 0;
 
         for (Map.Entry<String, Integer> discovery : getDiscoveries().entrySet()) {
-            discoveriesValue += discovery.getValue() * 150;
+            if (discovery.getKey().equals("World Domination") && discovery.getValue() == 1) {
+                discoveriesValue += discovery.getValue() * 100000;
+            } else {
+                discoveriesValue += discovery.getValue() * 150;
+            }
         }
         return discoveriesValue;
     }
