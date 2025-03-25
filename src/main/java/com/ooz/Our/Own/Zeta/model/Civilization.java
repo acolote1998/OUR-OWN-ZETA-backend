@@ -330,6 +330,18 @@ public class Civilization {
         }
     }
 
+    public void growPopulation() {
+        int onePercentPopulation = population / 100;
+        double zeroPointOnePercentOfResourcesValue = (0.1 * calculateResourcesValue() / 100);
+        double zeroPointOnePercentOfDiscoveriesValue = (0.1 * calculateDiscoveriesValue() / 100);
+        double zeroPointOnePercentOfImportantPeoplesValue = (0.1 * calculateImportantPeopleValue() / 100);
+
+        population = (int) (100 + onePercentPopulation +
+                zeroPointOnePercentOfDiscoveriesValue +
+                zeroPointOnePercentOfImportantPeoplesValue +
+                zeroPointOnePercentOfResourcesValue) * population / 100;
+    }
+
     public int calculateCivilizationValue() {
         return (calculatePopulatiionValue() +
                 calculateImportantPeopleValue()) +
