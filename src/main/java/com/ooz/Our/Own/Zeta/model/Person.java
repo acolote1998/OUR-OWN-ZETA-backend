@@ -701,7 +701,7 @@ public class Person {
                 passAway();
             }
         }
-
+        discoverSomething(5 + (5 * knowledge / 100)); // Chances of discovering something is 5% + 5% of their knowledge
     }
 
     public String passAway() {
