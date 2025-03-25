@@ -331,7 +331,7 @@ public class Civilization {
         for (Map.Entry<String, Person> person : importantIndividuals.entrySet()) {
             person.getValue().pasOneYear();
             for (String event : person.getValue().getLifeLog()) {
-                getEventsLog().add(event);
+                getEventsLog().add("Year " + age + ": " + event);
             }
         }
         int chancesOfImproving = 1 + (5 * importantIndividuals.size() / 100);// 5% of the amount of important individuals will help improving

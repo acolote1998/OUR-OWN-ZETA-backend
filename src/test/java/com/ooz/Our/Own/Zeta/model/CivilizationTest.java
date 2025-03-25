@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 class CivilizationTest {
@@ -603,5 +604,28 @@ class CivilizationTest {
             personAge += person.getValue().getAge();
         }
         assertEquals(civAge, personAge);
+    }
+
+    @Test
+    public void passing100YearsAndSeeingHowItAffectsAPerson() {
+        Civilization civilization = new Civilization();
+        civilization.feedLanguagePattern("Manuel", "Pablo", "Ezequiel", "Rodrigo");
+        civilization.createRandomPerson();
+        String personName = "";
+        List<String> personLifeLog = new ArrayList<>();
+        for (Map.Entry<String, Person> person : civilization.getImportantIndividuals().entrySet()) {
+            personName = person.getKey();
+            personLifeLog = person.getValue().getLifeLog();
+        }
+        System.out.println(civilization.getEventsLog());
+        System.out.println(personName);
+        System.out.println(personLifeLog);
+        civilization.passTime(100);
+        System.out.println("/////////");
+        System.out.println(civilization.getEventsLog());
+        System.out.println(personName);
+        System.out.println(personLifeLog);
+        assertEquals(civilization.getEventsLog().size(), personLifeLog.size());
+
     }
 }
