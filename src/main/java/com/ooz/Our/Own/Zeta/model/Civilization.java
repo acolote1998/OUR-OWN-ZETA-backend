@@ -327,7 +327,12 @@ public class Civilization {
             }
         }
     }
-    
+
+
+    public int calculatePopulatiionValue() {
+        return population * 5;
+    }
+
     public int calculateImportantPeopleValue() {
         int importantPeopleValue = 0;
 
