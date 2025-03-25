@@ -555,8 +555,39 @@ class CivilizationTest {
             person.getValue().discoverSomething(100);
             person.getValue().discoverSomething(100);
             person.getValue().discoverSomething(100);
-
         }
         assertEquals(1080, civilization.calculateImportantPeopleValue());
+    }
+
+    @Test
+    public void calculateCivilizationValue() {
+        Civilization civilization = new Civilization();
+        civilization.feedLanguagePattern("Manuel", "Pablo", "Ezequiel", "Rodrigo");
+        civilization.createRandomPerson();
+        civilization.createRandomPerson();
+        civilization.createRandomPerson();
+        for (Map.Entry<String, Person> person : civilization.getImportantIndividuals().entrySet()) {
+            person.getValue().discoverSomething(100);
+            person.getValue().discoverSomething(100);
+            person.getValue().discoverSomething(100);
+        }
+        assertEquals(1080, civilization.calculateCivilizationValue());
+        //Value So far 1080
+        civilization.improveResource("Technology");
+        civilization.improveResource("Culture");
+        civilization.improveResource("Faith");
+        assertEquals(1380, civilization.calculateCivilizationValue());
+        //Value So Far 1080 + 300
+        Map<String, Integer> discoveries = new HashMap<>();
+        discoveries.put("Monotheism", 1);
+        discoveries.put("Oil", 1);
+        discoveries.put("Gunpowder", 2);
+        discoveries.put("World Domination", 1);
+        civilization.setDiscoveries(discoveries);
+        assertEquals(101980, civilization.calculateCivilizationValue());
+        //Value So far 1380 + 100600
+        civilization.setPopulation(5000);
+        //Value so far 101980 + 25000
+        assertEquals(126980, civilization.calculateCivilizationValue());
     }
 }
