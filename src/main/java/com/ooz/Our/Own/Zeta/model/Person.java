@@ -217,7 +217,7 @@ public class Person {
             isAliveMod = 1;
         }
         for (Map.Entry<String, Integer> discovery : getDiscoveries().entrySet()) {
-            value += 100; // gives 100 points of value per discovery
+            value += 100 * discovery.getValue(); // gives 100 points of value per discovery
         }
         return (int) Math.round(value * isAliveMod);
     }

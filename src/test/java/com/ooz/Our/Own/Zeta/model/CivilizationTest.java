@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 class CivilizationTest {
 
@@ -541,5 +542,21 @@ class CivilizationTest {
         civilization.createRandomPerson();
         civilization.passTime(50);
         System.out.println(civilization);
+    }
+
+    @Test
+    public void calculate3ImportantPeopleValue() {
+        Civilization civilization = new Civilization();
+        civilization.feedLanguagePattern("Manuel", "Pablo", "Ezequiel", "Rodrigo");
+        civilization.createRandomPerson();
+        civilization.createRandomPerson();
+        civilization.createRandomPerson();
+        for (Map.Entry<String, Person> person : civilization.getImportantIndividuals().entrySet()) {
+            person.getValue().discoverSomething(100);
+            person.getValue().discoverSomething(100);
+            person.getValue().discoverSomething(100);
+
+        }
+        assertEquals(1080, civilization.calculateImportantPeopleValue());
     }
 }
