@@ -329,6 +329,16 @@ public class Civilization {
     }
 
 
+    public int calculateResourcesValue() {
+        // Each resource is worth 100 points
+        int resourcesValue = 0;
+
+        for (Map.Entry<String, Integer> resource : getResources().entrySet()) {
+            resourcesValue += resource.getValue() * 100;
+        }
+        return resourcesValue;
+    }
+
     public int calculatePopulatiionValue() {
         return population * 5;
     }
