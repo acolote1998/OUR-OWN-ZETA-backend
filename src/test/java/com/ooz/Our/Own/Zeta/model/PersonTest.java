@@ -70,5 +70,16 @@ class PersonTest {
         assertFalse(person.getLifeLog().isEmpty());
     }
 
+    @Test
+    public void calculateValueOfPerson() {
+        Person person = new Scientist(0, "Pepe", "Artist", new HashMap<String, Integer>(), true, 0, new ArrayList<String>());
+        person.discoverSomething(100);
+        person.discoverSomething(100);
+        person.discoverSomething(100);
+        System.out.println(person.getDiscoveries());
+        System.out.println(person.lifeLog);
+        assertEquals(360, person.calculateValue());
+    }
+
 
 }
