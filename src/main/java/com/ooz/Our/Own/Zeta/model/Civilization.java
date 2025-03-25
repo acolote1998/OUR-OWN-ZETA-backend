@@ -328,6 +328,12 @@ public class Civilization {
         }
     }
 
+    public int calculateCivilizationValue() {
+        return (calculatePopulatiionValue() +
+                calculateImportantPeopleValue()) +
+                calculateDiscoveriesValue() +
+                calculateResourcesValue();
+    }
 
     public int calculateDiscoveriesValue() {
         // Each Discovery is worth 150 points
