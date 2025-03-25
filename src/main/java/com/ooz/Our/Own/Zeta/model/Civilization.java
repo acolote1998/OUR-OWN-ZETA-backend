@@ -983,7 +983,7 @@ public class Civilization {
             logEventDiscovery(discovery);
 
         } else {
-            discovery = "The Civilization has not discovered anything";
+            return discovery = "The Civilization has not discovered anything";
         }
         if (!discovery.isEmpty()) {
             if (discoveries.get(discovery) == 1) {

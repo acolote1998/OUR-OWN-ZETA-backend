@@ -597,7 +597,11 @@ class CivilizationTest {
         civilization.feedLanguagePattern("Manuel", "Pablo", "Ezequiel", "Rodrigo");
         civilization.createRandomPerson();
         civilization.passTime(50);
-        System.out.println(civilization.getAge());
-        System.out.println(civilization.getImportantIndividuals());
+        int civAge = civilization.getAge();
+        int personAge = 0;
+        for (Map.Entry<String, Person> person : civilization.getImportantIndividuals().entrySet()) {
+            personAge += person.getValue().getAge();
+        }
+        assertEquals(civAge, personAge);
     }
 }
