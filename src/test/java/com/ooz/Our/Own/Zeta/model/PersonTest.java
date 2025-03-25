@@ -11,7 +11,7 @@ class PersonTest {
 
     @Test
     public void personStartsAtZero() {
-        Person person = new Person(0, "", "", null, true, 0, null);
+        Person person = new Person(0, "", "", new HashMap<>(), true, 0, new ArrayList<>());
 
         assertEquals(0, person.getAge());
         assertEquals("", person.getName());
@@ -23,7 +23,7 @@ class PersonTest {
 
     @Test
     public void passing20Years() {
-        Person person = new Person(0, "", "", null, true, 0, null);
+        Person person = new Person(0, "", "", new HashMap<>(), true, 0, new ArrayList<>());
 
         person.passManyYears(20);
         assertEquals(20, person.getAge());
@@ -31,7 +31,7 @@ class PersonTest {
 
     @Test
     public void passingAwayWith100Years() {
-        Person person = new Person(0, "", "", null, true, 0, null);
+        Person person = new Person(0, "", "", new HashMap<>(), true, 0, new ArrayList<>());
 
         person.passManyYears(100);
         // assertEquals(100, person.getAge());
