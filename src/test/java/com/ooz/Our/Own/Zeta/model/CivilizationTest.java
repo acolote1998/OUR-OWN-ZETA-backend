@@ -611,13 +611,35 @@ class CivilizationTest {
         Civilization civilization = new Civilization();
         civilization.feedLanguagePattern("Manuel", "Pablo", "Ezequiel", "Rodrigo");
         civilization.createRandomPerson();
-        String personName = "";
         List<String> personLifeLog = new ArrayList<>();
         for (Map.Entry<String, Person> person : civilization.getImportantIndividuals().entrySet()) {
-            personName = person.getKey();
             personLifeLog = person.getValue().getLifeLog();
         }
         civilization.passTime(150);
         assertEquals(civilization.getEventsLog().size(), personLifeLog.size());
+    }
+
+    @Test
+    public void passing150YearsAndSeeingHowItAffectsThreePeople() {
+        Civilization civilization = new Civilization();
+        civilization.feedLanguagePattern("Manuel", "Pablo", "Ezequiel", "Rodrigo");
+        civilization.createRandomPerson();
+        civilization.createRandomPerson();
+        civilization.createRandomPerson();
+        List<String> personLifeLog1 = new ArrayList<>();
+        List<String> personLifeLog2 = new ArrayList<>();
+        List<String> personLifeLog3 = new ArrayList<>();
+
+        for (Map.Entry<String, Person> person : civilization.getImportantIndividuals().entrySet()) {
+            if (personLifeLog1.isEmpty()) {
+                personLifeLog1 = person.getValue().getLifeLog();
+            } else if (personLifeLog2.isEmpty()) {
+                personLifeLog2 = person.getValue().getLifeLog();
+            } else if (personLifeLog3.isEmpty()) {
+                personLifeLog3 = person.getValue().getLifeLog();
+            }
+        }
+        civilization.passTime(150);
+        assertEquals(civilization.getEventsLog().size(), (personLifeLog1.size() + personLifeLog2.size() + personLifeLog3.size()));
     }
 }
