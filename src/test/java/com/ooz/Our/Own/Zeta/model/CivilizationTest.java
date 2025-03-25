@@ -590,4 +590,14 @@ class CivilizationTest {
         //Value so far 101980 + 25000
         assertEquals(126980, civilization.calculateCivilizationValue());
     }
+
+    @Test
+    public void pass50YearsForBothCivAndPeople() {
+        Civilization civilization = new Civilization();
+        civilization.feedLanguagePattern("Manuel", "Pablo", "Ezequiel", "Rodrigo");
+        civilization.createRandomPerson();
+        civilization.passTime(50);
+        System.out.println(civilization.getAge());
+        System.out.println(civilization.getImportantIndividuals());
+    }
 }

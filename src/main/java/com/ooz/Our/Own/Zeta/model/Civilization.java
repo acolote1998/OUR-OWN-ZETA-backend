@@ -321,13 +321,23 @@ public class Civilization {
 
 
     public void passTime(int years) {
-        age += years;
+        for (int i = 0; i < years; i++) {
+            passOneYear();
+        }
+    }
+
+    public void passOneYear() {
+        age++;
         for (Map.Entry<String, Person> person : importantIndividuals.entrySet()) {
             person.getValue().pasOneYear();
             for (String event : person.getValue().getLifeLog()) {
                 getEventsLog().add(event);
             }
         }
+        int chancesOfImproving = 1 + (5 * importantIndividuals.size() / 100);// 5% of the amount of important individuals will help improving
+        learningResource(chancesOfImproving);
+        discoverSomething(chancesOfImproving);
+        growPopulation();
     }
 
     public void growPopulation() {
