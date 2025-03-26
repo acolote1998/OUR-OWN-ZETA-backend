@@ -346,6 +346,7 @@ public class Civilization {
         learningResource(chancesOfImproving);
         discoverSomething(chancesOfImproving);
         growPopulation();
+        createNaturalDisaster(3); //There is a 3% chance of a natural disaster per year
     }
 
     public void growPopulation() {
@@ -466,24 +467,23 @@ public class Civilization {
             int intensity = random.nextInt(1, 11); //How intense they are from 1 to 10
             String description = "";
             switch (typeOfDisaster) {
-                case 1 -> description = "Earthquake";
-                case 2 -> description = "Volcanic Eruption";
-                case 3 -> description = "Tsunami";
-                case 4 -> description = "Hurricane";
-                case 5 -> description = "Wildfire";
-                case 6 -> description = "Blizzard";
-                case 7 -> description = "Avalanche";
+                case 1 -> description = "an earthquake";
+                case 2 -> description = "a volcanic Eruption";
+                case 3 -> description = "a tsunami";
+                case 4 -> description = "a hurricane";
+                case 5 -> description = "a wildfire";
+                case 6 -> description = "a blizzard";
+                case 7 -> description = "an avalanche";
             }
             int lostPeople = (intensity * population / 100);
             population = population - lostPeople; //Losing an intensity % of the population
-
             for (Map.Entry<String, Person> importantPerson : importantIndividuals.entrySet()) {
                 if (random.nextInt(1, 101) <= intensity) {//Each important person has an intensity % chance of passing away
                     importantIndividuals.get(importantPerson.getKey()).setAlive(false);
-                    importantIndividuals.get(importantPerson.getKey()).getLifeLog().add(importantPerson.getKey() + " has passed away due to a " + typeOfDisaster);
+                    importantIndividuals.get(importantPerson.getKey()).getLifeLog().add(importantPerson.getKey() + " the " + importantPerson.getValue().getField().toLowerCase() + " passed away due to " + description);
                 }
             }
-            response = "Year " + age + ": The " + name + " people suffered a terrible " + typeOfDisaster + ". They have lost " + lostPeople + " people.";
+            response = "Year " + age + ": The " + name + " people suffered " + description + ". They have lost " + lostPeople + " people.";
             eventsLog.add(response);
         }
         return response;
