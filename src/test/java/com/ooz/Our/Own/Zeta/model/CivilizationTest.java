@@ -502,7 +502,7 @@ class CivilizationTest {
         civilization.feedLanguagePattern("Manuel", "Pablo", "Ezequiel", "Rodrigo");
         civilization.createRandomPerson();
         civilization.passTime(1);
-        assertFalse(civilization.getImportantIndividuals().isEmpty()););
+        assertFalse(civilization.getImportantIndividuals().isEmpty());
         assertFalse(civilization.getEventsLog().isEmpty());
     }
 
@@ -658,56 +658,61 @@ class CivilizationTest {
     }
 
     @Test
-    public void testNamePresets(){
+    public void testNamePresets() {
         Civilization civ = new Civilization();
-        String orcPreset=civ.useNamePreset("Orc");
-        String dwarfPreset=civ.useNamePreset("Dwarf");
-        String elfPreset=civ.useNamePreset("Elf");
-        String humanPreset=civ.useNamePreset("Human");
-        String orientalWarriorPreset=civ.useNamePreset("Oriental Warrior");
-        String murlockPreset=civ.useNamePreset("Murlock");
-        String ogrePreset=civ.useNamePreset("Ogre");
+        String[] orcPreset = civ.useNamePreset("Orc");
+        String[] dwarfPreset = civ.useNamePreset("Dwarf");
+        String[] elfPreset = civ.useNamePreset("Elf");
+        String[] humanPreset = civ.useNamePreset("Human");
+        String[] orientalWarriorPreset = civ.useNamePreset("Oriental Warrior");
+        String[] murlockPreset = civ.useNamePreset("Murlock");
+        String[] ogrePreset = civ.useNamePreset("Ogre");
         //
         civ.feedLanguagePattern(orcPreset);
-        civ.generateName();
+        civ.setName(civ.generateName());
         assertFalse(civ.getName().isEmpty());
-        System.out.println(civ.getName());
         //
+        civ.setLanguagePatterns(new HashMap<>());
+        civ.setName("");
         //
         civ.feedLanguagePattern(dwarfPreset);
-        civ.generateName();
+        civ.setName(civ.generateName());
         assertFalse(civ.getName().isEmpty());
-        System.out.println(civ.getName());
         //
+        civ.setLanguagePatterns(new HashMap<>());
+        civ.setName("");
         //
         civ.feedLanguagePattern(elfPreset);
-        civ.generateName();
+        civ.setName(civ.generateName());
         assertFalse(civ.getName().isEmpty());
-        System.out.println(civ.getName());
         //
+        civ.setLanguagePatterns(new HashMap<>());
+        civ.setName("");
         //
         civ.feedLanguagePattern(humanPreset);
-        civ.generateName();
+        civ.setName(civ.generateName());
         assertFalse(civ.getName().isEmpty());
-        System.out.println(civ.getName());
         //
+        civ.setLanguagePatterns(new HashMap<>());
+        civ.setName("");
         //
         civ.feedLanguagePattern(orientalWarriorPreset);
-        civ.generateName();
+        civ.setName(civ.generateName());
         assertFalse(civ.getName().isEmpty());
-        System.out.println(civ.getName());
         //
+        civ.setLanguagePatterns(new HashMap<>());
+        civ.setName("");
         //
         civ.feedLanguagePattern(murlockPreset);
-        civ.generateName();
+        civ.setName(civ.generateName());
         assertFalse(civ.getName().isEmpty());
-        System.out.println(civ.getName());
         //
+        civ.setLanguagePatterns(new HashMap<>());
+        civ.setName("");
         //
         civ.feedLanguagePattern(ogrePreset);
-        civ.generateName();
+        civ.setName(civ.generateName());
         assertFalse(civ.getName().isEmpty());
-        System.out.println(civ.getName());
         //
     }
 }

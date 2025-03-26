@@ -180,6 +180,63 @@ public class Civilization {
         languagePatterns.put("FinishesWithConsonantRate", calculateFinishingWithConsonantRate(words[0], Arrays.copyOfRange(words, 1, words.length)));
     }
 
+    public String[] useNamePreset(String preset) {
+        String[] nameList = new String[20];
+        switch (preset) {
+            case "Orc":
+                nameList = new String[]{
+                        "Grommash", "Thrall", "Zogthar", "Grukk", "Durok", "Mograk", "Ghorbash",
+                        "Krogoth", "Sharnak", "Zulgar", "Drogoth", "Rakgar", "Urzok", "Kragor",
+                        "Borzag", "Throk", "Varkash", "Rukgar", "Groshak", "Kharuk"
+                };
+                break;
+            case "Dwarf":
+                nameList = new String[]{
+                        "Thrain", "Balin", "Durin", "Borgar", "Odin", "Gimli", "Dwalin", "Kili",
+                        "Frodrik", "Valthor", "Bromir", "Thoradin", "Haldor", "Magni", "Grimnar",
+                        "Thrainor", "Brondar", "Stromir", "Tormund", "Korgrim"
+                };
+                break;
+            case "Elf":
+                nameList = new String[]{
+                        "Elrond", "Legolas", "Thranduil", "Galadriel", "Arwen", "Eldarion", "Finrod",
+                        "Glorfindel", "Erestor", "Aredhel", "Luthien", "Gilgalad", "Cirdan",
+                        "Celeborn", "Elbereth", "Faelivrin", "Gildor", "Amroth", "Idril", "Beren"
+                };
+                break;
+            case "Human":
+                nameList = new String[]{
+                        "Arthur", "Eleanor", "Cedric", "Isabella", "Edward", "Victoria", "Henry",
+                        "Margaret", "William", "Catherine", "Alfred", "Beatrice", "Oliver",
+                        "Charlotte", "George", "Amelia", "Richard", "Sophia", "Frederick", "Matilda"
+                };
+                break;
+            case "Oriental Warrior":
+                nameList = new String[]{
+                        "Kenshin", "Takeda", "Sakura", "Hiroshi", "Ryuu", "Taro", "Kenji", "Miko",
+                        "Yuki", "Shiro", "Yamato", "Riko", "Kazuo", "Aiko", "Satoshi", "Naoki",
+                        "Ichiro", "Kaito", "Reiko", "Haruki"
+                };
+                break;
+            case "Murlock":
+                nameList = new String[]{
+                        "Skragg", "Zilgar", "Throgg", "Lurgg", "Yggrak", "Skrillex", "Grogga",
+                        "Vorgal", "Lurkna", "Dregg", "Nortg", "Voggen", "Grithak", "Brogga",
+                        "Skrish", "Zograt", "Drogg", "Worgg", "Raggar", "Zralk"
+                };
+                break;
+            case "Ogre":
+                nameList = new String[]{
+                        "Kragthar", "Thok", "Grimjaw", "Ruknar", "Goroth", "Skarr", "Korgoth",
+                        "Blarg", "Zorath", "Gorzan", "Gorgok", "Mogroth", "Rothgar", "Grok",
+                        "Zolgoth", "Braknar", "Varnak", "Zoggar", "Rokh", "Drogoth"
+                };
+                break;
+        }
+        return nameList;
+    }
+
+
     public String generateWord() {
         Random random = new Random();
         boolean generateVowelCluster = false;
