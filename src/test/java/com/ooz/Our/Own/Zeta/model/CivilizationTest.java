@@ -642,4 +642,13 @@ class CivilizationTest {
         civilization.passTime(150);
         assertEquals(civilization.getEventsLog().size(), (personLifeLog1.size() + personLifeLog2.size() + personLifeLog3.size()));
     }
+
+    @Test
+    public void sufferNaturalDisaster() {
+        Civilization civilization = new Civilization();
+        civilization.feedLanguagePattern("Manuel", "Pablo", "Ezequiel", "Rodrigo");
+        System.out.println(civilization.getEventsLog());
+        civilization.createNaturalDisaster();
+        assertFalse(civilization.getEventsLog().isEmpty());
+    }
 }
