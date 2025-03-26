@@ -458,6 +458,37 @@ public class Civilization {
         return message;
     }
 
+    public String createNaturalDisaster(int chanceOfDisaster) {
+        Random random = new Random();
+        String response = "";
+        if (random.nextInt(1, 101) <= chanceOfDisaster) {
+            int typeOfDisaster = random.nextInt(1, 8);//7 Different types of disasters
+            int intensity = random.nextInt(1, 11); //How intense they are from 1 to 10
+            String description = "";
+            switch (typeOfDisaster) {
+                case 1 -> description = "Earthquake";
+                case 2 -> description = "Volcanic Eruption";
+                case 3 -> description = "Tsunami";
+                case 4 -> description = "Hurricane";
+                case 5 -> description = "Wildfire";
+                case 6 -> description = "Blizzard";
+                case 7 -> description = "Avalanche";
+            }
+            int lostPeople = (intensity * population / 100);
+            population = population - lostPeople; //Losing an intensity % of the population
+
+            for (Map.Entry<String, Person> importantPerson : importantIndividuals.entrySet()) {
+                if (random.nextInt(1, 101) <= intensity) {//Each important person has an intensity % chance of passing away
+                    importantIndividuals.get(importantPerson.getKey()).setAlive(false);
+                    importantIndividuals.get(importantPerson.getKey()).getLifeLog().add(importantPerson.getKey() + " has passed away due to a " + typeOfDisaster);
+                }
+            }
+            response = "Year " + age + ": The " + name + " people suffered a terrible " + typeOfDisaster + ". They have lost " + lostPeople + " people.";
+            eventsLog.add(response);
+        }
+        return response;
+    }
+
     public void logEventPerson(Person personToLog) {
         //Types of events
         /*

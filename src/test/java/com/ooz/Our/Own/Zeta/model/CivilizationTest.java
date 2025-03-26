@@ -648,7 +648,7 @@ class CivilizationTest {
         Civilization civilization = new Civilization();
         civilization.feedLanguagePattern("Manuel", "Pablo", "Ezequiel", "Rodrigo");
         System.out.println(civilization.getEventsLog());
-        civilization.createNaturalDisaster();
+        civilization.createNaturalDisaster(100);
         assertFalse(civilization.getEventsLog().isEmpty());
     }
 }
