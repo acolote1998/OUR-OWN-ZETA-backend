@@ -656,4 +656,58 @@ class CivilizationTest {
         assertFalse(civilization.getEventsLog().isEmpty());
         assertTrue(civilization.getEventsLog().size() >= 2);
     }
+
+    @Test
+    public void testNamePresets(){
+        Civilization civ = new Civilization();
+        String orcPreset=civ.useNamePreset("Orc");
+        String dwarfPreset=civ.useNamePreset("Dwarf");
+        String elfPreset=civ.useNamePreset("Elf");
+        String humanPreset=civ.useNamePreset("Human");
+        String orientalWarriorPreset=civ.useNamePreset("Oriental Warrior");
+        String murlockPreset=civ.useNamePreset("Murlock");
+        String ogrePreset=civ.useNamePreset("Ogre");
+        //
+        civ.feedLanguagePattern(orcPreset);
+        civ.generateName();
+        assertFalse(civ.getName().isEmpty());
+        System.out.println(civ.getName());
+        //
+        //
+        civ.feedLanguagePattern(dwarfPreset);
+        civ.generateName();
+        assertFalse(civ.getName().isEmpty());
+        System.out.println(civ.getName());
+        //
+        //
+        civ.feedLanguagePattern(elfPreset);
+        civ.generateName();
+        assertFalse(civ.getName().isEmpty());
+        System.out.println(civ.getName());
+        //
+        //
+        civ.feedLanguagePattern(humanPreset);
+        civ.generateName();
+        assertFalse(civ.getName().isEmpty());
+        System.out.println(civ.getName());
+        //
+        //
+        civ.feedLanguagePattern(orientalWarriorPreset);
+        civ.generateName();
+        assertFalse(civ.getName().isEmpty());
+        System.out.println(civ.getName());
+        //
+        //
+        civ.feedLanguagePattern(murlockPreset);
+        civ.generateName();
+        assertFalse(civ.getName().isEmpty());
+        System.out.println(civ.getName());
+        //
+        //
+        civ.feedLanguagePattern(ogrePreset);
+        civ.generateName();
+        assertFalse(civ.getName().isEmpty());
+        System.out.println(civ.getName());
+        //
+    }
 }
