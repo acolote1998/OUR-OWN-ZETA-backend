@@ -156,6 +156,19 @@ class CivilizationControllerTest {
         ResponseEntity<List> responseHistoryLog = restTemplate.getForEntity("/civilizations/" + nameCivliztion + "/getHistoryLog", List.class);
         assertEquals(HttpStatus.OK, responseHistoryLog.getStatusCode());
         assertFalse(responseHistoryLog.getBody().isEmpty());
-
     }
+
+    @Test
+    void getCivilizationValue() {
+        String[] wordToFeed = new String[]{"Aki", "Capo", "Del", "Mundo"};
+        ResponseEntity<Map> responseFeed = restTemplate.postForEntity("/civilizations/feedingLanguagePatterns", wordToFeed, Map.class);
+        assertEquals(HttpStatus.OK, responseFeed.getStatusCode());
+        ResponseEntity<Civilization> response = restTemplate.postForEntity("/civilizations", null, Civilization.class);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        String nameCivliztion = response.getBody().getName();
+        ResponseEntity<Integer> responseValue = restTemplate.getForEntity("/civilizations/" + nameCivliztion + "/getValue", Integer.class);
+        System.out.println(responseValue);
+        assertTrue(responseValue.getBody().intValue() > 0);
+    }
+
 }
