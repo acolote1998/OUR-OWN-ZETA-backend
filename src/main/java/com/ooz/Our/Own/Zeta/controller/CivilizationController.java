@@ -73,6 +73,13 @@ public class CivilizationController {
         return civilizations.get(name).getDiscoveries();
     }
 
+    // Get important individuals from API
+    // GET http://localhost:8080/civilizations/{name}/getImportantIndividuals
+    @GetMapping("/{name}/getImportantIndividuals")
+    public Map getImportantIndividuals(@PathVariable String name) {
+        return civilizations.get(name).getImportantIndividuals();
+    }
+
     // Learning a new resource
     // POST http://localhost:8080/civilizations/name/learnResource
     @PostMapping("/{name}/learnResource")
