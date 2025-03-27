@@ -1,15 +1,12 @@
 package com.ooz.Our.Own.Zeta.controller;
 
 import com.ooz.Our.Own.Zeta.model.Civilization;
-import com.ooz.Our.Own.Zeta.model.Person;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/civilizations")
@@ -67,6 +64,13 @@ public class CivilizationController {
     @GetMapping("/{name}/getResources")
     public Map getResources(@PathVariable String name) {
         return civilizations.get(name).getResources();
+    }
+
+    // Get the Civilization Discoveries
+    // GET http://localhost:8080/civilizations/{name}/getDiscoveries
+    @GetMapping("/{name}/getDiscoveries")
+    public Map getDiscoveries(@PathVariable String name) {
+        return civilizations.get(name).getDiscoveries();
     }
 
     // Learning a new resource

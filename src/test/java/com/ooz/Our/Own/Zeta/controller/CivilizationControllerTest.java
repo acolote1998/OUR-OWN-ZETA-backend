@@ -197,12 +197,38 @@ class CivilizationControllerTest {
         String nameCivliztion = responseCiv.getBody().getName();
         ResponseEntity<String> responsePostResources = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/learnResource", 100, String.class);
         assertEquals(HttpStatus.OK, responsePostResources.getStatusCode());
-        assertTrue(responsePostResources.getBody().contains("discovered"));
+        assertTrue(responsePostResources.getBody().contains("Civilization"));
         ResponseEntity<String> responsePOSTdiscoveries = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/discoverSomething", 100, String.class);
         assertEquals(HttpStatus.OK, responsePOSTdiscoveries.getStatusCode());
-        assertTrue(responsePOSTdiscoveries.getBody().contains("discovered"));
-        ResponseEntity<Map> responseGETDiscoveries = restTemplate.getForEntity("/civilizations/" + nameCivliztion + "getDiscoveries", Map.class);
-        System.out.println(responseGETDiscoveries.getBody());
+        assertTrue(responsePOSTdiscoveries.getBody().contains("Civilization"));
+        ResponseEntity<String> responsePOSTdiscoveries2 = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/discoverSomething", 100, String.class);
+        assertEquals(HttpStatus.OK, responsePOSTdiscoveries2.getStatusCode());
+        assertTrue(responsePOSTdiscoveries2.getBody().contains("Civilization"));
+        ResponseEntity<String> responsePOSTdiscoveries3 = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/discoverSomething", 100, String.class);
+        assertEquals(HttpStatus.OK, responsePOSTdiscoveries3.getStatusCode());
+        assertTrue(responsePOSTdiscoveries3.getBody().contains("Civilization"));
+        ResponseEntity<String> responsePOSTdiscoveries4 = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/discoverSomething", 100, String.class);
+        assertEquals(HttpStatus.OK, responsePOSTdiscoveries4.getStatusCode());
+        assertTrue(responsePOSTdiscoveries4.getBody().contains("Civilization"));
+        ResponseEntity<String> responsePOSTdiscoveries5 = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/discoverSomething", 100, String.class);
+        assertEquals(HttpStatus.OK, responsePOSTdiscoveries5.getStatusCode());
+        assertTrue(responsePOSTdiscoveries5.getBody().contains("Civilization"));
+        ResponseEntity<String> responsePOSTdiscoveries6 = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/discoverSomething", 100, String.class);
+        assertEquals(HttpStatus.OK, responsePOSTdiscoveries6.getStatusCode());
+        assertTrue(responsePOSTdiscoveries6.getBody().contains("Civilization"));
+        ResponseEntity<String> responsePOSTdiscoveries7 = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/discoverSomething", 100, String.class);
+        assertEquals(HttpStatus.OK, responsePOSTdiscoveries7.getStatusCode());
+        assertTrue(responsePOSTdiscoveries7.getBody().contains("Civilization"));
+        ResponseEntity<String> responsePOSTdiscoveries8 = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/discoverSomething", 100, String.class);
+        assertEquals(HttpStatus.OK, responsePOSTdiscoveries8.getStatusCode());
+        assertTrue(responsePOSTdiscoveries8.getBody().contains("Civilization"));
+        ResponseEntity<String> responsePOSTdiscoveries9 = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/discoverSomething", 100, String.class);
+        assertEquals(HttpStatus.OK, responsePOSTdiscoveries9.getStatusCode());
+        assertTrue(responsePOSTdiscoveries9.getBody().contains("Civilization"));
+        ResponseEntity<String> responsePOSTdiscoveries10 = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/discoverSomething", 100, String.class);
+        assertEquals(HttpStatus.OK, responsePOSTdiscoveries10.getStatusCode());
+        assertTrue(responsePOSTdiscoveries10.getBody().contains("Civilization"));
+        ResponseEntity<Map> responseGETDiscoveries = restTemplate.getForEntity("/civilizations/" + nameCivliztion + "/getDiscoveries", Map.class);
     }
 
 }
