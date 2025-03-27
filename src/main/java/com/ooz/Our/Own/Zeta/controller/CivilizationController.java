@@ -62,6 +62,13 @@ public class CivilizationController {
         return civilizations.get(name).calculateCivilizationValue();
     }
 
+    // Get the Civilization resources
+    // GET http://localhost:8080/civilizations/{name}/getResources
+    @GetMapping("/{name}/getResources")
+    public Map getResources(@PathVariable String name) {
+        return civilizations.get(name).getResources();
+    }
+
     // Learning a new resource
     // POST http://localhost:8080/civilizations/name/learnResource
     @PostMapping("/{name}/learnResource")
