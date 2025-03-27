@@ -231,4 +231,21 @@ class CivilizationControllerTest {
         ResponseEntity<Map> responseGETDiscoveries = restTemplate.getForEntity("/civilizations/" + nameCivliztion + "/getDiscoveries", Map.class);
     }
 
+    @Test
+    void getImportantPeopleFromAPI() {
+        String[] wordToFeed = new String[]{"Aki", "Capo", "Del", "Mundo"};
+        ResponseEntity<Map> responseFeed = restTemplate.postForEntity("/civilizations/feedingLanguagePatterns", wordToFeed, Map.class);
+        assertEquals(HttpStatus.OK, responseFeed.getStatusCode());
+        ResponseEntity<Civilization> response = restTemplate.postForEntity("/civilizations", null, Civilization.class);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        String nameCivliztion = response.getBody().getName();
+        ResponseEntity<String> responsePerso = restTemplate.postForEntity("/civilizations/" + nameCivliztion + "/createSpecialPerson", null, String.class);
+        assertEquals(HttpStatus.OK, responsePerso.getStatusCode());
+        assertTrue(responsePerso.getBody().contains("was born!"));
+        ResponseEntity<Map> responsePeople = restTemplate.getForEntity("/civilizations/" + nameCivliztion + "/getImportantIndividuals", Map.class);
+        System.out.println(responsePeople.getBody());
+        assertEquals(HttpStatus.OK, responsePeople.getStatusCode());
+        assertFalse(responsePeople.getBody().isEmpty());
+    }
+
 }
