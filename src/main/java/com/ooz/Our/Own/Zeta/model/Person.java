@@ -722,7 +722,7 @@ public class Person {
 
     public String passAway() {
         this.alive = false;
-        String message = name + " has passed away at the age of " + age;
+        String message = name + " the " + field.toLowerCase() + " has passed away at the age of " + age;
         lifeLog.add(message);
         return message;
     }
