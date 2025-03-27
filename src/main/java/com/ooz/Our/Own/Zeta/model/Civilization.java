@@ -109,6 +109,7 @@ public class Civilization {
         this.population = 0;
         this.importantIndividuals = new HashMap<>();
         this.languagePatterns = new HashMap<>();
+        startPopulation();
         resources.put("Technology", 0);
         resources.put("Culture", 0);
         resources.put("Faith", 0);
@@ -163,6 +164,13 @@ public class Civilization {
         discoveries.put("Cybersecurity", 0);
         //Winning Discovery
         discoveries.put("World Domination", 0);
+        //
+
+    }
+
+    public void startPopulation() {
+        Random random = new Random();
+        setPopulation(random.nextInt(1, 101));//Starts randomly from 1 to 100 people
     }
 
     public void feedLanguagePattern(String... words) {
@@ -419,7 +427,7 @@ public class Civilization {
     }
 
     public int calculateCivilizationValue() {
-        return (calculatePopulatiionValue() +
+        return (calculatePopulationValue() +
                 calculateImportantPeopleValue()) +
                 calculateDiscoveriesValue() +
                 calculateResourcesValue();
@@ -449,7 +457,7 @@ public class Civilization {
         return resourcesValue;
     }
 
-    public int calculatePopulatiionValue() {
+    public int calculatePopulationValue() {
         return population * 5;
     }
 

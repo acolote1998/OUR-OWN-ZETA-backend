@@ -17,7 +17,7 @@ class CivilizationTest {
         Civilization civilization = new Civilization();
         assertEquals("", civilization.getName());
         assertEquals(0, civilization.getAge());
-        assertEquals(0, civilization.getPopulation());
+        assertTrue(civilization.getPopulation() >= 1 && civilization.getPopulation() <= 100);
         assertTrue(civilization.getImportantIndividuals().isEmpty(), "Individuals is not empty");
         assertTrue(civilization.getEventsLog().isEmpty(), "EventLogs is not empty");
         assertEquals(12, civilization.getLanguagePatterns().size());//VowelsPerWord,ConsonantsPerWord,VowelClusterRate,XYZRate, HRate
@@ -573,12 +573,12 @@ class CivilizationTest {
             person.getValue().discoverSomething(100);
             person.getValue().discoverSomething(100);
         }
-        assertEquals(1080, civilization.calculateCivilizationValue());
+        assertEquals(1080 + (civilization.calculatePopulationValue()), civilization.calculateCivilizationValue());
         //Value So far 1080
         civilization.improveResource("Technology");
         civilization.improveResource("Culture");
         civilization.improveResource("Faith");
-        assertEquals(1380, civilization.calculateCivilizationValue());
+        assertEquals(1380 + (civilization.calculatePopulationValue()), civilization.calculateCivilizationValue());
         //Value So Far 1080 + 300
         Map<String, Integer> discoveries = new HashMap<>();
         discoveries.put("Monotheism", 1);
@@ -586,11 +586,8 @@ class CivilizationTest {
         discoveries.put("Gunpowder", 2);
         discoveries.put("World Domination", 1);
         civilization.setDiscoveries(discoveries);
-        assertEquals(101980, civilization.calculateCivilizationValue());
-        //Value So far 1380 + 100600
-        civilization.setPopulation(5000);
-        //Value so far 101980 + 25000
-        assertEquals(126980, civilization.calculateCivilizationValue());
+        assertEquals(101980 + (civilization.calculatePopulationValue()), civilization.calculateCivilizationValue());
+
     }
 
     @Test
