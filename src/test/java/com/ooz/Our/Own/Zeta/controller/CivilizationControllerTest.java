@@ -167,8 +167,8 @@ class CivilizationControllerTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
         String nameCivliztion = response.getBody().getName();
         ResponseEntity<Integer> responseValue = restTemplate.getForEntity("/civilizations/" + nameCivliztion + "/getValue", Integer.class);
-        System.out.println(responseValue);
         assertTrue(responseValue.getBody().intValue() > 0);
+        assertEquals(HttpStatus.OK, responseValue.getStatusCode());
     }
 
 }
