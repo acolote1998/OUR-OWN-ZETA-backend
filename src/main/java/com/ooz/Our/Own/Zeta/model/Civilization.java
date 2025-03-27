@@ -312,7 +312,7 @@ public class Civilization {
         int vowelsToPlace;
         int consonantsToPlace;
         int totalCharacters = vowelAvgAmount + consonantAvgAmount;
-        final int maxAttempts = 100000;
+        final int maxAttempts = 10000000;
 
         do {
 

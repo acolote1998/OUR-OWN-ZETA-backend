@@ -37,7 +37,6 @@ class PersonTest {
         // assertEquals(100, person.getAge());
         assertFalse(person.isAlive());
         assertFalse(person.getLifeLog().isEmpty());
-        System.out.println(person.getLifeLog());
     }
 
     @Test
@@ -76,8 +75,6 @@ class PersonTest {
         person.discoverSomething(100);
         person.discoverSomething(100);
         person.discoverSomething(100);
-        System.out.println(person.getDiscoveries());
-        System.out.println(person.lifeLog);
         assertEquals(360, person.calculateValue());
     }
 
