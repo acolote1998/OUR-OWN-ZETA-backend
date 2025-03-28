@@ -19,6 +19,14 @@ public class CivilizationController {
     public CivilizationController() {
     }
 
+    // Feeding Name Patterns
+    // POST http://localhost:8000/civilizations/feedingLanguagePatterns
+    @PostMapping("/feedingLanguagePatterns")
+    public Map<String, Integer> feedNamePatterns(@RequestBody String... others) {
+        civilizationNameGenerator.feedLanguagePattern(others);
+        return civilizationNameGenerator.getLanguagePatterns();
+    }
+
     // Obtaining civilization by name
     // GET http://localhost:8080/civlizations/name
     @GetMapping(value = "/{name}", produces = "application/json")
@@ -119,14 +127,6 @@ public class CivilizationController {
         }
 
         return civilization;
-    }
-
-    // Feeding Name Patterns
-    // POST http://localhost:8000/civilizations/feedingLanguagePatterns
-    @PostMapping("/feedingLanguagePatterns")
-    public Map<String, Integer> feedNamePatterns(@RequestBody String... others) {
-        civilizationNameGenerator.feedLanguagePattern(others);
-        return civilizationNameGenerator.getLanguagePatterns();
     }
 
     //Aging the civlization
